@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Rymco Stock Sales Dashboard",
+  "schemaVersion": 1
+}
+</script>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -201,9 +207,9 @@
     <div class="sub">Nissan · Infiniti · GMC · HONGQI — Executive Briefing</div>
   </div>
   <div class="meta">
-    <div><strong>Today:</strong> Tuesday, 5 May 2026</div>
+    <div><strong>Today:</strong> Wednesday, 6 May 2026</div>
     <div><strong>Inventory snapshot:</strong> 30 Apr 2026</div>
-    <div><strong>Sales feed:</strong> YTD through 5 May 2026</div>
+    <div><strong>Sales feed:</strong> YTD through 6 May 2026</div>
   </div>
 </header>
 
@@ -211,8 +217,13 @@
 <div class="kpi-row">
   <div class="kpi accent">
     <div class="label">Sold YTD 2026</div>
-    <div class="value" id="kpi-sold">126</div>
-    <div class="sub-val">Across all 4 brands · ~125 days</div>
+    <div class="value" id="kpi-sold">475</div>
+    <div class="sub-val">All channels · ~3.8 cars/day · 126 days</div>
+  </div>
+  <div class="kpi accent">
+    <div class="label">Retail vs Fleet Mix</div>
+    <div class="value" id="kpi-mix">49 / 51</div>
+    <div class="sub-val">232 retail · 236 fleet · 7 export</div>
   </div>
   <div class="kpi accent">
     <div class="label">Stock On Hand</div>
@@ -224,25 +235,20 @@
     <div class="value" id="kpi-orders">652</div>
     <div class="sub-val">Production scheduled Oct'25–Aug'26</div>
   </div>
-  <div class="kpi accent">
-    <div class="label">Total Pipeline (Stock + Orders)</div>
-    <div class="value" id="kpi-pipeline">891</div>
-    <div class="sub-val">Net of reservations from orders</div>
-  </div>
 </div>
 
-<!-- Post-Holiday Catch-up -->
+<!-- Daily refresh notice -->
 <div class="card" style="margin-bottom:16px; border-left: 4px solid var(--c-accent);">
-  <h2>Post-Holiday Weekend Catch-up <span class="badge">5 May 2026 · Tuesday</span></h2>
+  <h2>Daily Refresh — Coverage Upgrade <span class="badge">6 May 2026 · Wednesday</span></h2>
   <div style="font-size: 12px; line-height: 1.55;">
-    The showroom is reopening after the <strong>Labour Day long weekend</strong> (Fri 1 May – Mon 4 May closure). The Sold Cars feed dated 5 May 2026 captures cumulative <strong>YTD 2026 sales of 126 units</strong>. Sales velocity remains heavily concentrated in the Nissan B-segment (Magnite + Sunny ≈ 79 units = <strong>62.7%</strong> of all RYMCO YTD sales). The next inventory refresh is monthly/bi-monthly; until then, the 30 Apr snapshot remains the working position.
+    Today's sold-cars feed is a <strong>full transactional export</strong> covering every channel: Retail, Fleet (RAC, Corporate, Government, Dealer) and Export. YTD 2026 now stands at <strong>475 units across 6 brands</strong> (vs. 126 in yesterday's narrower snapshot — that gap reflects expanded data coverage, not a one-day spike). The sales velocity picture is far healthier than yesterday's view suggested: Magnite UPPER (97), Sunny SV (96), Magnite MID (45) and X-Trail S (35) drive volume, with Retail and Fleet split almost evenly. Two additional RYMCO brands — <strong>Kawasaki (9)</strong> and <strong>Nissan Commercial (1)</strong> — surfaced in the new feed and are tracked separately at the bottom of this dashboard. The 30 Apr inventory snapshot remains the working stock position until the next monthly refresh.
   </div>
 </div>
 
 <!-- Charts row 1 -->
 <div class="grid-2">
   <div class="card">
-    <h2>Sold Units YTD by Brand <span class="badge">126 total</span></h2>
+    <h2>Sold Units YTD by Brand <span class="badge">475 total · 6 brands</span></h2>
     <div class="chart-wrap"><canvas id="chart-sold-brand"></canvas></div>
   </div>
   <div class="card">
@@ -268,17 +274,17 @@
   <div class="card brand-card">
     <div class="brand-header nissan">
       <h3>NISSAN</h3>
-      <div class="tag">Mass-market · 91% of YTD volume</div>
+      <div class="tag">Mass-market · 87.6% of YTD volume</div>
     </div>
     <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">115</span></div>
+      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">416</span></div>
       <div class="stat-row"><span class="label">Inventory</span><span class="val">411</span></div>
       <div class="stat-row"><span class="label">Reserved</span><span class="val">134</span></div>
       <div class="stat-row"><span class="label">Available</span><span class="val">277</span></div>
       <div class="stat-row"><span class="label">On Order</span><span class="val">546</span></div>
       <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">784</span></div>
       <div class="insight">
-        Magnite UPPER (50 sold) and Sunny SV (20 sold) are the engine. <strong>X-Trail 4WD S 7-Seat</strong> sits at 195 units of pipeline against ~3 confirmed YTD sales — promotional pull required.
+        Magnite UPPER (97), Sunny SV (96), Magnite MID (45), X-Trail S (35) — strong, broad-based velocity. ~3.3 cars/day. Pipeline ≈ 8 months at current pace — <strong>healthy</strong>. Magnite UPPER selling faster than incoming (50 inbound) — watch supply.
       </div>
     </div>
   </div>
@@ -289,14 +295,14 @@
       <div class="tag">Premium · Niche velocity</div>
     </div>
     <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">1</span></div>
+      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">8</span></div>
       <div class="stat-row"><span class="label">Inventory</span><span class="val">7</span></div>
       <div class="stat-row"><span class="label">Reserved</span><span class="val">0</span></div>
       <div class="stat-row"><span class="label">Available</span><span class="val">7</span></div>
       <div class="stat-row"><span class="label">On Order</span><span class="val">27</span></div>
       <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">30</span></div>
       <div class="insight">
-        Single QX80 sale YTD. QX60 Pure pipeline (13 units, mostly Q2 production) needs a targeted high-net-worth campaign. QX65 (2027) has 0 confirmed orders — monitor pre-launch interest.
+        QX60 Luxe (3) leads, balanced QX60/QX80 mix. ~16 months pipeline at current pace — premium-tier acceptable but warrants HNW campaign as 13-unit QX60 Pure wave lands May–Jun.
       </div>
     </div>
   </div>
@@ -304,17 +310,17 @@
   <div class="card brand-card">
     <div class="brand-header gmc">
       <h3>GMC</h3>
-      <div class="tag">Trucks &amp; SUVs · Steady niche</div>
+      <div class="tag">Trucks &amp; SUVs · Strong demand</div>
     </div>
     <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">9</span></div>
+      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">31</span></div>
       <div class="stat-row"><span class="label">Inventory</span><span class="val">10</span></div>
       <div class="stat-row"><span class="label">Reserved</span><span class="val">7</span></div>
       <div class="stat-row"><span class="label">Available</span><span class="val">3</span></div>
       <div class="stat-row"><span class="label">On Order</span><span class="val">48</span></div>
       <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">39</span></div>
       <div class="insight">
-        <strong>Healthiest velocity</strong> outside Nissan. Terrain Elevation (4 sold) leads. 7-of-10 stock units pre-reserved — supply is the constraint, not demand. May-Jul deliveries will refill.
+        Yukon Elevation (13), Acadia AT4 (7), Terrain Elevation (5) — Yukon family ~70% of GMC volume. Only 3 units on the lot — <strong>supply-constrained</strong>. Confirm Q2 deliveries land on time.
       </div>
     </div>
   </div>
@@ -322,19 +328,50 @@
   <div class="card brand-card">
     <div class="brand-header hongqi">
       <h3>HONGQI</h3>
-      <div class="tag">Newer brand · Build awareness</div>
+      <div class="tag">Newer brand · Building traction</div>
     </div>
     <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">1</span></div>
+      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">10</span></div>
       <div class="stat-row"><span class="label">Inventory</span><span class="val">7</span></div>
       <div class="stat-row"><span class="label">Reserved</span><span class="val">1</span></div>
       <div class="stat-row"><span class="label">Available</span><span class="val">6</span></div>
       <div class="stat-row"><span class="label">On Order</span><span class="val">31</span></div>
       <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">38</span></div>
       <div class="insight">
-        Single HS3 1.5T sale YTD. OUSADO 2.0T (16 units inbound) and HS3 1.5 (10 inbound) require <strong>brand awareness investment</strong> ahead of arrival. Velocity below run-rate to clear inventory.
+        HS3 1.5T (7), plus first EHS7 EV, HS3-2.0T 4WD and H9 3.0T Executive sales — broader model traction. ~16 months pipeline — push OUSADO awareness ahead of inbound wave.
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Other RYMCO brands surfaced in feed -->
+<div class="card" style="margin-bottom:16px;">
+  <h2>Other RYMCO Brands in the Feed <span class="badge">Tracked separately</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;">
+    <div>
+      <div style="font-weight:700;margin-bottom:6px;">Kawasaki — 9 sold YTD</div>
+      <div style="color:var(--c-muted);">Teryx 4 800 (7) and Teryx 4 S LE (2). Powersports / off-road segment. No inventory data in current report scope.</div>
+    </div>
+    <div>
+      <div style="font-weight:700;margin-bottom:6px;">Nissan Commercial — 1 sold YTD</div>
+      <div style="color:var(--c-muted);">URVAN 4Door/3s High Roof Panel Van. Light commercial vehicle line — request inventory feed inclusion next refresh.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Channel / Department / Model Year breakdowns -->
+<div class="grid-3" style="margin-bottom:16px;">
+  <div class="card">
+    <h2>Sale Channel Mix <span class="badge">YTD 475</span></h2>
+    <div class="chart-wrap" style="height:240px;"><canvas id="chart-channel"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>Sales by Branch <span class="badge">4 departments</span></h2>
+    <div class="chart-wrap" style="height:240px;"><canvas id="chart-dept"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>Model Year Split <span class="badge">YTD 475</span></h2>
+    <div class="chart-wrap" style="height:240px;"><canvas id="chart-my"></canvas></div>
   </div>
 </div>
 
@@ -344,28 +381,32 @@
     <h2>Executive Action Queue <span class="badge">Priority-ordered</span></h2>
     <ul class="action-queue">
       <li class="high">
-        <div class="title">1. Activate clearance campaign — Nissan X-Trail 4WD S 7-Seat <span class="risk-pill high">High Stock</span></div>
-        <div class="why">110 units available + 85 inbound (195 total). YTD movement is below 5 units. Recommend price action, fleet-channel push, or reservation incentive within 14 days.</div>
-      </li>
-      <li class="high">
-        <div class="title">2. Sunny SV (MY2025) inventory push <span class="risk-pill high">High Stock</span></div>
-        <div class="why">109 units MY25 + 86 inbound MY26. MY25 must move before MY26 lands en masse — recommend trade-in promotion and dealer-spiff acceleration.</div>
+        <div class="title">1. Magnite UPPER replenishment — supply risk <span class="risk-pill high">Demand &gt; Supply</span></div>
+        <div class="why">97 sold YTD vs only 50 inbound (Apr-Jun production). At current pace stock runs out in &lt; 1 month. Place an additional production order; coordinate with Nissan India.</div>
       </li>
       <li class="med">
-        <div class="title">3. HONGQI brand-awareness sprint <span class="risk-pill med">Velocity</span></div>
-        <div class="why">38 units in pipeline, 1 sold YTD. Schedule influencer test-drives + dedicated showroom signage before May–Jul OUSADO arrivals.</div>
+        <div class="title">2. GMC Yukon family supply <span class="risk-pill med">Constrained</span></div>
+        <div class="why">31 sold across the GMC range with only 3 units physically on the lot. Yukon Elevation (13 sold) is the bestseller — confirm Apr-Jul deliveries (17 inbound) land on schedule.</div>
       </li>
       <li class="med">
-        <div class="title">4. Infiniti QX60 Pure conversion campaign <span class="risk-pill med">Velocity</span></div>
-        <div class="why">11 units inbound through Mar production (~Jun delivery). Activate finance-led campaign for high-net-worth clientele.</div>
+        <div class="title">3. X-Trail 4WD S 7-Seat — accelerate before Jun-Sep wave <span class="risk-pill med">High Stock</span></div>
+        <div class="why">35 sold YTD vs 110 available + 85 inbound. ~6 months supply — manageable but combine fleet/RAC push with retail promo to clear before Sep wave.</div>
       </li>
       <li class="med">
-        <div class="title">5. X-Trail T33 EPWR SV — review forward orders <span class="risk-pill med">Stagnant</span></div>
-        <div class="why">44 units in inventory, <strong>zero on order</strong> — strong sign of soft demand. Decide on order strategy before next monthly buy.</div>
+        <div class="title">4. X-Trail T33 EPWR SV — soft demand signal <span class="risk-pill med">Stagnant</span></div>
+        <div class="why">44 units in inventory, <strong>zero on order</strong> — buying team has already paused replenishment. EPWR SV (20 sold) is moving but slower than ICE — confirm pricing strategy.</div>
+      </li>
+      <li class="med">
+        <div class="title">5. Patrol XE pipeline review <span class="risk-pill med">High Stock</span></div>
+        <div class="why">67 PATROL XE units inbound through Sep vs 10 PATROL V6 XE sold YTD — pipeline runs ~12 months. Consider trimming next monthly order or accelerating fleet allocation.</div>
       </li>
       <li class="low">
-        <div class="title">6. GMC supply replenishment monitoring <span class="risk-pill low">On Track</span></div>
-        <div class="why">Demand healthy (7 of 10 reserved). Confirm Q2 deliveries land on schedule to avoid waitlist gap.</div>
+        <div class="title">6. HONGQI brand-awareness reinforcement <span class="risk-pill low">Velocity ramp</span></div>
+        <div class="why">10 sold YTD across 4 distinct variants — broader model adoption emerging. Push HS3 1.5T (7 sold) demo programme; plan EHS7 EV positioning.</div>
+      </li>
+      <li class="low">
+        <div class="title">7. Naccache &amp; Zalka branch activation <span class="risk-pill low">Channel</span></div>
+        <div class="why">Chiyah does 88% of sales (418 of 475). Naccache (26) and Zalka (4) are underutilised — review staffing, foot-traffic and showroom inventory mix.</div>
       </li>
     </ul>
   </div>
@@ -378,9 +419,9 @@
       </thead>
       <tbody id="risk-tbody"></tbody>
     </table>
-    <div style="margin-top:12px; padding:10px; background:#fef2f2; border-radius:6px; font-size:11px; color:#7f1d1d; line-height:1.5;">
-      <strong>⚠ Days-of-supply at current sell-through</strong><br>
-      Nissan ≈ 28 mo · GMC ≈ 18 mo · Infiniti &amp; HONGQI &gt; 10 yr (low-volume luxury/new-brand profile, but still requires demand-generation focus before next inbound wave).
+    <div style="margin-top:12px; padding:10px; background:#dcfce7; border-radius:6px; font-size:11px; color:#166534; line-height:1.5;">
+      <strong>✓ Days-of-supply at current sell-through (revised)</strong><br>
+      Nissan ≈ 8 months · GMC ≈ 5 months · Infiniti ≈ 16 months · HONGQI ≈ 16 months. Picture is materially healthier with full-channel data — Nissan and GMC are operating at normal cover; premium/newer brands carry expected longer cycle.
     </div>
   </div>
 </div>
@@ -422,7 +463,7 @@
 
 <!-- Top sellers full table -->
 <div class="card" style="margin-bottom: 16px;">
-  <h2>Detailed Sold Variants — YTD 2026 <span class="badge">126 units</span></h2>
+  <h2>Detailed Sold Variants — YTD 2026 <span class="badge">475 units · all channels</span></h2>
   <div id="grid-sold"></div>
 </div>
 
@@ -433,7 +474,7 @@
 </div>
 
 <div class="footer-note">
-  RYMCO Lebanon — Sources: <em>Inventory updates 30-04-2026.xls</em> (monthly/bi-monthly) · <em>Sold Cars_5-5-2026.xlsx</em> (daily Mon–Fri). Production months are shown shifted by +3 months to reflect delivery to facility.
+  RYMCO Lebanon — Sources: <em>Inventory updates 30-04-2026.xls</em> (monthly/bi-monthly) · <em>Sold Cars_6-5-2026.xls</em> (daily Mon–Fri, full transactional). Production months are shown shifted by +3 months to reflect delivery to facility. Last refreshed: 6 May 2026.
 </div>
 
 </div>
@@ -443,13 +484,16 @@
 // Embedded data (from upload extraction)
 // ====================================================
 const DATA = {
-  sold_by_brand: { NISSAN: 115, GMC: 9, HONGQI: 1, INFINITI: 1 },
+  sold_by_brand: { NISSAN: 416, GMC: 31, HONGQI: 10, INFINITI: 8, Kawasaki: 9, 'Nissan Commercial': 1 },
   stock_by_brand: {
     Nissan:   { available: 277, on_order: 546, reserved: 134 },
     Infiniti: { available: 7,   on_order: 27,  reserved: 0   },
     GMC:      { available: 3,   on_order: 48,  reserved: 7   },
     HONGQI:   { available: 6,   on_order: 31,  reserved: 1   }
   },
+  channel_mix: { 'Retail': 232, 'Fleet-RAC': 104, 'Fleet-Corporate': 57, 'Fleet Dealer': 48, 'Fleet-Government': 17, 'Fleet Government (E)': 10, 'Export-Retail': 7 },
+  department_mix: { 'Chiyah': 418, 'Dealer': 27, 'Naccache': 26, 'Zalka': 4 },
+  model_year_mix: { '2026': 293, '2025': 173, '2024': 9 },
   // Delivery month → units (already shifted +3 mo)
   deliveries: {
     Nissan:   { '2026-02': 1,  '2026-03': 90, '2026-04': 109, '2026-05': 150, '2026-06': 150, '2026-07': 10, '2026-08': 19, '2026-09': 17 },
@@ -458,28 +502,43 @@ const DATA = {
     HONGQI:   { '2025-06': 16, '2025-07': 3,  '2025-08': 10,  '2025-09': 2 }
   },
   top_sold: [
-    ['MAGNITE UPPER',           'NISSAN',   50],
-    ['SUNNY 1.5L SV + SPOILER', 'NISSAN',   20],
-    ['MAGNITE MID',             'NISSAN',    9],
-    ['X-TRAIL EPWR SV 4WD 3ROW','NISSAN',    8],
-    ['KICKS 2.0 S CVT',         'NISSAN',    6],
-    ['MAGNITE TOP+',            'NISSAN',    5],
-    ['QASHQAI SV EPWR 2WD',     'NISSAN',    4],
-    ['KICKS 2.0 SV CVT',        'NISSAN',    4],
-    ['TERRAIN ELEVATION AWD',   'GMC',       4],
-    ['X-TRAIL S 4WD 3ROW',      'NISSAN',    3]
+    ['MAGNITE UPPER',                 'NISSAN', 97],
+    ['SUNNY 1.5L SV + SPOILER',       'NISSAN', 96],
+    ['MAGNITE MID',                   'NISSAN', 45],
+    ['X-TRAIL S 4WD 3ROW',            'NISSAN', 35],
+    ['X-TRAIL EPWR SV 4WD 3ROW',      'NISSAN', 20],
+    ['KICKS 2.0 S CVT',               'NISSAN', 18],
+    ['PATROL V6TT LE PLATINUM CITY',  'NISSAN', 16],
+    ['PATROL V6 SE PLATINUM CITY',    'NISSAN', 15],
+    ['MAGNITE TOP+',                  'NISSAN', 14],
+    ['YUKON ELEVATION',               'GMC',    13],
+    ['KICKS 2.0 SV CVT',              'NISSAN', 12],
+    ['PATROL V6 XE',                  'NISSAN', 10],
+    ['PATROL V6 SE T2 + SUNROOF',     'NISSAN', 10],
+    ['X-TRAIL EPWR SL 4WD 3ROW',      'NISSAN',  9],
+    ['TERYX 4 800',                   'Kawasaki', 7]
   ],
   sold_full: [
-    ['NISSAN','MAGNITE UPPER',50],['NISSAN','SUNNY 1.5L SV + SPOILER',20],
-    ['NISSAN','MAGNITE MID',9],['NISSAN','X-TRAIL EPWR SV 4WD 3ROW',8],
-    ['NISSAN','KICKS 2.0 S CVT',6],['NISSAN','MAGNITE TOP+',5],
-    ['NISSAN','QASHQAI SV EPWR 2WD',4],['NISSAN','KICKS 2.0 SV CVT',4],
-    ['GMC','TERRAIN ELEVATION AWD',4],['NISSAN','X-TRAIL S 4WD 3ROW',3],
-    ['GMC','YUKON ELEVATION',2],['GMC','YUKON AT4 ULTIMATE',2],
-    ['NISSAN','X-TERRA 4WD TITANIUM 7AT',2],['GMC','YUKON AT4',1],
-    ['HONGQI','HONGQI HS3 1.5T',1],['INFINITI','INFINITI QX80 SV 7 SEATS',1],
-    ['NISSAN','PATROL V6TT LE PLATINUM CITY',1],['NISSAN','X-TRAIL SV1 4WD 3ROW',1],
-    ['NISSAN','PATROL V6 SE TITANIUM with RSE',1],['NISSAN','X-TRAIL EPWR SL 4WD 3ROW',1]
+    ['NISSAN','MAGNITE UPPER',97],['NISSAN','SUNNY 1.5L SV + SPOILER',96],
+    ['NISSAN','MAGNITE MID',45],['NISSAN','X-TRAIL S 4WD 3ROW',35],
+    ['NISSAN','X-TRAIL EPWR SV 4WD 3ROW',20],['NISSAN','KICKS 2.0 S CVT',18],
+    ['NISSAN','PATROL V6TT LE PLATINUM CITY',16],['NISSAN','PATROL V6 SE PLATINUM CITY',15],
+    ['NISSAN','MAGNITE TOP+',14],['GMC','YUKON ELEVATION',13],
+    ['NISSAN','KICKS 2.0 SV CVT',12],['NISSAN','PATROL V6 XE',10],
+    ['NISSAN','PATROL V6 SE T2 + SUNROOF',10],['NISSAN','X-TRAIL EPWR SL 4WD 3ROW',9],
+    ['Kawasaki','TERYX 4 800',7],['GMC','NEW ACADIA AT4',7],
+    ['HONGQI','HONGQI HS3 1.5T',7],['NISSAN','X-TRAIL SV1 4WD 3ROW',6],
+    ['NISSAN','QASHQAI SV EPWR 2WD',5],['GMC','TERRAIN ELEVATION AWD',5],
+    ['NISSAN','X-TERRA 4WD TITANIUM 7AT',4],['NISSAN','PATROL V6 SE TITANIUM',3],
+    ['INFINITI','INFINITI QX60 LUXE',3],['GMC','YUKON AT4 ULTIMATE',3],
+    ['NISSAN','PATROL V6 LE TITANIUM',3],['NISSAN','PATROL V6 SE TITANIUM with RSE',2],
+    ['Kawasaki','TERYX 4 S LE',2],['GMC','YUKON DENALI',2],
+    ['NISSAN','X-TRAIL TITANIUM 4WD',2],['NISSAN','X-TRAIL SV2 4WD 3ROW',2],
+    ['INFINITI','INIFINITI QX60 SV',1],['INFINITI','INFINITI QX60 LUXE W/CLIMATE PACKAGE',1],
+    ['INFINITI','INFINITI QX60 PURE',1],['INFINITI','INFINITI QX80 SV 7 SEATS',1],
+    ['INFINITI','INFINITI QX80 AUTOGRAPH 8 SEATS',1],['HONGQI','HONGQI EHS7 85kWh 4WD',1],
+    ['HONGQI','HONGQI HS3-2.0T 4WD',1],['HONGQI','HONGQI H9 3.0T Executive 4WD',1],
+    ['GMC','YUKON AT4',1],['Nissan Commercial','URVAN 4Door/3s High Roof P/V 2WD',1]
   ],
   inventory_full: [
     ['Nissan','SUNNY N17','SUNNY 1.5 SV + Spoiler','2025',109,47,62,86,148],
@@ -527,13 +586,13 @@ const DATA = {
     ['HONGQI','HONGQI','E-HS7','2026',1,1,0,0,0]
   ],
   risks: [
-    ['X-TRAIL 4WD S 7 SEATS','Nissan',110,195,'high','Slow-mover · 195 pipeline'],
-    ['SUNNY 1.5 SV (MY25)','Nissan',62,148,'high','MY25 ageing · MY26 inbound'],
-    ['X-trail T33 EPWR SV','Nissan',44,44,'med','No replenishment orders'],
-    ['Magnite MID (MY26)','Nissan',29,89,'med','89 pipeline vs 9 sold YTD'],
-    ['HS3 1.5','HONGQI',2,12,'med','New brand awareness gap'],
-    ['QX60 Pure','Infiniti',3,13,'med','13 inbound vs ~1 sold YTD'],
-    ['OUSADO 2.0T Flagship','HONGQI',0,12,'med','12 inbound · no buyers yet']
+    ['Magnite UPPER','Nissan',12,63,'high','Demand &gt; supply · 97 sold vs 50 inbound'],
+    ['X-TRAIL 4WD S 7 SEATS','Nissan',110,195,'med','High stock · pipeline ~6 mo cover'],
+    ['Patrol XE','Nissan',0,67,'med','67 inbound vs 10 sold YTD'],
+    ['X-trail T33 EPWR SV','Nissan',44,44,'med','No replenishment · soft demand'],
+    ['Sunny SV (MY25)','Nissan',62,148,'med','MY25 ageing before MY26 lands'],
+    ['QX60 Pure','Infiniti',3,13,'low','13 inbound · run HNW campaign'],
+    ['OUSADO 2.0T Flagship','HONGQI',0,12,'low','12 inbound · awareness ramp']
   ]
 };
 
@@ -550,21 +609,22 @@ const BRAND_COLORS = {
 // ====================================================
 // Chart 1: Sold by Brand
 // ====================================================
+const SOLD_TOTAL = 475;
 new Chart(document.getElementById('chart-sold-brand'), {
   type: 'bar',
   data: {
-    labels: ['NISSAN','GMC','INFINITI','HONGQI'],
+    labels: ['NISSAN','GMC','HONGQI','Kawasaki','INFINITI','Nissan Commercial'],
     datasets: [{
       label: 'Units Sold YTD',
-      data: [115, 9, 1, 1],
-      backgroundColor: ['#c3002f','#ff6b00','#1d3557','#8b0000'],
+      data: [416, 31, 10, 9, 8, 1],
+      backgroundColor: ['#c3002f','#ff6b00','#8b0000','#37b34a','#1d3557','#7f1d1d'],
       borderRadius: 4
     }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + ' units (' + ((c.parsed.y/126)*100).toFixed(1) + '%)' } } },
-    scales: { y: { beginAtZero: true, ticks: { precision: 0 } }, x: { grid: { display: false } } }
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + ' units (' + ((c.parsed.y/SOLD_TOTAL)*100).toFixed(1) + '%)' } } },
+    scales: { y: { beginAtZero: true, ticks: { precision: 0 } }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } }
   }
 });
 
@@ -634,6 +694,73 @@ new Chart(document.getElementById('chart-top-variants'), {
     responsive: true, maintainAspectRatio: false,
     plugins: { legend: { display: false }, tooltip: { callbacks: { title: c => DATA.top_sold[c[0].dataIndex][0], label: c => DATA.top_sold[c.dataIndex][1] + ' · ' + c.parsed.x + ' units' } } },
     scales: { x: { beginAtZero: true, grid: { display: false } }, y: { grid: { display: false }, ticks: { font: { size: 11 } } } }
+  }
+});
+
+// ====================================================
+// Chart 5: Channel Mix doughnut
+// ====================================================
+const channelEntries = Object.entries(DATA.channel_mix);
+new Chart(document.getElementById('chart-channel'), {
+  type: 'doughnut',
+  data: {
+    labels: channelEntries.map(e => e[0]),
+    datasets: [{
+      data: channelEntries.map(e => e[1]),
+      backgroundColor: ['#0f4c81','#f59e0b','#dc2626','#16a34a','#7c3aed','#ec4899','#0891b2']
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { font: { size: 10 }, boxWidth: 10 } },
+      tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + ' (' + ((c.parsed/SOLD_TOTAL)*100).toFixed(1) + '%)' } }
+    }
+  }
+});
+
+// ====================================================
+// Chart 6: Department mix
+// ====================================================
+const deptEntries = Object.entries(DATA.department_mix);
+new Chart(document.getElementById('chart-dept'), {
+  type: 'bar',
+  data: {
+    labels: deptEntries.map(e => e[0]),
+    datasets: [{
+      label: 'Units Sold',
+      data: deptEntries.map(e => e[1]),
+      backgroundColor: ['#0f4c81','#3b82f6','#60a5fa','#93c5fd'],
+      borderRadius: 3
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' (' + ((c.parsed.x/SOLD_TOTAL)*100).toFixed(1) + '%)' } } },
+    scales: { x: { beginAtZero: true, grid: { display: false } }, y: { grid: { display: false }, ticks: { font: { size: 11 } } } }
+  }
+});
+
+// ====================================================
+// Chart 7: Model Year split
+// ====================================================
+const myEntries = Object.entries(DATA.model_year_mix).sort((a, b) => Number(b[0]) - Number(a[0]));
+new Chart(document.getElementById('chart-my'), {
+  type: 'doughnut',
+  data: {
+    labels: myEntries.map(e => 'MY' + e[0]),
+    datasets: [{
+      data: myEntries.map(e => e[1]),
+      backgroundColor: ['#0f4c81','#f59e0b','#9ca3af']
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { font: { size: 11 } } },
+      tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + ' (' + ((c.parsed/SOLD_TOTAL)*100).toFixed(1) + '%)' } }
+    }
   }
 });
 
