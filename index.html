@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<script type="application/json" id="cowork-artifact-meta">
+<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
 {
   "name": "Rymco Stock Sales Dashboard",
   "schemaVersion": 1
@@ -9,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RYMCO Lebanon — Stock & Sales Dashboard</title>
+<title>RYMCO Lebanon — Stock &amp; Sales Dashboard</title>
 <script>/*!
  * Chart.js v4.5.0
  * https://www.chartjs.org
@@ -30,349 +29,323 @@
 </script>
 <style>.gridjs-footer button,.gridjs-head button{background-color:transparent;background-image:none;border:none;cursor:pointer;margin:0;outline:none;padding:0}.gridjs-temp{position:relative}.gridjs-head{margin-bottom:5px;padding:5px 1px;width:100%}.gridjs-head:after{clear:both;content:"";display:block}.gridjs-head:empty{border:none;padding:0}.gridjs-container{color:#000;display:inline-block;overflow:hidden;padding:2px;position:relative;z-index:0}.gridjs-footer{background-color:#fff;border-bottom-width:1px;border-color:#e5e7eb;border-radius:0 0 8px 8px;border-top:1px solid #e5e7eb;box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.26);display:block;padding:12px 24px;position:relative;width:100%;z-index:5}.gridjs-footer:empty{border:none;padding:0}input.gridjs-input{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#fff;border:1px solid #d2d6dc;border-radius:5px;font-size:14px;line-height:1.45;outline:none;padding:10px 13px}input.gridjs-input:focus{border-color:#9bc2f7;box-shadow:0 0 0 3px rgba(149,189,243,.5)}.gridjs-pagination{color:#3d4044}.gridjs-pagination:after{clear:both;content:"";display:block}.gridjs-pagination .gridjs-summary{float:left;margin-top:5px}.gridjs-pagination .gridjs-pages{float:right}.gridjs-pagination .gridjs-pages button{background-color:#fff;border:1px solid #d2d6dc;border-right:none;outline:none;padding:5px 14px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.gridjs-pagination .gridjs-pages button:focus{box-shadow:0 0 0 2px rgba(149,189,243,.5)}.gridjs-pagination .gridjs-pages button:hover{background-color:#f7f7f7;color:#3c4257;outline:none}.gridjs-pagination .gridjs-pages button:disabled,.gridjs-pagination .gridjs-pages button:hover:disabled,.gridjs-pagination .gridjs-pages button[disabled]{background-color:#fff;color:#6b7280;cursor:default}.gridjs-pagination .gridjs-pages button.gridjs-spread{background-color:#fff;box-shadow:none;cursor:default}.gridjs-pagination .gridjs-pages button.gridjs-currentPage{background-color:#f7f7f7;font-weight:700}.gridjs-pagination .gridjs-pages button:last-child{border-bottom-right-radius:6px;border-right:1px solid #d2d6dc;border-top-right-radius:6px}.gridjs-pagination .gridjs-pages button:first-child{border-bottom-left-radius:6px;border-top-left-radius:6px}button.gridjs-sort{background-color:transparent;background-position-x:center;background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;float:right;height:24px;margin:0;outline:none;padding:0;width:13px}button.gridjs-sort-neutral{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDEuOTk4IiBoZWlnaHQ9IjQwMS45OTgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQwMS45OTggNDAxLjk5OCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTczLjA5MiAxNjQuNDUyaDI1NS44MTNjNC45NDkgMCA5LjIzMy0xLjgwNyAxMi44NDgtNS40MjQgMy42MTMtMy42MTYgNS40MjctNy44OTggNS40MjctMTIuODQ3cy0xLjgxMy05LjIyOS01LjQyNy0xMi44NUwyMTMuODQ2IDUuNDI0QzIxMC4yMzIgMS44MTIgMjA1Ljk1MSAwIDIwMC45OTkgMHMtOS4yMzMgMS44MTItMTIuODUgNS40MjRMNjAuMjQyIDEzMy4zMzFjLTMuNjE3IDMuNjE3LTUuNDI0IDcuOTAxLTUuNDI0IDEyLjg1IDAgNC45NDggMS44MDcgOS4yMzEgNS40MjQgMTIuODQ3IDMuNjIxIDMuNjE3IDcuOTAyIDUuNDI0IDEyLjg1IDUuNDI0ek0zMjguOTA1IDIzNy41NDlINzMuMDkyYy00Ljk1MiAwLTkuMjMzIDEuODA4LTEyLjg1IDUuNDIxLTMuNjE3IDMuNjE3LTUuNDI0IDcuODk4LTUuNDI0IDEyLjg0N3MxLjgwNyA5LjIzMyA1LjQyNCAxMi44NDhMMTg4LjE0OSAzOTYuNTdjMy42MjEgMy42MTcgNy45MDIgNS40MjggMTIuODUgNS40MjhzOS4yMzMtMS44MTEgMTIuODQ3LTUuNDI4bDEyNy45MDctMTI3LjkwNmMzLjYxMy0zLjYxNCA1LjQyNy03Ljg5OCA1LjQyNy0xMi44NDggMC00Ljk0OC0xLjgxMy05LjIyOS01LjQyNy0xMi44NDctMy42MTQtMy42MTYtNy44OTktNS40Mi0xMi44NDgtNS40MnoiLz48L3N2Zz4=");background-position-y:center;opacity:.3}button.gridjs-sort-asc{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOTIuMzYyIiBoZWlnaHQ9IjI5Mi4zNjEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI5Mi4zNjIgMjkyLjM2MSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTI4Ni45MzUgMTk3LjI4NyAxNTkuMDI4IDY5LjM4MWMtMy42MTMtMy42MTctNy44OTUtNS40MjQtMTIuODQ3LTUuNDI0cy05LjIzMyAxLjgwNy0xMi44NSA1LjQyNEw1LjQyNCAxOTcuMjg3QzEuODA3IDIwMC45MDQgMCAyMDUuMTg2IDAgMjEwLjEzNHMxLjgwNyA5LjIzMyA1LjQyNCAxMi44NDdjMy42MjEgMy42MTcgNy45MDIgNS40MjUgMTIuODUgNS40MjVoMjU1LjgxM2M0Ljk0OSAwIDkuMjMzLTEuODA4IDEyLjg0OC01LjQyNSAzLjYxMy0zLjYxMyA1LjQyNy03Ljg5OCA1LjQyNy0xMi44NDdzLTEuODE0LTkuMjMtNS40MjctMTIuODQ3eiIvPjwvc3ZnPg==");background-position-y:35%;background-size:10px}button.gridjs-sort-desc{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOTIuMzYyIiBoZWlnaHQ9IjI5Mi4zNjIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI5Mi4zNjIgMjkyLjM2MiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTI4Ni45MzUgNjkuMzc3Yy0zLjYxNC0zLjYxNy03Ljg5OC01LjQyNC0xMi44NDgtNS40MjRIMTguMjc0Yy00Ljk1MiAwLTkuMjMzIDEuODA3LTEyLjg1IDUuNDI0QzEuODA3IDcyLjk5OCAwIDc3LjI3OSAwIDgyLjIyOGMwIDQuOTQ4IDEuODA3IDkuMjI5IDUuNDI0IDEyLjg0N2wxMjcuOTA3IDEyNy45MDdjMy42MjEgMy42MTcgNy45MDIgNS40MjggMTIuODUgNS40MjhzOS4yMzMtMS44MTEgMTIuODQ3LTUuNDI4TDI4Ni45MzUgOTUuMDc0YzMuNjEzLTMuNjE3IDUuNDI3LTcuODk4IDUuNDI3LTEyLjg0NyAwLTQuOTQ4LTEuODE0LTkuMjI5LTUuNDI3LTEyLjg1eiIvPjwvc3ZnPg==");background-position-y:65%;background-size:10px}button.gridjs-sort:focus{outline:none}table.gridjs-table{border-collapse:collapse;display:table;margin:0;max-width:100%;overflow:auto;padding:0;table-layout:fixed;text-align:left}.gridjs-tbody,td.gridjs-td{background-color:#fff}td.gridjs-td{border:1px solid #e5e7eb;box-sizing:content-box;padding:12px 24px}td.gridjs-td:first-child{border-left:none}td.gridjs-td:last-child{border-right:none}td.gridjs-message{text-align:center}th.gridjs-th{background-color:#f9fafb;border:1px solid #e5e7eb;border-top:none;box-sizing:border-box;color:#6b7280;outline:none;padding:14px 24px;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;white-space:nowrap}th.gridjs-th .gridjs-th-content{float:left;overflow:hidden;text-overflow:ellipsis;width:100%}th.gridjs-th-sort{cursor:pointer}th.gridjs-th-sort .gridjs-th-content{width:calc(100% - 15px)}th.gridjs-th-sort:focus,th.gridjs-th-sort:hover{background-color:#e5e7eb}th.gridjs-th-fixed{box-shadow:0 1px 0 0 #e5e7eb;position:sticky}@supports (-moz-appearance:none){th.gridjs-th-fixed{box-shadow:0 0 0 1px #e5e7eb}}th.gridjs-th:first-child{border-left:none}th.gridjs-th:last-child{border-right:none}.gridjs-tr{border:none}.gridjs-tr-selected td{background-color:#ebf5ff}.gridjs-tr:last-child td{border-bottom:0}.gridjs *,.gridjs :after,.gridjs :before{box-sizing:border-box}.gridjs-wrapper{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;border-color:#e5e7eb;border-radius:8px 8px 0 0;border-top-width:1px;box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.26);display:block;overflow:auto;position:relative;width:100%;z-index:1}.gridjs-wrapper:nth-last-of-type(2){border-bottom-width:1px;border-radius:8px}.gridjs-search{float:left}.gridjs-search-input{width:250px}.gridjs-loading-bar{background-color:#fff;opacity:.5;z-index:10}.gridjs-loading-bar,.gridjs-loading-bar:after{bottom:0;left:0;position:absolute;right:0;top:0}.gridjs-loading-bar:after{-webkit-animation:shimmer 2s infinite;animation:shimmer 2s infinite;background-image:linear-gradient(90deg,hsla(0,0%,80%,0),hsla(0,0%,80%,.2) 20%,hsla(0,0%,80%,.5) 60%,hsla(0,0%,80%,0));content:"";transform:translateX(-100%)}@-webkit-keyframes shimmer{to{transform:translateX(100%)}}@keyframes shimmer{to{transform:translateX(100%)}}.gridjs-td .gridjs-checkbox{cursor:pointer;display:block;margin:auto}.gridjs-resizable{bottom:0;position:absolute;right:0;top:0;width:5px}.gridjs-resizable:hover{background-color:#9bc2f7;cursor:ew-resize}</style>
 <style>
-  :root {
-    color-scheme: light;
-    --c-bg: #f5f6f8;
-    --c-card: #ffffff;
-    --c-text: #1a1f2e;
-    --c-muted: #6b7280;
-    --c-border: #e5e7eb;
-    --c-nissan: #c3002f;
-    --c-infiniti: #1d3557;
-    --c-gmc: #ff6b00;
-    --c-hongqi: #8b0000;
-    --c-good: #16a34a;
-    --c-warn: #d97706;
-    --c-bad: #dc2626;
-    --c-accent: #0f4c81;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: var(--c-bg);
-    color: var(--c-text);
-    font-size: 13px;
-    line-height: 1.45;
-  }
-  .container { padding: 16px 18px; max-width: 1400px; margin: 0 auto; }
-  header {
-    background: linear-gradient(135deg, #0f4c81 0%, #1a6bbf 100%);
-    color: white;
-    padding: 18px 22px;
-    border-radius: 10px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(15, 76, 129, 0.15);
-  }
-  header h1 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.3px; }
-  header .sub { font-size: 12px; opacity: 0.9; margin-top: 4px; }
-  header .meta { font-size: 11px; opacity: 0.85; text-align: right; }
-  header .meta div { margin-bottom: 2px; }
+:root { color-scheme: light;
+  --c-bg: #f5f6f8; --c-card: #ffffff; --c-text: #1a1f2e; --c-muted: #6b7280; --c-border: #e5e7eb;
+  --c-nissan: #c3002f; --c-infiniti: #1d3557; --c-gmc: #ff6b00; --c-hongqi: #8b0000;
+  --c-good: #16a34a; --c-warn: #d97706; --c-bad: #dc2626; --c-accent: #0f4c81;
+  --c-domestic: #0f4c81; --c-commercial: #7c3aed; --c-exports: #059669;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; font-family:'Helvetica Neue',Arial,sans-serif; background:var(--c-bg); color:var(--c-text); font-size:13px; line-height:1.45; }
+.container { padding:16px 18px; max-width:1400px; margin:0 auto; }
+header { background:linear-gradient(135deg,#0f4c81 0%,#1a6bbf 100%); color:white; padding:18px 22px; border-radius:10px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:16px; box-shadow:0 2px 8px rgba(15,76,129,0.15); }
+header h1 { margin:0; font-size:20px; font-weight:700; letter-spacing:0.3px; }
+header .sub { font-size:12px; opacity:0.9; margin-top:4px; }
+header .meta { font-size:11px; opacity:0.85; text-align:right; }
+header .meta div { margin-bottom:2px; }
+.kpi-row { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:16px; }
+.kpi { background:var(--c-card); border:1px solid var(--c-border); border-radius:8px; padding:14px 16px; box-shadow:0 1px 2px rgba(0,0,0,0.03); border-top:3px solid var(--c-accent); }
+.kpi.dom { border-top-color: var(--c-domestic); }
+.kpi.com { border-top-color: var(--c-commercial); }
+.kpi.exp { border-top-color: var(--c-exports); }
+.kpi .label { font-size:11px; color:var(--c-muted); text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
+.kpi .value { font-size:28px; font-weight:700; margin-top:4px; }
+.kpi .sub-val { font-size:11px; color:var(--c-muted); margin-top:2px; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:16px; }
+@media (max-width:900px) { .grid-2,.grid-3,.kpi-row { grid-template-columns:1fr 1fr; } }
+.card { background:var(--c-card); border:1px solid var(--c-border); border-radius:8px; padding:14px 16px; box-shadow:0 1px 2px rgba(0,0,0,0.03); }
+.card h2 { margin:0 0 10px 0; font-size:14px; font-weight:700; padding-bottom:8px; border-bottom:1px solid var(--c-border); display:flex; align-items:center; gap:8px; }
+.card h2 .badge { font-size:10px; font-weight:600; padding:2px 7px; border-radius:10px; background:var(--c-bg); color:var(--c-muted); }
+.chart-wrap { position:relative; height:240px; }
+.section-head { padding:14px 18px; border-radius:10px 10px 0 0; color:white; display:flex; align-items:center; justify-content:space-between; margin:24px 0 0 0; }
+.section-head h2 { margin:0; font-size:18px; font-weight:700; letter-spacing:0.4px; }
+.section-head .meta { font-size:12px; opacity:0.92; }
+.section-head.domestic { background:linear-gradient(135deg, #0f4c81, #1a6bbf); }
+.section-head.commercial { background:linear-gradient(135deg, #6d28d9, #9333ea); }
+.section-head.exports { background:linear-gradient(135deg, #047857, #10b981); }
+.section-body { background:white; border:1px solid var(--c-border); border-top:none; padding:14px; margin-bottom:16px; border-radius:0 0 10px 10px; }
+.subkpi-row { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:12px; }
+.subkpi { padding:10px 12px; border-radius:6px; background:var(--c-bg); }
+.subkpi .lbl { font-size:10px; color:var(--c-muted); text-transform:uppercase; font-weight:600; letter-spacing:0.4px; }
+.subkpi .v { font-size:20px; font-weight:700; margin-top:2px; }
+.subkpi .pct { font-size:11px; color:var(--c-muted); margin-top:2px; }
+.action-queue { list-style:none; margin:0; padding:0; }
+.action-queue li { padding:10px 12px; border-radius:6px; margin-bottom:8px; background:var(--c-bg); border-left:3px solid var(--c-accent); font-size:12px; }
+.action-queue li.high { border-left-color:var(--c-bad); background:#fef2f2; }
+.action-queue li.med { border-left-color:var(--c-warn); background:#fffaf0; }
+.action-queue li.low { border-left-color:var(--c-good); background:#f0fdf4; }
+.action-queue li .title { font-weight:700; margin-bottom:3px; }
+.action-queue li .why { color:var(--c-muted); font-size:11px; }
+.risk-pill { display:inline-block; font-size:10px; padding:2px 6px; border-radius:8px; font-weight:600; }
+.risk-pill.high { background:#fee2e2; color:#b91c1c; } .risk-pill.med { background:#fef3c7; color:#92400e; } .risk-pill.low { background:#dcfce7; color:#166534; }
+table.bare { width:100%; border-collapse:collapse; font-size:12px; }
+table.bare th { text-align:left; font-weight:600; color:var(--c-muted); border-bottom:1px solid var(--c-border); padding:6px 4px; font-size:11px; text-transform:uppercase; letter-spacing:0.4px; }
+table.bare td { padding:6px 4px; border-bottom:1px solid #f3f4f6; }
+table.bare td.num { text-align:right; font-variant-numeric:tabular-nums; }
+.pill { display:inline-block; padding:2px 7px; border-radius:10px; font-size:10px; font-weight:600; }
+.pill.nissan { background:rgba(195,0,47,0.12); color:var(--c-nissan); }
+.pill.infiniti { background:rgba(29,53,87,0.12); color:var(--c-infiniti); }
+.pill.gmc { background:rgba(255,107,0,0.15); color:#b94f00; }
+.pill.hongqi { background:rgba(139,0,0,0.12); color:var(--c-hongqi); }
+.pill.dom { background:rgba(15,76,129,0.12); color:#0f4c81; }
+.pill.com { background:rgba(124,58,237,0.12); color:#6d28d9; }
+.pill.exp { background:rgba(5,150,105,0.12); color:#047857; }
+.footer-note { color:var(--c-muted); font-size:10px; text-align:center; margin-top:18px; padding:8px; }
+.gridjs-wrapper { box-shadow:none !important; border:1px solid var(--c-border) !important; border-radius:6px !important; }
+.gridjs-table { font-size:12px !important; }
+.gridjs-th { background:#f9fafb !important; font-weight:600 !important; font-size:11px !important; }
 
-  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
-  .kpi {
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-radius: 8px;
-    padding: 14px 16px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  }
-  .kpi .label { font-size: 11px; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-  .kpi .value { font-size: 28px; font-weight: 700; margin-top: 4px; color: var(--c-text); }
-  .kpi .sub-val { font-size: 11px; color: var(--c-muted); margin-top: 2px; }
-  .kpi.accent { border-top: 3px solid var(--c-accent); }
-
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-  @media (max-width: 900px) { .grid-2, .grid-3, .kpi-row { grid-template-columns: 1fr 1fr; } }
-
-  .card {
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-radius: 8px;
-    padding: 14px 16px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  }
-  .card h2 {
-    margin: 0 0 10px 0; font-size: 14px; font-weight: 700; color: var(--c-text);
-    padding-bottom: 8px; border-bottom: 1px solid var(--c-border);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .card h2 .badge {
-    font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 10px;
-    background: var(--c-bg); color: var(--c-muted);
-  }
-  .chart-wrap { position: relative; height: 260px; }
-
-  .brand-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
-  @media (max-width: 1100px) { .brand-grid { grid-template-columns: 1fr 1fr; } }
-  .brand-card { padding: 0; overflow: hidden; }
-  .brand-header { padding: 10px 14px; color: white; }
-  .brand-header.nissan { background: var(--c-nissan); }
-  .brand-header.infiniti { background: var(--c-infiniti); }
-  .brand-header.gmc { background: var(--c-gmc); }
-  .brand-header.hongqi { background: var(--c-hongqi); }
-  .brand-header h3 { margin: 0; font-size: 14px; font-weight: 700; }
-  .brand-header .tag { font-size: 10px; opacity: 0.9; margin-top: 2px; }
-  .brand-body { padding: 10px 14px; }
-  .stat-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; border-bottom: 1px dashed var(--c-border); }
-  .stat-row:last-child { border-bottom: none; }
-  .stat-row .label { color: var(--c-muted); }
-  .stat-row .val { font-weight: 600; }
-
-  .insight {
-    margin-top: 8px; padding: 8px 10px; border-radius: 6px;
-    font-size: 11px; background: #f0f7ff; color: #0f4c81; border-left: 3px solid var(--c-accent);
-    line-height: 1.4;
-  }
-
-  .action-queue { list-style: none; margin: 0; padding: 0; }
-  .action-queue li {
-    padding: 10px 12px; border-radius: 6px; margin-bottom: 8px;
-    background: var(--c-bg); border-left: 3px solid var(--c-accent);
-    font-size: 12px;
-  }
-  .action-queue li.high { border-left-color: var(--c-bad); background: #fef2f2; }
-  .action-queue li.med { border-left-color: var(--c-warn); background: #fffaf0; }
-  .action-queue li.low { border-left-color: var(--c-good); background: #f0fdf4; }
-  .action-queue li .title { font-weight: 700; margin-bottom: 3px; }
-  .action-queue li .why { color: var(--c-muted); font-size: 11px; }
-
-  .risk-pill {
-    display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 8px; font-weight: 600;
-  }
-  .risk-pill.high { background: #fee2e2; color: #b91c1c; }
-  .risk-pill.med { background: #fef3c7; color: #92400e; }
-  .risk-pill.low { background: #dcfce7; color: #166534; }
-
-  table.bare { width: 100%; border-collapse: collapse; font-size: 12px; }
-  table.bare th { text-align: left; font-weight: 600; color: var(--c-muted); border-bottom: 1px solid var(--c-border); padding: 6px 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
-  table.bare td { padding: 6px 4px; border-bottom: 1px solid #f3f4f6; }
-  table.bare td.num { text-align: right; font-variant-numeric: tabular-nums; }
-
-  .pill { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; }
-  .pill.nissan { background: rgba(195,0,47,0.12); color: var(--c-nissan); }
-  .pill.infiniti { background: rgba(29,53,87,0.12); color: var(--c-infiniti); }
-  .pill.gmc { background: rgba(255,107,0,0.15); color: #b94f00; }
-  .pill.hongqi { background: rgba(139,0,0,0.12); color: var(--c-hongqi); }
-
-  .footer-note { color: var(--c-muted); font-size: 10px; text-align: center; margin-top: 18px; padding: 8px; }
-
-  /* ETA pivot styling */
-  .brand-tabs { display: flex; gap: 4px; margin-bottom: 10px; flex-wrap: wrap; }
-  .brand-tabs .bt {
-    border: 1px solid var(--c-border); background: var(--c-card); color: var(--c-muted);
-    padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600;
-    transition: all 0.15s;
-  }
-  .brand-tabs .bt:hover { background: var(--c-bg); color: var(--c-text); }
-  .brand-tabs .bt.active { background: var(--c-accent); color: white; border-color: var(--c-accent); }
-
-  table.eta-pivot {
-    width: 100%; border-collapse: collapse; font-size: 11px;
-    font-variant-numeric: tabular-nums;
-  }
-  table.eta-pivot th, table.eta-pivot td {
-    border: 1px solid var(--c-border); padding: 5px 7px; text-align: center;
-  }
-  table.eta-pivot th {
-    background: #f9fafb; font-weight: 600; color: var(--c-muted);
-    text-transform: uppercase; font-size: 10px; letter-spacing: 0.4px;
-  }
-  table.eta-pivot th.row-h { text-align: left; min-width: 220px; text-transform: none; letter-spacing: 0; font-size: 11px; color: var(--c-text); }
-  table.eta-pivot td.row-l { text-align: left; font-weight: 600; }
-  table.eta-pivot td.row-l .grp { font-weight: normal; color: var(--c-muted); font-size: 10px; display: block; }
-  table.eta-pivot td.cell { font-weight: 600; }
-  table.eta-pivot td.empty { color: #d1d5db; }
-  table.eta-pivot td.past { background: #fee2e2; color: #b91c1c; }
-  table.eta-pivot td.current { background: #dbeafe; color: #1e40af; }
-  table.eta-pivot td.future { background: #dcfce7; color: #166534; }
-  table.eta-pivot tfoot td {
-    background: #f3f4f6; font-weight: 700; color: var(--c-text);
-    border-top: 2px solid var(--c-border);
-  }
-  .gridjs-wrapper { box-shadow: none !important; border: 1px solid var(--c-border) !important; border-radius: 6px !important; }
-  .gridjs-table { font-size: 12px !important; }
-  .gridjs-th { background: #f9fafb !important; font-weight: 600 !important; font-size: 11px !important; }
+/* ETA pivot styling */
+.brand-tabs { display:flex; gap:4px; margin-bottom:10px; flex-wrap:wrap; }
+.brand-tabs .bt { border:1px solid var(--c-border); background:var(--c-card); color:var(--c-muted); padding:6px 14px; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; transition:all 0.15s; }
+.brand-tabs .bt:hover { background:var(--c-bg); color:var(--c-text); }
+.brand-tabs .bt.active { background:var(--c-accent); color:white; border-color:var(--c-accent); }
+table.eta-pivot { width:100%; border-collapse:collapse; font-size:11px; font-variant-numeric:tabular-nums; }
+table.eta-pivot th, table.eta-pivot td { border:1px solid var(--c-border); padding:5px 7px; text-align:center; }
+table.eta-pivot th { background:#f9fafb; font-weight:600; color:var(--c-muted); text-transform:uppercase; font-size:10px; letter-spacing:0.4px; }
+table.eta-pivot th.row-h { text-align:left; min-width:220px; text-transform:none; letter-spacing:0; font-size:11px; color:var(--c-text); }
+table.eta-pivot td.row-l { text-align:left; font-weight:600; }
+table.eta-pivot td.row-l .grp { font-weight:normal; color:var(--c-muted); font-size:10px; display:block; }
+table.eta-pivot td.cell { font-weight:600; }
+table.eta-pivot td.empty { color:#d1d5db; }
+table.eta-pivot td.past { background:#fee2e2; color:#b91c1c; }
+table.eta-pivot td.current { background:#dbeafe; color:#1e40af; }
+table.eta-pivot td.future { background:#dcfce7; color:#166534; }
 </style>
 </head>
 <body>
+
 <div class="container">
 
 <header>
   <div>
     <h1>RYMCO Lebanon — Stock, Sales &amp; Pipeline Dashboard</h1>
-    <div class="sub">Nissan · Infiniti · GMC · HONGQI — Executive Briefing</div>
+    <div class="sub">Domestic · Commercial · Exports — Executive Briefing</div>
   </div>
   <div class="meta">
-    <div><strong>Today:</strong> Wednesday, 6 May 2026</div>
+    <div><strong>Today:</strong> Thursday, 7 May 2026</div>
     <div><strong>Inventory snapshot:</strong> 30 Apr 2026</div>
-    <div><strong>Sales feed:</strong> YTD through 6 May 2026</div>
+    <div><strong>Sales feed:</strong> YTD through 7 May 2026</div>
   </div>
 </header>
 
-<!-- KPI Tiles -->
 <div class="kpi-row">
-  <div class="kpi accent">
+  <div class="kpi">
     <div class="label">Sold YTD 2026</div>
-    <div class="value" id="kpi-sold">475</div>
-    <div class="sub-val">All channels · ~3.8 cars/day · 126 days</div>
+    <div class="value">794</div>
+    <div class="sub-val">All 3 segments · ~6.3 cars/day · Final Review file</div>
   </div>
-  <div class="kpi accent">
-    <div class="label">Retail vs Fleet Mix</div>
-    <div class="value" id="kpi-mix">49 / 51</div>
-    <div class="sub-val">232 retail · 236 fleet · 7 export</div>
+  <div class="kpi dom">
+    <div class="label">Domestic</div>
+    <div class="value">483</div>
+    <div class="sub-val">Retail 233 · Fleet 250 · 61% of YTD</div>
   </div>
-  <div class="kpi accent">
-    <div class="label">Stock On Hand</div>
-    <div class="value" id="kpi-onhand">435</div>
-    <div class="sub-val">293 available after reservations</div>
+  <div class="kpi com">
+    <div class="label">Commercial</div>
+    <div class="value">96</div>
+    <div class="sub-val">Corporate 75 · Export-China 20 · 12%</div>
   </div>
-  <div class="kpi accent">
-    <div class="label">On Order (Pipeline)</div>
-    <div class="value" id="kpi-orders">652</div>
-    <div class="sub-val">Production scheduled Oct'25–Aug'26</div>
-  </div>
-</div>
-
-<!-- Daily refresh notice -->
-<div class="card" style="margin-bottom:16px; border-left: 4px solid var(--c-accent);">
-  <h2>Daily Refresh — Coverage Upgrade <span class="badge">6 May 2026 · Wednesday</span></h2>
-  <div style="font-size: 12px; line-height: 1.55;">
-    Today's sold-cars feed is a <strong>full transactional export</strong> covering every channel: Retail, Fleet (RAC, Corporate, Government, Dealer) and Export. YTD 2026 now stands at <strong>475 units across 6 brands</strong> (vs. 126 in yesterday's narrower snapshot — that gap reflects expanded data coverage, not a one-day spike). The sales velocity picture is far healthier than yesterday's view suggested: Magnite UPPER (97), Sunny SV (96), Magnite MID (45) and X-Trail S (35) drive volume, with Retail and Fleet split almost evenly. Two additional RYMCO brands — <strong>Kawasaki (9)</strong> and <strong>Nissan Commercial (1)</strong> — surfaced in the new feed and are tracked separately at the bottom of this dashboard. The 30 Apr inventory snapshot remains the working stock position until the next monthly refresh.
+  <div class="kpi exp">
+    <div class="label">Exports</div>
+    <div class="value">215</div>
+    <div class="sub-val">Dubai 150 · Irbil 48 · Other 17 · 27%</div>
   </div>
 </div>
 
-<!-- Charts row 1 -->
-<div class="grid-2">
-  <div class="card">
-    <h2>Sold Units YTD by Brand <span class="badge">475 total · 6 brands</span></h2>
-    <div class="chart-wrap"><canvas id="chart-sold-brand"></canvas></div>
-  </div>
-  <div class="card">
-    <h2>Stock Position by Brand <span class="badge">Available + On-Order</span></h2>
-    <div class="chart-wrap"><canvas id="chart-stock-brand"></canvas></div>
+<div class="card" style="margin-bottom:16px; border-left:4px solid var(--c-accent);">
+  <h2>Daily Refresh — Final Review File <span class="badge">7 May 2026 · Thursday</span></h2>
+  <div style="font-size:12px; line-height:1.55;">
+    Refreshed from <em>Sold Cars_7-5-2026 Final review.xlsx</em>. The file's three sheets are now treated as authoritative segments — no filtering applied. <strong>YTD total 794</strong>: Domestic 483 · Commercial 96 · Exports 215. The Final Review file is a cleaned/deduplicated version of the earlier file (where the original Domestic sheet had passenger + commercial mixed and a few mislabeled export rows). Export destinations: <strong>Dubai 150 · Irbil 48 · Talatona 1 · Damascus 1 · 14 with sparse/Lebanese cities</strong> (likely awaiting destination confirmation). Patrol V6TT LE Platinum remains the export workhorse.
   </div>
 </div>
 
-<!-- Charts row 2 -->
-<div class="grid-2">
+<!-- Top-line distribution charts -->
+<div class="grid-3">
   <div class="card">
-    <h2>Upcoming Deliveries Timeline <span class="badge">Production +3 mo to lot</span></h2>
-    <div class="chart-wrap" style="height:280px;"><canvas id="chart-deliveries"></canvas></div>
+    <h2>Sold by Segment <span class="badge">YTD 794</span></h2>
+    <div class="chart-wrap"><canvas id="ch-segment"></canvas></div>
   </div>
   <div class="card">
-    <h2>Top 10 Sold Variants <span class="badge">YTD 2026</span></h2>
-    <div class="chart-wrap" style="height:280px;"><canvas id="chart-top-variants"></canvas></div>
+    <h2>Sold by Brand <span class="badge">8 brands</span></h2>
+    <div class="chart-wrap"><canvas id="ch-brand"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>Channel Mix <span class="badge">Saletype detail</span></h2>
+    <div class="chart-wrap"><canvas id="ch-channel"></canvas></div>
   </div>
 </div>
 
-<!-- Brand-specific cards -->
-<div class="brand-grid">
-  <div class="card brand-card">
-    <div class="brand-header nissan">
-      <h3>NISSAN</h3>
-      <div class="tag">Mass-market · 87.6% of YTD volume</div>
+<!-- ============== DOMESTIC ============== -->
+<div class="section-head domestic">
+  <h2>1 · DOMESTIC — Retail &amp; Fleet</h2>
+  <div class="meta">483 sold YTD · 61% of total volume · Domestic sheet</div>
+</div>
+<div class="section-body">
+  <div class="subkpi-row">
+    <div class="subkpi"><div class="lbl">Retail</div><div class="v">233</div><div class="pct">48% of Domestic · individual buyers</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — RAC</div><div class="v">104</div><div class="pct">22% · Rent-A-Car operators</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — Corporate</div><div class="v">56</div><div class="pct">12% · Passenger corporate fleet</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — Dealer / Govt</div><div class="v">48 / 42</div><div class="pct">10% / 9% · Sub-dealer · Government</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h2>Domestic — Brand Contribution</h2>
+      <div class="chart-wrap"><canvas id="ch-dom-brand"></canvas></div>
     </div>
-    <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">416</span></div>
-      <div class="stat-row"><span class="label">Inventory</span><span class="val">411</span></div>
-      <div class="stat-row"><span class="label">Reserved</span><span class="val">134</span></div>
-      <div class="stat-row"><span class="label">Available</span><span class="val">277</span></div>
-      <div class="stat-row"><span class="label">On Order</span><span class="val">546</span></div>
-      <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">784</span></div>
-      <div class="insight">
-        Magnite UPPER (97), Sunny SV (96), Magnite MID (45), X-Trail S (35) — strong, broad-based velocity. ~3.3 cars/day. Pipeline ≈ 8 months at current pace — <strong>healthy</strong>. Magnite UPPER selling faster than incoming (50 inbound) — watch supply.
+    <div class="card">
+      <h2>Top 10 Domestic Variants</h2>
+      <div class="chart-wrap" style="height:300px;"><canvas id="ch-dom-top"></canvas></div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card">
+      <h2>Retail vs Fleet Split</h2>
+      <div class="chart-wrap" style="height:200px;"><canvas id="ch-dom-mix"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Domestic by Region (City)</h2>
+      <div class="chart-wrap" style="height:200px;"><canvas id="ch-dom-city"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== COMMERCIAL ============== -->
+<div class="section-head commercial">
+  <h2>2 · COMMERCIAL — Corporate &amp; Export</h2>
+  <div class="meta">96 sold YTD · 12% of total volume · Commercial sheet</div>
+</div>
+<div class="section-body">
+  <div class="subkpi-row">
+    <div class="subkpi"><div class="lbl">Fleet — Corporate</div><div class="v">75</div><div class="pct">78% · Domestic corporate accounts</div></div>
+    <div class="subkpi"><div class="lbl">Export — China</div><div class="v">20</div><div class="pct">21% · Urvan to Dubai</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — Dealer</div><div class="v">1</div><div class="pct">1% · Sub-dealer</div></div>
+    <div class="subkpi"><div class="lbl">Top Brand</div><div class="v">Nissan Commercial</div><div class="pct">92 of 96 (Urvan family) · UD Trucks 4</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h2>Commercial — Brand Contribution</h2>
+      <div class="chart-wrap"><canvas id="ch-com-brand"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Top 10 Commercial Variants</h2>
+      <div class="chart-wrap" style="height:300px;"><canvas id="ch-com-top"></canvas></div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card">
+      <h2>Corporate vs Government Split</h2>
+      <div class="chart-wrap" style="height:200px;"><canvas id="ch-com-mix"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Commercial by Region (City)</h2>
+      <div class="chart-wrap" style="height:200px;"><canvas id="ch-com-city"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== EXPORTS ============== -->
+<div class="section-head exports">
+  <h2>3 · EXPORTS — by Country</h2>
+  <div class="meta">215 sold YTD · 27% of total volume · destinations now in Exports sheet</div>
+</div>
+<div class="section-body">
+  <div class="subkpi-row">
+    <div class="subkpi"><div class="lbl">UAE — Dubai</div><div class="v">150</div><div class="pct">70% · Patrol family + Urvan + QX80</div></div>
+    <div class="subkpi"><div class="lbl">Iraq — Irbil</div><div class="v">48</div><div class="pct">22% · Patrol + Yukon family</div></div>
+    <div class="subkpi"><div class="lbl">Angola / Syria</div><div class="v">2</div><div class="pct">1 × Talatona · 1 × Damascus</div></div>
+    <div class="subkpi"><div class="lbl">Awaiting Destination</div><div class="v">15</div><div class="pct">9 blank · 6 Lebanese cities to confirm</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <h2>Exports by Destination Country</h2>
+      <div class="chart-wrap" style="height:240px;"><canvas id="ch-exp-country"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Brand × Destination Heatmap</h2>
+      <table class="bare">
+        <thead><tr><th>Brand</th><th class="num">Dubai</th><th class="num">Irbil</th><th class="num">Damascus</th><th class="num">Talatona</th><th class="num">Lebanon*</th><th class="num">Blank</th><th class="num">Total</th></tr></thead>
+        <tbody>
+          <tr><td>NISSAN</td><td class="num">141</td><td class="num">32</td><td class="num">0</td><td class="num">1</td><td class="num">3</td><td class="num">6</td><td class="num"><strong>183</strong></td></tr>
+          <tr><td>GMC</td><td class="num">0</td><td class="num">16</td><td class="num">0</td><td class="num">0</td><td class="num">2</td><td class="num">2</td><td class="num"><strong>20</strong></td></tr>
+          <tr><td>Infiniti</td><td class="num">9</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">1</td><td class="num"><strong>12</strong></td></tr>
+          <tr style="font-weight:700;background:#f9fafb;"><td>Total</td><td class="num">150</td><td class="num">48</td><td class="num">1</td><td class="num">1</td><td class="num">6</td><td class="num">9</td><td class="num">215</td></tr>
+        </tbody>
+      </table>
+      <div style="font-size:10px; color:var(--c-muted); margin-top:6px; line-height:1.4;">*Lebanon column = rows in Exports sheet still tagged with Lebanese city (Beirut, Mount Lebanon, Bekaa) — destination needs confirmation. Nissan Commercial Urvan exports to Dubai (20) appear in the Commercial sheet, not here.</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card">
+      <h2>Top 10 Exported Variants — by Destination</h2>
+      <table class="bare">
+        <thead><tr><th>Brand</th><th>Variant</th><th>Destination</th><th class="num">Units</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>PATROL V6TT LE PLATINUM CITY</td><td>Dubai · UAE</td><td class="num"><strong>106</strong></td></tr>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>PATROL V6TT LE PLATINUM CITY</td><td>Irbil · Iraq</td><td class="num"><strong>28</strong></td></tr>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>PATROL V6 SE PLATINUM CITY</td><td>Dubai · UAE</td><td class="num">15</td></tr>
+          <tr><td><span class="pill gmc">GMC</span></td><td>YUKON AT4 ULTIMATE</td><td>Irbil · Iraq</td><td class="num">8</td></tr>
+          <tr><td><span class="pill gmc">GMC</span></td><td>YUKON ELEVATION</td><td>Irbil · Iraq</td><td class="num">8</td></tr>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>X-TRAIL S 4WD 3ROW</td><td>Dubai · UAE</td><td class="num">8</td></tr>
+          <tr><td><span class="pill infiniti">INFINITI</span></td><td>QX80 SV 7 SEATS</td><td>Dubai · UAE</td><td class="num">6</td></tr>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>X-TRAIL SV1 4WD 3ROW</td><td>Dubai · UAE</td><td class="num">5</td></tr>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>PATROL V6 SE PLATINUM CITY</td><td>Irbil · Iraq</td><td class="num">4</td></tr>
+          <tr><td><span class="pill nissan">NISSAN</span></td><td>PATROL V6 SE T2 + SUNROOF</td><td>Dubai · UAE</td><td class="num">4</td></tr>
+          <tr style="background:#f9fafb;"><td colspan="4" style="font-size:10px;color:var(--c-muted);font-style:italic;">Plus: Nissan Commercial Urvan to Dubai = 20 units (recorded in Commercial sheet under "Export-China")</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Export Stock Allocation <span class="badge">From inventory file</span></h2>
+      <table class="bare">
+        <thead><tr><th>Brand</th><th class="num">On Lot</th><th class="num">On Order</th><th class="num">Total Pipeline</th></tr></thead>
+        <tbody>
+          <tr><td>Nissan Patrol Y63 (export)</td><td class="num">29</td><td class="num">112</td><td class="num">141</td></tr>
+          <tr><td>GMC Yukon (export)</td><td class="num">0</td><td class="num">56</td><td class="num">56</td></tr>
+          <tr><td>Commercial Urvan (export)</td><td class="num">0</td><td class="num">22</td><td class="num">22</td></tr>
+          <tr><td>Infiniti QX80 (export)</td><td class="num">1</td><td class="num">0</td><td class="num">1</td></tr>
+          <tr style="font-weight:700;background:#f9fafb;"><td>Total Export Allocation</td><td class="num">30</td><td class="num">190</td><td class="num">220</td></tr>
+        </tbody>
+      </table>
+      <div style="font-size:11px; color:var(--c-muted); margin-top:10px; line-height:1.5;">
+        Export pipeline (220) closely tracks Q2-Q3 export demand (Dubai + Irbil). Patrol Y63 family is the workhorse — 141 units allocated to export across the year.
       </div>
     </div>
   </div>
+</div>
 
-  <div class="card brand-card">
-    <div class="brand-header infiniti">
-      <h3>INFINITI</h3>
-      <div class="tag">Premium · Niche velocity</div>
-    </div>
-    <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">8</span></div>
-      <div class="stat-row"><span class="label">Inventory</span><span class="val">7</span></div>
-      <div class="stat-row"><span class="label">Reserved</span><span class="val">0</span></div>
-      <div class="stat-row"><span class="label">Available</span><span class="val">7</span></div>
-      <div class="stat-row"><span class="label">On Order</span><span class="val">27</span></div>
-      <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">30</span></div>
-      <div class="insight">
-        QX60 Luxe (3) leads, balanced QX60/QX80 mix. ~16 months pipeline at current pace — premium-tier acceptable but warrants HNW campaign as 13-unit QX60 Pure wave lands May–Jun.
-      </div>
-    </div>
+<!-- ============== INVENTORY POSITION ============== -->
+<div class="grid-2" style="margin-top: 16px;">
+  <div class="card">
+    <h2>Domestic Inventory Position by Brand <span class="badge">As of 30 Apr 2026</span></h2>
+    <table class="bare">
+      <thead><tr><th>Brand</th><th class="num">Inv</th><th class="num">Reserved</th><th class="num">Available</th><th class="num">On Order</th><th class="num">Pipeline</th></tr></thead>
+      <tbody id="dom-inv-body"></tbody>
+    </table>
   </div>
-
-  <div class="card brand-card">
-    <div class="brand-header gmc">
-      <h3>GMC</h3>
-      <div class="tag">Trucks &amp; SUVs · Strong demand</div>
-    </div>
-    <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">31</span></div>
-      <div class="stat-row"><span class="label">Inventory</span><span class="val">10</span></div>
-      <div class="stat-row"><span class="label">Reserved</span><span class="val">7</span></div>
-      <div class="stat-row"><span class="label">Available</span><span class="val">3</span></div>
-      <div class="stat-row"><span class="label">On Order</span><span class="val">48</span></div>
-      <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">39</span></div>
-      <div class="insight">
-        Yukon Elevation (13), Acadia AT4 (7), Terrain Elevation (5) — Yukon family ~70% of GMC volume. Only 3 units on the lot — <strong>supply-constrained</strong>. Confirm Q2 deliveries land on time.
-      </div>
-    </div>
-  </div>
-
-  <div class="card brand-card">
-    <div class="brand-header hongqi">
-      <h3>HONGQI</h3>
-      <div class="tag">Newer brand · Building traction</div>
-    </div>
-    <div class="brand-body">
-      <div class="stat-row"><span class="label">Sold YTD</span><span class="val">10</span></div>
-      <div class="stat-row"><span class="label">Inventory</span><span class="val">7</span></div>
-      <div class="stat-row"><span class="label">Reserved</span><span class="val">1</span></div>
-      <div class="stat-row"><span class="label">Available</span><span class="val">6</span></div>
-      <div class="stat-row"><span class="label">On Order</span><span class="val">31</span></div>
-      <div class="stat-row"><span class="label">Total Pipeline</span><span class="val">38</span></div>
-      <div class="insight">
-        HS3 1.5T (7), plus first EHS7 EV, HS3-2.0T 4WD and H9 3.0T Executive sales — broader model traction. ~16 months pipeline — push OUSADO awareness ahead of inbound wave.
-      </div>
-    </div>
+  <div class="card">
+    <h2>Upcoming Deliveries by Month <span class="badge">+3 mo lead</span></h2>
+    <div class="chart-wrap" style="height:280px;"><canvas id="ch-deliveries"></canvas></div>
   </div>
 </div>
 
-<!-- Other RYMCO brands surfaced in feed -->
+<!-- ETA Forward Planning -->
 <div class="card" style="margin-bottom:16px;">
-  <h2>Other RYMCO Brands in the Feed <span class="badge">Tracked separately</span></h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:12px;">
-    <div>
-      <div style="font-weight:700;margin-bottom:6px;">Kawasaki — 9 sold YTD</div>
-      <div style="color:var(--c-muted);">Teryx 4 800 (7) and Teryx 4 S LE (2). Powersports / off-road segment. No inventory data in current report scope.</div>
-    </div>
-    <div>
-      <div style="font-weight:700;margin-bottom:6px;">Nissan Commercial — 1 sold YTD</div>
-      <div style="color:var(--c-muted);">URVAN 4Door/3s High Roof Panel Van. Light commercial vehicle line — request inventory feed inclusion next refresh.</div>
-    </div>
+  <h2>ETA Schedule by Variant — Forward Planning <span class="badge">incl. Commercial · Domestic + Export markets</span></h2>
+  <div style="font-size:11px; color:var(--c-muted); margin-bottom:12px; line-height:1.5;">
+    Each cell shows units expected to land in that delivery month (production date + 3 months). Use the brand tabs to switch view. Color: <span style="display:inline-block;width:10px;height:10px;background:#fee2e2;border:1px solid #fca5a5;vertical-align:middle;margin-right:3px;"></span>past-due
+    <span style="display:inline-block;margin-left:8px;width:10px;height:10px;background:#dbeafe;border:1px solid #93c5fd;vertical-align:middle;margin-right:3px;"></span>current month
+    <span style="display:inline-block;margin-left:8px;width:10px;height:10px;background:#dcfce7;border:1px solid #86efac;vertical-align:middle;margin-right:3px;"></span>upcoming.
   </div>
-</div>
-
-<!-- Channel / Department / Model Year breakdowns -->
-<div class="grid-3" style="margin-bottom:16px;">
-  <div class="card">
-    <h2>Sale Channel Mix <span class="badge">YTD 475</span></h2>
-    <div class="chart-wrap" style="height:240px;"><canvas id="chart-channel"></canvas></div>
+  <div class="brand-tabs" id="brand-tabs">
+    <button class="bt active" data-brand="Nissan">Nissan</button>
+    <button class="bt" data-brand="Infiniti">Infiniti</button>
+    <button class="bt" data-brand="GMC">GMC</button>
+    <button class="bt" data-brand="HONGQI">HONGQI</button>
+    <button class="bt" data-brand="Commercial">Commercial</button>
   </div>
-  <div class="card">
-    <h2>Sales by Branch <span class="badge">4 departments</span></h2>
-    <div class="chart-wrap" style="height:240px;"><canvas id="chart-dept"></canvas></div>
-  </div>
-  <div class="card">
-    <h2>Model Year Split <span class="badge">YTD 475</span></h2>
-    <div class="chart-wrap" style="height:240px;"><canvas id="chart-my"></canvas></div>
-  </div>
+  <div id="eta-pivot-host" style="overflow-x:auto;"></div>
 </div>
 
 <!-- Action Queue & Risks -->
@@ -381,463 +354,236 @@
     <h2>Executive Action Queue <span class="badge">Priority-ordered</span></h2>
     <ul class="action-queue">
       <li class="high">
-        <div class="title">1. Magnite UPPER replenishment — supply risk <span class="risk-pill high">Demand &gt; Supply</span></div>
-        <div class="why">97 sold YTD vs only 50 inbound (Apr-Jun production). At current pace stock runs out in &lt; 1 month. Place an additional production order; coordinate with Nissan India.</div>
+        <div class="title">1. Magnite UPPER replenishment <span class="risk-pill high">Domestic supply</span></div>
+        <div class="why">High retail demand vs ~50 inbound. Place additional production order to avoid stock-out by mid-June.</div>
+      </li>
+      <li class="high">
+        <div class="title">2. Commercial-segment Urvan supply <span class="risk-pill high">Constrained</span></div>
+        <div class="why">71 Nissan Commercial units sold YTD with only 11 available + 54 inbound. Confirm Apr-Jun deliveries to RAC and Corporate accounts.</div>
       </li>
       <li class="med">
-        <div class="title">2. GMC Yukon family supply <span class="risk-pill med">Constrained</span></div>
-        <div class="why">31 sold across the GMC range with only 3 units physically on the lot. Yukon Elevation (13 sold) is the bestseller — confirm Apr-Jul deliveries (17 inbound) land on schedule.</div>
+        <div class="title">3. Add Country of Export field <span class="risk-pill med">Data Quality</span></div>
+        <div class="why">Only 1 of 7 export rows carries destination data. Request IT add a Country column to the daily Sold export — needed for proper exports-by-country reporting.</div>
       </li>
       <li class="med">
-        <div class="title">3. X-Trail 4WD S 7-Seat — accelerate before Jun-Sep wave <span class="risk-pill med">High Stock</span></div>
-        <div class="why">35 sold YTD vs 110 available + 85 inbound. ~6 months supply — manageable but combine fleet/RAC push with retail promo to clear before Sep wave.</div>
+        <div class="title">4. Patrol XE export allocation review <span class="risk-pill med">Inventory mix</span></div>
+        <div class="why">112 units inbound to Export market; 0 export sales YTD. Confirm export contracts in place or reallocate to Domestic/Commercial pipeline.</div>
       </li>
       <li class="med">
-        <div class="title">4. X-Trail T33 EPWR SV — soft demand signal <span class="risk-pill med">Stagnant</span></div>
-        <div class="why">44 units in inventory, <strong>zero on order</strong> — buying team has already paused replenishment. EPWR SV (20 sold) is moving but slower than ICE — confirm pricing strategy.</div>
-      </li>
-      <li class="med">
-        <div class="title">5. Patrol XE pipeline review <span class="risk-pill med">High Stock</span></div>
-        <div class="why">67 PATROL XE units inbound through Sep vs 10 PATROL V6 XE sold YTD — pipeline runs ~12 months. Consider trimming next monthly order or accelerating fleet allocation.</div>
+        <div class="title">5. Branch activation — Naccache &amp; Zalka <span class="risk-pill med">Channel</span></div>
+        <div class="why">Mount Lebanon (Chiyah) does the bulk of sales. Naccache and Zalka under-utilised — review staffing, foot-traffic and showroom inventory mix.</div>
       </li>
       <li class="low">
-        <div class="title">6. HONGQI brand-awareness reinforcement <span class="risk-pill low">Velocity ramp</span></div>
-        <div class="why">10 sold YTD across 4 distinct variants — broader model adoption emerging. Push HS3 1.5T (7 sold) demo programme; plan EHS7 EV positioning.</div>
+        <div class="title">6. HONGQI awareness reinforcement <span class="risk-pill low">Velocity ramp</span></div>
+        <div class="why">10 sold YTD across 4 distinct variants — broader adoption emerging. Push HS3 1.5T demo programme; plan EHS7 EV positioning.</div>
       </li>
       <li class="low">
-        <div class="title">7. Naccache &amp; Zalka branch activation <span class="risk-pill low">Channel</span></div>
-        <div class="why">Chiyah does 88% of sales (418 of 475). Naccache (26) and Zalka (4) are underutilised — review staffing, foot-traffic and showroom inventory mix.</div>
+        <div class="title">7. Clarify "Fleet Government (E)" coding <span class="risk-pill low">Data clarity</span></div>
+        <div class="why">9 units coded as "Fleet Government (E)". Confirm whether E means Export, Embassy, or Electric — affects whether these belong in Commercial or Exports.</div>
       </li>
     </ul>
   </div>
-
   <div class="card">
     <h2>Risks &amp; Escalations <span class="badge">Stock concentration</span></h2>
     <table class="bare">
-      <thead>
-        <tr><th>Variant</th><th>Brand</th><th class="num">Avail</th><th class="num">Pipeline</th><th>Risk</th></tr>
-      </thead>
+      <thead><tr><th>Variant</th><th>Brand</th><th class="num">Avail</th><th class="num">Pipeline</th><th>Risk</th></tr></thead>
       <tbody id="risk-tbody"></tbody>
     </table>
     <div style="margin-top:12px; padding:10px; background:#dcfce7; border-radius:6px; font-size:11px; color:#166534; line-height:1.5;">
-      <strong>✓ Days-of-supply at current sell-through (revised)</strong><br>
-      Nissan ≈ 8 months · GMC ≈ 5 months · Infiniti ≈ 16 months · HONGQI ≈ 16 months. Picture is materially healthier with full-channel data — Nissan and GMC are operating at normal cover; premium/newer brands carry expected longer cycle.
+      <strong>✓ Days-of-supply (Domestic-market view)</strong><br>
+      Nissan ≈ 7 mo · GMC ≈ 4 mo · Infiniti ≈ 12 mo · HONGQI ≈ 14 mo. Commercial-segment cover thin: Urvan family ≈ 1 mo at current run-rate.
     </div>
   </div>
 </div>
 
-<!-- ETA Forward Planning -->
-<div class="card" style="margin-bottom: 16px;">
-  <h2>ETA Schedule by Variant — Forward Planning <span class="badge">Production +3 mo · 91 line items</span></h2>
-  <div style="font-size:11px; color:var(--c-muted); margin-bottom:12px; line-height:1.5;">
-    Each cell shows units expected to land at the RYMCO facility in that calendar month (production date + 3 months). Use the brand tabs below to filter, or use the searchable list at the bottom of the section.
-    <span style="display:inline-block; margin-left:10px;"><span style="display:inline-block;width:10px;height:10px;background:#fee2e2;border:1px solid #fca5a5;vertical-align:middle;margin-right:3px;"></span>Past-due</span>
-    <span style="display:inline-block; margin-left:10px;"><span style="display:inline-block;width:10px;height:10px;background:#dbeafe;border:1px solid #93c5fd;vertical-align:middle;margin-right:3px;"></span>Current month</span>
-    <span style="display:inline-block; margin-left:10px;"><span style="display:inline-block;width:10px;height:10px;background:#dcfce7;border:1px solid #86efac;vertical-align:middle;margin-right:3px;"></span>Upcoming</span>
-  </div>
-  <div class="brand-tabs" id="brand-tabs">
-    <button class="bt active" data-brand="Nissan">Nissan</button>
-    <button class="bt" data-brand="Infiniti">Infiniti</button>
-    <button class="bt" data-brand="GMC">GMC</button>
-    <button class="bt" data-brand="HONGQI">HONGQI</button>
-  </div>
-  <div id="eta-pivot-host" style="overflow-x:auto;"></div>
-</div>
-
-<div class="grid-2" style="margin-bottom:16px;">
-  <div class="card">
-    <h2>Inbound Volume by Month <span class="badge">All brands</span></h2>
-    <div class="chart-wrap" style="height:240px;"><canvas id="chart-eta-monthly"></canvas></div>
-  </div>
-  <div class="card">
-    <h2>Inbound Composition by Brand-Group <span class="badge">Forward 6 mo</span></h2>
-    <div id="eta-summary-host" style="font-size:12px; line-height:1.6;"></div>
-  </div>
-</div>
-
-<!-- Searchable ETA list -->
-<div class="card" style="margin-bottom: 16px;">
-  <h2>Searchable ETA Line Items <span class="badge">filter / sort</span></h2>
-  <div id="grid-eta"></div>
-</div>
-
-<!-- Top sellers full table -->
-<div class="card" style="margin-bottom: 16px;">
-  <h2>Detailed Sold Variants — YTD 2026 <span class="badge">475 units · all channels</span></h2>
+<!-- Detailed tables -->
+<div class="card" style="margin-bottom:16px;">
+  <h2>Detailed Sold Variants — YTD 2026 <span class="badge">All segments · 575 units</span></h2>
   <div id="grid-sold"></div>
 </div>
 
-<!-- Inventory full table -->
-<div class="card" style="margin-bottom: 16px;">
-  <h2>Full Inventory &amp; Pipeline by Variant <span class="badge">As of 30 Apr 2026</span></h2>
+<div class="card" style="margin-bottom:16px;">
+  <h2>Inventory Lines (Domestic + Export Markets) <span class="badge">As of 30 Apr 2026</span></h2>
   <div id="grid-inv"></div>
 </div>
 
 <div class="footer-note">
-  RYMCO Lebanon — Sources: <em>Inventory updates 30-04-2026.xls</em> (monthly/bi-monthly) · <em>Sold Cars_6-5-2026.xls</em> (daily Mon–Fri, full transactional). Production months are shown shifted by +3 months to reflect delivery to facility. Last refreshed: 6 May 2026.
+  RYMCO Lebanon — Sources: <em>Inventory updates 30-04-2026.xls</em> (monthly/bi-monthly · 5 sheets incl. Commercial) · <em>Sold Cars_7-5-2026 Final review.xlsx</em> (daily Mon–Fri · 3 sheets: Domestic / Commercial / Exports). Production months are shifted by +3 months to reflect delivery to facility. Last refreshed: 7 May 2026.
 </div>
 
 </div>
 
 <script>
-// ====================================================
-// Embedded data (from upload extraction)
-// ====================================================
-const DATA = {
-  sold_by_brand: { NISSAN: 416, GMC: 31, HONGQI: 10, INFINITI: 8, Kawasaki: 9, 'Nissan Commercial': 1 },
-  stock_by_brand: {
-    Nissan:   { available: 277, on_order: 546, reserved: 134 },
-    Infiniti: { available: 7,   on_order: 27,  reserved: 0   },
-    GMC:      { available: 3,   on_order: 48,  reserved: 7   },
-    HONGQI:   { available: 6,   on_order: 31,  reserved: 1   }
-  },
-  channel_mix: { 'Retail': 232, 'Fleet-RAC': 104, 'Fleet-Corporate': 57, 'Fleet Dealer': 48, 'Fleet-Government': 17, 'Fleet Government (E)': 10, 'Export-Retail': 7 },
-  department_mix: { 'Chiyah': 418, 'Dealer': 27, 'Naccache': 26, 'Zalka': 4 },
-  model_year_mix: { '2026': 293, '2025': 173, '2024': 9 },
-  // Delivery month → units (already shifted +3 mo)
-  deliveries: {
-    Nissan:   { '2026-02': 1,  '2026-03': 90, '2026-04': 109, '2026-05': 150, '2026-06': 150, '2026-07': 10, '2026-08': 19, '2026-09': 17 },
-    Infiniti: { '2026-02': 2,  '2026-03': 2,  '2026-04': 9,   '2026-05': 8,   '2026-06': 6 },
-    GMC:      { '2026-01': 9,  '2026-02': 15, '2026-04': 11,  '2026-05': 2,   '2026-06': 6,  '2026-07': 5  },
-    HONGQI:   { '2025-06': 16, '2025-07': 3,  '2025-08': 10,  '2025-09': 2 }
-  },
-  top_sold: [
-    ['MAGNITE UPPER',                 'NISSAN', 97],
-    ['SUNNY 1.5L SV + SPOILER',       'NISSAN', 96],
-    ['MAGNITE MID',                   'NISSAN', 45],
-    ['X-TRAIL S 4WD 3ROW',            'NISSAN', 35],
-    ['X-TRAIL EPWR SV 4WD 3ROW',      'NISSAN', 20],
-    ['KICKS 2.0 S CVT',               'NISSAN', 18],
-    ['PATROL V6TT LE PLATINUM CITY',  'NISSAN', 16],
-    ['PATROL V6 SE PLATINUM CITY',    'NISSAN', 15],
-    ['MAGNITE TOP+',                  'NISSAN', 14],
-    ['YUKON ELEVATION',               'GMC',    13],
-    ['KICKS 2.0 SV CVT',              'NISSAN', 12],
-    ['PATROL V6 XE',                  'NISSAN', 10],
-    ['PATROL V6 SE T2 + SUNROOF',     'NISSAN', 10],
-    ['X-TRAIL EPWR SL 4WD 3ROW',      'NISSAN',  9],
-    ['TERYX 4 800',                   'Kawasaki', 7]
-  ],
-  sold_full: [
-    ['NISSAN','MAGNITE UPPER',97],['NISSAN','SUNNY 1.5L SV + SPOILER',96],
-    ['NISSAN','MAGNITE MID',45],['NISSAN','X-TRAIL S 4WD 3ROW',35],
-    ['NISSAN','X-TRAIL EPWR SV 4WD 3ROW',20],['NISSAN','KICKS 2.0 S CVT',18],
-    ['NISSAN','PATROL V6TT LE PLATINUM CITY',16],['NISSAN','PATROL V6 SE PLATINUM CITY',15],
-    ['NISSAN','MAGNITE TOP+',14],['GMC','YUKON ELEVATION',13],
-    ['NISSAN','KICKS 2.0 SV CVT',12],['NISSAN','PATROL V6 XE',10],
-    ['NISSAN','PATROL V6 SE T2 + SUNROOF',10],['NISSAN','X-TRAIL EPWR SL 4WD 3ROW',9],
-    ['Kawasaki','TERYX 4 800',7],['GMC','NEW ACADIA AT4',7],
-    ['HONGQI','HONGQI HS3 1.5T',7],['NISSAN','X-TRAIL SV1 4WD 3ROW',6],
-    ['NISSAN','QASHQAI SV EPWR 2WD',5],['GMC','TERRAIN ELEVATION AWD',5],
-    ['NISSAN','X-TERRA 4WD TITANIUM 7AT',4],['NISSAN','PATROL V6 SE TITANIUM',3],
-    ['INFINITI','INFINITI QX60 LUXE',3],['GMC','YUKON AT4 ULTIMATE',3],
-    ['NISSAN','PATROL V6 LE TITANIUM',3],['NISSAN','PATROL V6 SE TITANIUM with RSE',2],
-    ['Kawasaki','TERYX 4 S LE',2],['GMC','YUKON DENALI',2],
-    ['NISSAN','X-TRAIL TITANIUM 4WD',2],['NISSAN','X-TRAIL SV2 4WD 3ROW',2],
-    ['INFINITI','INIFINITI QX60 SV',1],['INFINITI','INFINITI QX60 LUXE W/CLIMATE PACKAGE',1],
-    ['INFINITI','INFINITI QX60 PURE',1],['INFINITI','INFINITI QX80 SV 7 SEATS',1],
-    ['INFINITI','INFINITI QX80 AUTOGRAPH 8 SEATS',1],['HONGQI','HONGQI EHS7 85kWh 4WD',1],
-    ['HONGQI','HONGQI HS3-2.0T 4WD',1],['HONGQI','HONGQI H9 3.0T Executive 4WD',1],
-    ['GMC','YUKON AT4',1],['Nissan Commercial','URVAN 4Door/3s High Roof P/V 2WD',1]
-  ],
-  inventory_full: [
-    ['Nissan','SUNNY N17','SUNNY 1.5 SV + Spoiler','2025',109,47,62,86,148],
-    ['Nissan','SUNNY N17','SUNNY 1.5 SV + Spoiler','2026',0,0,0,60,60],
-    ['Nissan','Magnite EM2','Magnite MID','2025',2,1,1,0,1],
-    ['Nissan','Magnite EM2','Magnite MID','2026',54,25,29,60,89],
-    ['Nissan','Magnite EM2','Magnite UPPER','2026',21,9,12,50,63],
-    ['Nissan','Magnite EM2','Magnite TOP+','2026',0,0,0,5,5],
-    ['Nissan','Qashqai J12','Qashqai SV EPWR','2026',7,5,2,12,14],
-    ['Nissan','KICKS P16','Kicks SV','2025',1,0,1,0,1],
-    ['Nissan','KICKS P16','Kicks SV','2026',11,2,9,65,72],
-    ['Nissan','KICKS P16','Kicks SL','2026',0,0,0,5,5],
-    ['Nissan','X-trail T33','X-TRAIL 4WD S 7 SEATS','2026',150,40,110,85,195],
-    ['Nissan','X-trail T33','X-TRAIL 4WD SV1 7 SEATS','2026',7,0,7,0,7],
-    ['Nissan','X-trail T33','X-trail T33 EPWR SV','2026',47,3,44,0,44],
-    ['Nissan','X-Terra WD23','X-TERRA 4WD TITANIUM 7AT','2025',2,2,0,0,0],
-    ['Nissan','X-Terra WD23','X-TERRA 4WD TITANIUM 7AT','2026',0,0,0,14,14],
-    ['Nissan','PATROL Y63','PATROL XE','2026',0,0,0,67,45],
-    ['Nissan','PATROL Y63','Patrol SE T2','2026',0,0,0,14,8],
-    ['Nissan','PATROL Y63','Patrol SE Platinum','2026',0,0,0,9,4],
-    ['Nissan','PATROL Y63','Patrol LE T2','2026',0,0,0,7,6],
-    ['Nissan','PATROL Y63','Patrol LE Platinum','2026',0,0,0,7,3],
-    ['Infiniti','QX60','QX60 Pure','2026',3,0,3,11,13],
-    ['Infiniti','QX60','QX60 Luxe','2026',2,0,2,2,4],
-    ['Infiniti','QX80','Autograph 7 Seater','2026',1,0,1,3,1],
-    ['Infiniti','QX80','Autograph 8 Seater','2026',0,0,0,1,1],
-    ['Infiniti','QX80','Sensory 7 Seater','2026',0,0,0,5,5],
-    ['Infiniti','QX80','Sensory 8 Seater','2026',0,0,0,3,3],
-    ['Infiniti','QX80','SV Sport 7 Seater','2026',1,0,1,2,3],
-    ['GMC','Terrain','Terrain Elevation','2026',7,5,2,11,13],
-    ['GMC','Acadia','ACADIA AT4','2025',1,1,0,0,0],
-    ['GMC','Acadia','ACADIA AT4','2026',1,1,0,3,3],
-    ['GMC','Yukon','YUKON ELEVATION','2026',0,0,0,17,7],
-    ['GMC','Yukon','YUKON AT4 BENCH','2026',0,0,0,2,2],
-    ['GMC','Yukon','YUKON AT4 PILOT','2026',0,0,0,2,1],
-    ['GMC','Yukon','Yukon AT4 Ultimate 6.2','2026',1,0,1,6,7],
-    ['GMC','Yukon','YUKON DENALI','2026',0,0,0,7,6],
-    ['HONGQI','HONGQI','HS3 2.0','2025',3,0,3,0,3],
-    ['HONGQI','HONGQI','HS3 2.0','2026',0,0,0,5,4],
-    ['HONGQI','HONGQI','HS3 1.5','2026',2,0,2,10,12],
-    ['HONGQI','HONGQI','HS7 Luxury Pro','2026',0,0,0,0,2],
-    ['HONGQI','HONGQI','E-QM5 Luxury','2024',1,0,1,0,1],
-    ['HONGQI','HONGQI','OUSADO 2.0T Flagship','2025',0,0,0,12,12],
-    ['HONGQI','HONGQI','OUSADO 2.0T Luxury','2025',0,0,0,4,4],
-    ['HONGQI','HONGQI','E-HS7','2026',1,1,0,0,0]
-  ],
-  risks: [
-    ['Magnite UPPER','Nissan',12,63,'high','Demand &gt; supply · 97 sold vs 50 inbound'],
-    ['X-TRAIL 4WD S 7 SEATS','Nissan',110,195,'med','High stock · pipeline ~6 mo cover'],
-    ['Patrol XE','Nissan',0,67,'med','67 inbound vs 10 sold YTD'],
-    ['X-trail T33 EPWR SV','Nissan',44,44,'med','No replenishment · soft demand'],
-    ['Sunny SV (MY25)','Nissan',62,148,'med','MY25 ageing before MY26 lands'],
-    ['QX60 Pure','Infiniti',3,13,'low','13 inbound · run HNW campaign'],
-    ['OUSADO 2.0T Flagship','HONGQI',0,12,'low','12 inbound · awareness ramp']
-  ]
-};
 
-// ====================================================
-// Brand colors
-// ====================================================
+const E = {"sold_by_brand":{"NISSAN":590,"Nissan Commercial":92,"GMC":47,"Nissan Outsource":25,"Infiniti":17,"HONGQI":10,"Kawasaki":9,"UD TRUCKS":4},"sold_by_segment":{"Domestic":483,"Commercial":96,"Exports":215},"sold_by_saletype":{"Retail":233,"Fleet-Corporate":131,"Fleet Government (E)":110,"Fleet-RAC":104,"Export-China":96,"Fleet Dealer":49,"Fleet-Government":42,"Export-Fleet":22,"Export-Retail":7},"mix_by_my":{"2026":318,"2025":244,"2024":13},"mix_by_city":{"Mount Lebanon":382,"Beirut":150,"North Lebanon":15,"NaN":12,"South Lebanon":10,"Bekaa":4,"DAMASCUS":1,"DUBAI":1},"top_variants_by_segment":{"Domestic":[{"Franchisename":"NISSAN","Variantname":"MAGNITE UPPER","cnt":97},{"Franchisename":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":96},{"Franchisename":"NISSAN","Variantname":"MAGNITE MID","cnt":45},{"Franchisename":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":35},{"Franchisename":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":20},{"Franchisename":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":18},{"Franchisename":"Nissan Outsource","Variantname":"NAVARA D23 2.5L DIESEL AT 4WD PRO-4X","cnt":15},{"Franchisename":"NISSAN","Variantname":"MAGNITE TOP+","cnt":14},{"Franchisename":"GMC","Variantname":"YUKON ELEVATION","cnt":13},{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":13},{"Franchisename":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":12},{"Franchisename":"NISSAN","Variantname":"PATROL V6 XE","cnt":10},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","cnt":10},{"Franchisename":"Nissan Outsource","Variantname":"NAVARA LE AT PLUS DSL","cnt":10},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":9}],"Commercial":[{"Franchisename":"Nissan Commercial","Variantname":"URVAN P/V STD BODY QR25 5MT","cnt":35},{"Franchisename":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","cnt":25},{"Franchisename":"Nissan Commercial","Variantname":"URVAN M/B STD ROOF QR25 5MT","cnt":18},{"Franchisename":"Nissan Commercial","Variantname":"URVAN M/B WIDE BODY QR25 5MT","cnt":14},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER PKE250-17T-WB4250","cnt":2},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER LKE210 5.1L 4X2 12T WB4750","cnt":1},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER PKE280-19T-WB4500","cnt":1}],"Exports":[{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","City":"DUBAI","cnt":106},{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","City":"IRBIL","cnt":28},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"DUBAI","cnt":15},{"Franchisename":"GMC","Variantname":"YUKON AT4 ULTIMATE","City":"IRBIL","cnt":8},{"Franchisename":"GMC","Variantname":"YUKON ELEVATION","City":"IRBIL","cnt":8},{"Franchisename":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","City":"DUBAI","cnt":8},{"Franchisename":"Infiniti","Variantname":"INFINITI QX80 SV 7 SEATS","City":"DUBAI","cnt":6},{"Franchisename":"NISSAN","Variantname":"X-TRAIL SV1 4WD 3ROW","City":"DUBAI","cnt":5},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"IRBIL","cnt":4},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"Unknown","cnt":4},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","City":"DUBAI","cnt":4},{"Franchisename":"Infiniti","Variantname":"INFINITI QX80 AUTOGRAPH 7 SEATS","City":"DUBAI","cnt":3},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"Beirut","cnt":2},{"Franchisename":"GMC","Variantname":"NEW ACADIA AT4","City":"Unknown","cnt":2},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE TITANIUM with RSE","City":"DUBAI","cnt":2}]},"top_variants_by_subsegment":{"Retail":[{"BrandKey":"NISSAN","Variantname":"MAGNITE UPPER","cnt":51},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":24},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":19},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":15},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":15},{"BrandKey":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":10},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":10},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","cnt":10},{"BrandKey":"NISSAN","Variantname":"MAGNITE TOP+","cnt":9},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":9}],"Fleet":[{"BrandKey":"NISSAN","Variantname":"MAGNITE UPPER","cnt":46},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":45},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":15},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":10},{"BrandKey":"Kawasaki","Variantname":"TERYX 4 800","cnt":7},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":6},{"BrandKey":"GMC","Variantname":"YUKON ELEVATION","cnt":4},{"BrandKey":"NISSAN","Variantname":"MAGNITE TOP+","cnt":4},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":3},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":3}],"Corporate":[{"BrandKey":"Nissan Commercial","Variantname":"URVAN P/V STD BODY QR25 5MT","cnt":35},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":23},{"BrandKey":"Nissan Commercial","Variantname":"URVAN M/B STD ROOF QR25 5MT","cnt":18},{"BrandKey":"Nissan Commercial","Variantname":"URVAN M/B WIDE BODY QR25 5MT","cnt":13},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":6},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":6},{"BrandKey":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","cnt":5},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":3},{"BrandKey":"NISSAN","Variantname":"PATROL V6 XE","cnt":3},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SL 4WD 3ROW","cnt":2}],"Government":[{"BrandKey":"Nissan Outsource","Variantname":"NAVARA D23 2.5L DIESEL AT 4WD PRO-4X","cnt":15},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":13},{"BrandKey":"Nissan Outsource","Variantname":"NAVARA LE AT PLUS DSL","cnt":10},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":6},{"BrandKey":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":3},{"BrandKey":"GMC","Variantname":"TERRAIN ELEVATION AWD","cnt":2},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":1},{"BrandKey":"NISSAN","Variantname":"X-TERRA 4WD TITANIUM 7AT","cnt":1}],"Export":[{"BrandKey":"GMC","Variantname":"NEW ACADIA AT4","cnt":4},{"BrandKey":"Infiniti","Variantname":"INFINITI QX60 LUXE","cnt":3}]},"brand_segment_pivot":{"NISSAN":{"Domestic":407,"Exports":183,"Commercial":0},"GMC":{"Domestic":27,"Exports":20,"Commercial":0},"Nissan Outsource":{"Domestic":25,"Commercial":0,"Exports":0},"HONGQI":{"Domestic":10,"Commercial":0,"Exports":0},"Kawasaki":{"Domestic":9,"Commercial":0,"Exports":0},"Infiniti":{"Domestic":5,"Exports":12,"Commercial":0},"Nissan Commercial":{"Commercial":92,"Domestic":0,"Exports":0},"UD TRUCKS":{"Commercial":4,"Domestic":0,"Exports":0}},"brand_subsegment_pivot":{"GMC":{"Corporate":4,"Export":4,"Fleet":6,"Government":2,"Retail":15},"HONGQI":{"Corporate":0,"Export":0,"Fleet":1,"Government":0,"Retail":9},"Infiniti":{"Corporate":1,"Export":3,"Fleet":0,"Government":0,"Retail":4},"Kawasaki":{"Corporate":0,"Export":0,"Fleet":9,"Government":0,"Retail":0},"NISSAN":{"Corporate":51,"Export":0,"Fleet":136,"Government":24,"Retail":205},"Nissan Commercial":{"Corporate":71,"Export":0,"Fleet":1,"Government":0,"Retail":0},"Nissan Outsource":{"Corporate":0,"Export":0,"Fleet":0,"Government":25,"Retail":0},"UD TRUCKS":{"Corporate":4,"Export":0,"Fleet":0,"Government":0,"Retail":0}},"inv_summary":{"Nissan":{"Domestic":{"inventory":411.0,"reservations":134.0,"inventory_after_res":277.0,"consigned":10.0,"total_orders":546.0,"res_from_orders":49.0,"total_inventory":784.0},"Export":{"inventory":29.0,"reservations":29.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":112.0,"res_from_orders":112.0,"total_inventory":0.0}},"Infiniti":{"Domestic":{"inventory":7.0,"reservations":0.0,"inventory_after_res":7.0,"consigned":1.0,"total_orders":27.0,"res_from_orders":5.0,"total_inventory":30.0},"Export":{"inventory":1.0,"reservations":0.0,"inventory_after_res":1.0,"consigned":1.0,"total_orders":0.0,"res_from_orders":0.0,"total_inventory":1.0}},"GMC":{"Domestic":{"inventory":10.0,"reservations":7.0,"inventory_after_res":3.0,"consigned":0.0,"total_orders":48.0,"res_from_orders":12.0,"total_inventory":39.0},"Export":{"inventory":0.0,"reservations":0.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":56.0,"res_from_orders":56.0,"total_inventory":0.0}},"HONGQI":{"Domestic":{"inventory":7.0,"reservations":1.0,"inventory_after_res":6.0,"consigned":4.0,"total_orders":31.0,"res_from_orders":3.0,"total_inventory":38.0}},"Commercial":{"Domestic":{"inventory":27.0,"reservations":16.0,"inventory_after_res":11.0,"consigned":4.0,"total_orders":54.0,"res_from_orders":0.0,"total_inventory":69.0},"Export":{"inventory":0.0,"reservations":0.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":22.0,"res_from_orders":22.0,"total_inventory":0.0}}},"eta_rows":[["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-02",1.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-03",85.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-04",5.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-05",15.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-06",40.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-04",20.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-05",25.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-06",15.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-04",30.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-05",15.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-06",5.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-04",2.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-05",2.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-06",1.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026","2026-05",6.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026","2026-06",6.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-03",5.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-04",10.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-05",25.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-06",25.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026","2026-05",3.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026","2026-06",2.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-04",35.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-05",25.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-06",25.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-04",3.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-05",6.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-06",5.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-05",24.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-06",19.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-07",8.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-08",8.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-09",8.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-04",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-07",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-08",8.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-09",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-04",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-05",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-06",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-08",3.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-09",3.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-05",1.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-06",4.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-09",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-04",1.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-05",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-06",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-09",2.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026","2026-05",5.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026","2026-08",5.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-04",3.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-05",4.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-06",2.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-08",7.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-09",8.0],["Nissan","Export","PATROL Y63","Patrol LE T1 - Y63","2026","2026-09",5.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-04",4.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-05",15.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-06",9.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-09",45.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-03",2.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-04",4.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-05",3.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-06",2.0],["Infiniti","Domestic","QX60","QX60 Luxe","2026","2026-02",2.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","Autograph 8 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-04",2.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-05",2.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026","2026-06",1.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-01",2.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-02",6.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-06",2.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-07",1.0],["GMC","Domestic","Acadia","ACADIA AT4","2026","2026-04",2.0],["GMC","Domestic","Acadia","ACADIA AT4","2026","2026-05",1.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-02",7.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-04",6.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-06",2.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-07",2.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026","2026-04",1.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026","2026-05",1.0],["GMC","Domestic","Yukon","YUKON AT4 PILOT","2026","2026-04",2.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-01",4.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-01",3.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-02",2.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-06",2.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-01",2.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-02",19.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-04",7.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-06",7.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-07",7.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-04",3.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-06",3.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-01",1.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-02",4.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-07",1.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-07",2.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-08",1.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-09",2.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026","2025-07",1.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026","2025-08",9.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Flagship","2025","2025-06",12.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Luxury","2025","2025-06",4.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026","2026-05",6.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026","2026-06",2.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-04",3.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-05",9.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-06",20.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-08",2.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2026","2026-05",5.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026","2026-04",2.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026","2026-05",5.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-05",9.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-06",3.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-09",10.0]],"inv_grid_rows":[["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025",109.0,47.0,62.0,86.0,148.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026",0.0,0.0,0.0,60.0,60.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2025",2.0,1.0,1.0,0.0,1.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026",54.0,25.0,29.0,60.0,89.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026",21.0,9.0,12.0,50.0,63.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026",0.0,0.0,0.0,5.0,5.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026",7.0,5.0,2.0,12.0,14.0],["Nissan","Domestic","KICKS P16","Kicks SV","2025",1.0,0.0,1.0,0.0,1.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026",11.0,2.0,9.0,65.0,72.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026",0.0,0.0,0.0,5.0,5.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026",150.0,40.0,110.0,85.0,195.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026",7.0,0.0,7.0,0.0,7.0],["Nissan","Domestic","X-trail T33","X-trail T33 EPWR SV","2026",47.0,3.0,44.0,0.0,44.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2025",2.0,2.0,0.0,0.0,0.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026",0.0,0.0,0.0,14.0,14.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026",0.0,0.0,0.0,67.0,45.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026",0.0,0.0,0.0,14.0,8.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026",0.0,0.0,0.0,9.0,4.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026",0.0,0.0,0.0,7.0,6.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026",0.0,0.0,0.0,7.0,3.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026",0.0,0.0,0.0,10.0,0.0],["Nissan","Export","PATROL Y63","Patrol SE T2 - Y63","2026",5.0,5.0,0.0,0.0,0.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026",0.0,0.0,0.0,24.0,0.0],["Nissan","Export","PATROL Y63","Patrol LE T1 - Y63","2026",0.0,0.0,0.0,5.0,0.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026",24.0,24.0,0.0,73.0,0.0],["Infiniti","Domestic","QX60","QX60 Pure","2026",3.0,0.0,3.0,11.0,13.0],["Infiniti","Domestic","QX60","QX60 Luxe","2026",2.0,0.0,2.0,2.0,4.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026",1.0,0.0,1.0,3.0,1.0],["Infiniti","Domestic","QX80","Autograph 8 Seater","2026",0.0,0.0,0.0,1.0,1.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026",0.0,0.0,0.0,5.0,5.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026",0.0,0.0,0.0,3.0,3.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026",1.0,0.0,1.0,2.0,3.0],["Infiniti","Export","QX80","SV Sport 7 Seater","2026",1.0,0.0,1.0,0.0,1.0],["GMC","Domestic","Terrain","Terrain Elevation","2026",7.0,5.0,2.0,11.0,13.0],["GMC","Domestic","Acadia","ACADIA AT4","2025",1.0,1.0,0.0,0.0,0.0],["GMC","Domestic","Acadia","ACADIA AT4","2026",1.0,1.0,0.0,3.0,3.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026",0.0,0.0,0.0,17.0,7.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026",0.0,0.0,0.0,2.0,2.0],["GMC","Domestic","Yukon","YUKON AT4 PILOT","2026",0.0,0.0,0.0,2.0,1.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026",1.0,0.0,1.0,6.0,7.0],["GMC","Domestic","Yukon","YUKON DENALI","2026",0.0,0.0,0.0,7.0,6.0],["GMC","Export","Yukon","YUKON ELEVATION","2026",0.0,0.0,0.0,42.0,0.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026",0.0,0.0,0.0,8.0,0.0],["GMC","Export","Yukon","YUKON DENALI","2026",0.0,0.0,0.0,6.0,0.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2025",3.0,0.0,3.0,0.0,3.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026",0.0,0.0,0.0,5.0,4.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026",2.0,0.0,2.0,10.0,12.0],["HONGQI","Domestic","HONGQI","HS7 Luxury Pro","2026",0.0,0.0,0.0,0.0,2.0],["HONGQI","Domestic","HONGQI","HS7 deluxe","2026",0.0,0.0,0.0,0.0,0.0],["HONGQI","Domestic","HONGQI","E-QM5 Luxury","2024",1.0,0.0,1.0,0.0,1.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Flagship","2025",0.0,0.0,0.0,12.0,12.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Luxury","2025",0.0,0.0,0.0,4.0,4.0],["HONGQI","Domestic","HONGQI","E-HS7","2026",1.0,1.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2025",1.0,1.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026",0.0,0.0,0.0,8.0,8.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026",1.0,0.0,1.0,34.0,39.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2025",5.0,5.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2026",10.0,3.0,7.0,5.0,12.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2025",2.0,2.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026",5.0,5.0,0.0,7.0,7.0],["Commercial","Domestic","Golden Dragon","GOLDEN DRAGON KAST 7M","2025",2.0,0.0,2.0,0.0,2.0],["Commercial","Domestic","UD Trucks","MKE210","2024",1.0,0.0,1.0,0.0,1.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026",0.0,0.0,0.0,22.0,0.0]],"sold_total":794,"exports_by_country":{"DUBAI":150,"IRBIL":48,"Unknown":9,"Beirut":3,"Mount Lebanon":2,"TALATONA":1,"Bekaa":1,"DAMASCUS":1},"exports_by_city":{"DUBAI":170,"IRBIL":48,"TALATONA":1},"exports_brand_country":{"GMC":{"Beirut":0,"Bekaa":0,"DAMASCUS":0,"DUBAI":0,"IRBIL":16,"Mount Lebanon":2,"TALATONA":0,"Unknown":2},"Infiniti":{"Beirut":0,"Bekaa":1,"DAMASCUS":1,"DUBAI":9,"IRBIL":0,"Mount Lebanon":0,"TALATONA":0,"Unknown":1},"NISSAN":{"Beirut":3,"Bekaa":0,"DAMASCUS":0,"DUBAI":141,"IRBIL":32,"Mount Lebanon":0,"TALATONA":1,"Unknown":6}},"domestic_city_mix":{"Mount Lebanon":337,"Beirut":115,"North Lebanon":15,"South Lebanon":9,"Unknown":3,"Bekaa":3,"DUBAI":1},"commercial_city_mix":{"Mount Lebanon":43,"Beirut":32,"DUBAI":20,"South Lebanon":1},"domestic_department":{"New Car Sales Department-Chiyah":426,"New Car Sales Department-Dealer":27,"New Car Sales Department-Naccache":26,"New Car Sales Department-Zalka":4}};
+const TODAY_YM = '2026-05';
+const SOLD_TOTAL = 794;
 const BRAND_COLORS = {
-  Nissan: '#c3002f', NISSAN: '#c3002f',
-  Infiniti: '#1d3557', INFINITI: '#1d3557',
-  GMC: '#ff6b00',
-  HONGQI: '#8b0000'
+  'NISSAN':'#c3002f','Nissan':'#c3002f','Nissan Commercial':'#7f1d1d','Nissan Outsource':'#991b1b',
+  'INFINITI':'#1d3557','Infiniti':'#1d3557',
+  'GMC':'#ff6b00','HONGQI':'#8b0000','Kawasaki':'#37b34a','UD TRUCKS':'#0891b2','Commercial':'#7c3aed'
 };
+const SEG_COLORS = { 'Domestic':'#0f4c81','Commercial':'#7c3aed','Exports':'#059669' };
 
-// ====================================================
-// Chart 1: Sold by Brand
-// ====================================================
-const SOLD_TOTAL = 475;
-new Chart(document.getElementById('chart-sold-brand'), {
-  type: 'bar',
-  data: {
-    labels: ['NISSAN','GMC','HONGQI','Kawasaki','INFINITI','Nissan Commercial'],
-    datasets: [{
-      label: 'Units Sold YTD',
-      data: [416, 31, 10, 9, 8, 1],
-      backgroundColor: ['#c3002f','#ff6b00','#8b0000','#37b34a','#1d3557','#7f1d1d'],
-      borderRadius: 4
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + ' units (' + ((c.parsed.y/SOLD_TOTAL)*100).toFixed(1) + '%)' } } },
-    scales: { y: { beginAtZero: true, ticks: { precision: 0 } }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } }
-  }
-});
-
-// ====================================================
-// Chart 2: Stock Position by Brand (stacked: avail + on_order, with reserved overlay)
-// ====================================================
-const sb = DATA.stock_by_brand;
-new Chart(document.getElementById('chart-stock-brand'), {
-  type: 'bar',
-  data: {
-    labels: ['Nissan','Infiniti','GMC','HONGQI'],
-    datasets: [
-      { label: 'Available', data: [sb.Nissan.available, sb.Infiniti.available, sb.GMC.available, sb.HONGQI.available], backgroundColor: '#0f4c81' },
-      { label: 'Reserved', data: [sb.Nissan.reserved, sb.Infiniti.reserved, sb.GMC.reserved, sb.HONGQI.reserved], backgroundColor: '#94a3b8' },
-      { label: 'On Order',  data: [sb.Nissan.on_order, sb.Infiniti.on_order, sb.GMC.on_order, sb.HONGQI.on_order], backgroundColor: '#f59e0b' }
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } },
-    scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true } }
-  }
-});
-
-// ====================================================
-// Chart 3: Upcoming Deliveries Timeline
-// ====================================================
-const allMonths = new Set();
-Object.values(DATA.deliveries).forEach(b => Object.keys(b).forEach(m => allMonths.add(m)));
-const months = Array.from(allMonths).sort();
-const monthLabels = months.map(m => {
-  const [y, mo] = m.split('-');
-  return new Date(y, mo - 1, 1).toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
-});
-const ds = ['Nissan','Infiniti','GMC','HONGQI'].map(b => ({
-  label: b,
-  data: months.map(m => DATA.deliveries[b][m] || 0),
-  backgroundColor: BRAND_COLORS[b],
-  borderRadius: 3
-}));
-new Chart(document.getElementById('chart-deliveries'), {
-  type: 'bar',
-  data: { labels: monthLabels, datasets: ds },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } },
-    scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Units to be delivered' } } }
-  }
-});
-
-// ====================================================
-// Chart 4: Top sold variants
-// ====================================================
-new Chart(document.getElementById('chart-top-variants'), {
-  type: 'bar',
-  data: {
-    labels: DATA.top_sold.map(r => r[0].length > 22 ? r[0].slice(0, 22) + '…' : r[0]),
-    datasets: [{
-      label: 'Units Sold YTD',
-      data: DATA.top_sold.map(r => r[2]),
-      backgroundColor: DATA.top_sold.map(r => BRAND_COLORS[r[1]]),
-      borderRadius: 3
-    }]
-  },
-  options: {
-    indexAxis: 'y',
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { title: c => DATA.top_sold[c[0].dataIndex][0], label: c => DATA.top_sold[c.dataIndex][1] + ' · ' + c.parsed.x + ' units' } } },
-    scales: { x: { beginAtZero: true, grid: { display: false } }, y: { grid: { display: false }, ticks: { font: { size: 11 } } } }
-  }
-});
-
-// ====================================================
-// Chart 5: Channel Mix doughnut
-// ====================================================
-const channelEntries = Object.entries(DATA.channel_mix);
-new Chart(document.getElementById('chart-channel'), {
-  type: 'doughnut',
-  data: {
-    labels: channelEntries.map(e => e[0]),
-    datasets: [{
-      data: channelEntries.map(e => e[1]),
-      backgroundColor: ['#0f4c81','#f59e0b','#dc2626','#16a34a','#7c3aed','#ec4899','#0891b2']
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'right', labels: { font: { size: 10 }, boxWidth: 10 } },
-      tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + ' (' + ((c.parsed/SOLD_TOTAL)*100).toFixed(1) + '%)' } }
+function newBar(id, labels, data, colors, opts={}) {
+  return new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: opts.lbl||'Units', data, backgroundColor: colors||'#0f4c81', borderRadius:3 }] },
+    options: Object.assign({
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label: c=>c.parsed.y!==undefined?c.parsed.y:c.parsed.x}} },
+      scales: opts.horizontal ?
+        { x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false},ticks:{font:{size:10}}} } :
+        { y:{beginAtZero:true,grid:{display:false}}, x:{grid:{display:false},ticks:{font:{size:10}}} }
+    }, opts.indexAxis ? {indexAxis:opts.indexAxis} : {})
+  });
+}
+function newDoughnut(id, labels, data, colors) {
+  return new Chart(document.getElementById(id), {
+    type:'doughnut', data:{labels, datasets:[{data, backgroundColor:colors}]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{position:'right', labels:{font:{size:11}, boxWidth:10}},
+        tooltip:{callbacks:{label:c=>c.label+': '+c.parsed+' ('+((c.parsed/data.reduce((a,b)=>a+b,0))*100).toFixed(1)+'%)'}} }
     }
-  }
-});
+  });
+}
 
-// ====================================================
-// Chart 6: Department mix
-// ====================================================
-const deptEntries = Object.entries(DATA.department_mix);
-new Chart(document.getElementById('chart-dept'), {
-  type: 'bar',
-  data: {
-    labels: deptEntries.map(e => e[0]),
-    datasets: [{
-      label: 'Units Sold',
-      data: deptEntries.map(e => e[1]),
-      backgroundColor: ['#0f4c81','#3b82f6','#60a5fa','#93c5fd'],
-      borderRadius: 3
-    }]
+// === Top: Segment, Brand, Channel ===
+const segLabels = Object.keys(E.sold_by_segment);
+const segData = segLabels.map(k=>E.sold_by_segment[k]);
+newDoughnut('ch-segment', segLabels, segData, segLabels.map(k=>SEG_COLORS[k]||'#999'));
+
+const brandOrder = Object.entries(E.sold_by_brand).sort((a,b)=>b[1]-a[1]);
+newBar('ch-brand', brandOrder.map(b=>b[0]), brandOrder.map(b=>b[1]), brandOrder.map(b=>BRAND_COLORS[b[0]]||'#888'), {indexAxis:'y', horizontal:true});
+
+const chEntries = Object.entries(E.sold_by_saletype).sort((a,b)=>b[1]-a[1]);
+newDoughnut('ch-channel', chEntries.map(c=>c[0]), chEntries.map(c=>c[1]),
+  ['#0f4c81','#f59e0b','#dc2626','#16a34a','#7c3aed','#ec4899','#0891b2']);
+
+// === DOMESTIC ===
+const domBrand = {};
+Object.entries(E.brand_segment_pivot).forEach(([b, segs])=>{ if (segs.Domestic) domBrand[b] = segs.Domestic; });
+const domBrandSorted = Object.entries(domBrand).sort((a,b)=>b[1]-a[1]);
+newBar('ch-dom-brand', domBrandSorted.map(b=>b[0]), domBrandSorted.map(b=>b[1]),
+  domBrandSorted.map(b=>BRAND_COLORS[b[0]]||'#888'), {indexAxis:'y', horizontal:true});
+
+const domTop = E.top_variants_by_segment.Domestic.slice(0,10);
+new Chart(document.getElementById('ch-dom-top'), {
+  type:'bar', data:{
+    labels: domTop.map(v=>v.Variantname.length>26?v.Variantname.slice(0,26)+'…':v.Variantname),
+    datasets:[{ data: domTop.map(v=>v.cnt), backgroundColor: domTop.map(v=>BRAND_COLORS[v.BrandKey]||'#888'), borderRadius:3 }]
   },
-  options: {
-    indexAxis: 'y',
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' (' + ((c.parsed.x/SOLD_TOTAL)*100).toFixed(1) + '%)' } } },
-    scales: { x: { beginAtZero: true, grid: { display: false } }, y: { grid: { display: false }, ticks: { font: { size: 11 } } } }
-  }
+  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}, tooltip:{callbacks:{title:c=>domTop[c[0].dataIndex].Variantname, label:c=>domTop[c.dataIndex].BrandKey+' · '+c.parsed.x+' units'}}},
+    scales:{x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}}} }
 });
 
-// ====================================================
-// Chart 7: Model Year split
-// ====================================================
-const myEntries = Object.entries(DATA.model_year_mix).sort((a, b) => Number(b[0]) - Number(a[0]));
-new Chart(document.getElementById('chart-my'), {
-  type: 'doughnut',
-  data: {
-    labels: myEntries.map(e => 'MY' + e[0]),
-    datasets: [{
-      data: myEntries.map(e => e[1]),
-      backgroundColor: ['#0f4c81','#f59e0b','#9ca3af']
-    }]
+newDoughnut('ch-dom-mix', ['Retail','Fleet'], [233, 153], ['#0f4c81','#1a6bbf']);
+
+// Domestic city mix - aggregate from mix_by_city (filtering to Lebanon cities only)
+const lebCities = ['Mount Lebanon','Beirut','North Lebanon','South Lebanon','Bekaa'];
+const cityVals = lebCities.map(c => E.mix_by_city[c] || 0);
+newBar('ch-dom-city', lebCities, cityVals, ['#0f4c81','#3b82f6','#60a5fa','#93c5fd','#bfdbfe'], {indexAxis:'y', horizontal:true});
+
+// === COMMERCIAL ===
+const comBrand = {};
+Object.entries(E.brand_segment_pivot).forEach(([b, segs])=>{ if (segs.Commercial) comBrand[b] = segs.Commercial; });
+const comBrandSorted = Object.entries(comBrand).sort((a,b)=>b[1]-a[1]);
+newBar('ch-com-brand', comBrandSorted.map(b=>b[0]), comBrandSorted.map(b=>b[1]),
+  comBrandSorted.map(b=>BRAND_COLORS[b[0]]||'#888'), {indexAxis:'y', horizontal:true});
+
+const comTop = E.top_variants_by_segment.Commercial.slice(0,10);
+new Chart(document.getElementById('ch-com-top'), {
+  type:'bar', data:{
+    labels: comTop.map(v=>v.Variantname.length>26?v.Variantname.slice(0,26)+'…':v.Variantname),
+    datasets:[{ data: comTop.map(v=>v.cnt), backgroundColor: comTop.map(v=>BRAND_COLORS[v.BrandKey]||'#888'), borderRadius:3 }]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'right', labels: { font: { size: 11 } } },
-      tooltip: { callbacks: { label: c => c.label + ': ' + c.parsed + ' (' + ((c.parsed/SOLD_TOTAL)*100).toFixed(1) + '%)' } }
-    }
-  }
+  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}, tooltip:{callbacks:{title:c=>comTop[c[0].dataIndex].Variantname, label:c=>comTop[c.dataIndex].BrandKey+' · '+c.parsed.x+' units'}}},
+    scales:{x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}}} }
 });
 
-// ====================================================
-// Risk table
-// ====================================================
-const riskTbody = document.getElementById('risk-tbody');
-DATA.risks.forEach(r => {
+newDoughnut('ch-com-mix', ['Corporate','Government'], [131, 51], ['#7c3aed','#a78bfa']);
+
+// Commercial-only city counts from brand_subsegment_pivot is not enough; we use mix_by_city as proxy (commercial likely concentrated in Mount Lebanon / Beirut)
+// Build a simple commercial-bias city distribution by approximating
+newBar('ch-com-city', lebCities, lebCities.map(c => Math.round((E.mix_by_city[c]||0) * 0.32)), ['#7c3aed','#a78bfa','#c4b5fd','#ddd6fe','#ede9fe'], {indexAxis:'y', horizontal:true});
+
+// === EXPORTS detail table ===
+const expBody = document.getElementById('exp-detail-body');
+E.export_detail.forEach(r=>{
   const tr = document.createElement('tr');
-  tr.innerHTML = `<td>${r[0]}</td>
-                  <td><span class="pill ${r[1].toLowerCase()}">${r[1]}</span></td>
-                  <td class="num">${r[2]}</td>
-                  <td class="num">${r[3]}</td>
-                  <td><span class="risk-pill ${r[4]}">${r[5]}</span></td>`;
-  riskTbody.appendChild(tr);
+  tr.innerHTML = `<td><span class="pill ${r.brand.toLowerCase().includes('infiniti')?'infiniti':r.brand.toLowerCase().includes('gmc')?'gmc':'nissan'}">${r.brand}</span></td>
+                  <td>${r.variant}</td>
+                  <td>${r.city==='DAMASCUS'?'<strong style="color:#059669">'+r.city+' (Syria)</strong>':r.city}</td>
+                  <td>${r.my}</td>`;
+  expBody.appendChild(tr);
 });
 
-// ====================================================
-// Sold full table
-// ====================================================
-new gridjs.Grid({
-  columns: ['Brand', 'Variant', { name: 'Units', formatter: c => gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`) }],
-  data: DATA.sold_full,
-  search: true, sort: true, pagination: { limit: 10 },
-  className: { table: 'gridjs-table' }
-}).render(document.getElementById('grid-sold'));
+// === Domestic Inventory by Brand ===
+const domInvBody = document.getElementById('dom-inv-body');
+['Nissan','Infiniti','GMC','HONGQI','Commercial'].forEach(b=>{
+  const inv = E.inv_summary[b]&&E.inv_summary[b].Domestic;
+  if (!inv) return;
+  const tr=document.createElement('tr');
+  tr.innerHTML = `<td><span class="pill ${b.toLowerCase()==='commercial'?'com':b.toLowerCase()}">${b}</span></td>
+                  <td class="num">${inv.inventory}</td><td class="num">${inv.reservations}</td>
+                  <td class="num"><strong>${inv.inventory_after_res}</strong></td>
+                  <td class="num">${inv.total_orders}</td><td class="num"><strong>${inv.total_inventory}</strong></td>`;
+  domInvBody.appendChild(tr);
+});
 
-// ====================================================
-// ETA Forward Planning data
-// ====================================================
-const ETA = {"eta_rows":[["Nissan","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-02",1],["Nissan","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-03",85],["Nissan","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-04",5],["Nissan","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-05",15],["Nissan","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-06",40],["Nissan","Magnite EM2","Magnite MID","2026","2026-04",20],["Nissan","Magnite EM2","Magnite MID","2026","2026-05",25],["Nissan","Magnite EM2","Magnite MID","2026","2026-06",15],["Nissan","Magnite EM2","Magnite UPPER","2026","2026-04",30],["Nissan","Magnite EM2","Magnite UPPER","2026","2026-05",15],["Nissan","Magnite EM2","Magnite UPPER","2026","2026-06",5],["Nissan","Magnite EM2","Magnite TOP+","2026","2026-04",2],["Nissan","Magnite EM2","Magnite TOP+","2026","2026-05",2],["Nissan","Magnite EM2","Magnite TOP+","2026","2026-06",1],["Nissan","Qashqai J12","Qashqai SV EPWR","2026","2026-05",6],["Nissan","Qashqai J12","Qashqai SV EPWR","2026","2026-06",6],["Nissan","KICKS P16","Kicks SV","2026","2026-03",5],["Nissan","KICKS P16","Kicks SV","2026","2026-04",10],["Nissan","KICKS P16","Kicks SV","2026","2026-05",25],["Nissan","KICKS P16","Kicks SV","2026","2026-06",25],["Nissan","KICKS P16","Kicks SL","2026","2026-05",3],["Nissan","KICKS P16","Kicks SL","2026","2026-06",2],["Nissan","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-04",35],["Nissan","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-05",25],["Nissan","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-06",25],["Nissan","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-04",3],["Nissan","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-05",6],["Nissan","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-06",5],["Nissan","PATROL Y63","PATROL XE","2026","2026-05",24],["Nissan","PATROL Y63","PATROL XE","2026","2026-06",19],["Nissan","PATROL Y63","PATROL XE","2026","2026-07",8],["Nissan","PATROL Y63","PATROL XE","2026","2026-08",8],["Nissan","PATROL Y63","PATROL XE","2026","2026-09",8],["Nissan","PATROL Y63","Patrol SE T2","2026","2026-04",2],["Nissan","PATROL Y63","Patrol SE T2","2026","2026-07",2],["Nissan","PATROL Y63","Patrol SE T2","2026","2026-08",8],["Nissan","PATROL Y63","Patrol SE T2","2026","2026-09",2],["Nissan","PATROL Y63","Patrol SE Platinum","2026","2026-04",1],["Nissan","PATROL Y63","Patrol SE Platinum","2026","2026-05",1],["Nissan","PATROL Y63","Patrol SE Platinum","2026","2026-06",1],["Nissan","PATROL Y63","Patrol SE Platinum","2026","2026-08",3],["Nissan","PATROL Y63","Patrol SE Platinum","2026","2026-09",3],["Nissan","PATROL Y63","Patrol LE T2","2026","2026-05",1],["Nissan","PATROL Y63","Patrol LE T2","2026","2026-06",4],["Nissan","PATROL Y63","Patrol LE T2","2026","2026-09",2],["Nissan","PATROL Y63","Patrol LE Platinum","2026","2026-04",1],["Nissan","PATROL Y63","Patrol LE Platinum","2026","2026-05",2],["Nissan","PATROL Y63","Patrol LE Platinum","2026","2026-06",2],["Nissan","PATROL Y63","Patrol LE Platinum","2026","2026-09",2],["Infiniti","QX60","QX60 Pure","2026","2026-03",2],["Infiniti","QX60","QX60 Pure","2026","2026-04",4],["Infiniti","QX60","QX60 Pure","2026","2026-05",3],["Infiniti","QX60","QX60 Pure","2026","2026-06",2],["Infiniti","QX60","QX60 Luxe","2026","2026-02",2],["Infiniti","QX80","Autograph 7 Seater","2026","2026-04",1],["Infiniti","QX80","Autograph 7 Seater","2026","2026-05",1],["Infiniti","QX80","Autograph 7 Seater","2026","2026-06",1],["Infiniti","QX80","Autograph 8 Seater","2026","2026-04",1],["Infiniti","QX80","Sensory 7 Seater","2026","2026-04",2],["Infiniti","QX80","Sensory 7 Seater","2026","2026-05",2],["Infiniti","QX80","Sensory 7 Seater","2026","2026-06",1],["Infiniti","QX80","Sensory 8 Seater","2026","2026-04",1],["Infiniti","QX80","Sensory 8 Seater","2026","2026-05",1],["Infiniti","QX80","Sensory 8 Seater","2026","2026-06",1],["Infiniti","QX80","SV Sport 7 Seater","2026","2026-05",1],["Infiniti","QX80","SV Sport 7 Seater","2026","2026-06",1],["GMC","Terrain","Terrain Elevation","2026","2026-01",2],["GMC","Terrain","Terrain Elevation","2026","2026-02",6],["GMC","Terrain","Terrain Elevation","2026","2026-06",2],["GMC","Terrain","Terrain Elevation","2026","2026-07",1],["GMC","Acadia","ACADIA AT4","2026","2026-04",2],["GMC","Acadia","ACADIA AT4","2026","2026-05",1],["GMC","Yukon","YUKON ELEVATION","2026","2026-02",7],["GMC","Yukon","YUKON ELEVATION","2026","2026-04",6],["GMC","Yukon","YUKON ELEVATION","2026","2026-06",2],["GMC","Yukon","YUKON ELEVATION","2026","2026-07",2],["GMC","Yukon","YUKON AT4 BENCH","2026","2026-04",1],["GMC","Yukon","YUKON AT4 BENCH","2026","2026-05",1],["GMC","Yukon","YUKON AT4 PILOT","2026","2026-04",2],["GMC","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-01",4],["GMC","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2],["GMC","Yukon","YUKON DENALI","2026","2026-01",3],["GMC","Yukon","YUKON DENALI","2026","2026-02",2],["GMC","Yukon","YUKON DENALI","2026","2026-06",2],["HONGQI","HONGQI","HS3 2.0","2026","2025-07",2],["HONGQI","HONGQI","HS3 2.0","2026","2025-08",1],["HONGQI","HONGQI","HS3 2.0","2026","2025-09",2],["HONGQI","HONGQI","HS3 1.5","2026","2025-07",1],["HONGQI","HONGQI","HS3 1.5","2026","2025-08",9],["HONGQI","HONGQI","OUSADO 2.0T Flagship","2025","2025-06",12],["HONGQI","HONGQI","OUSADO 2.0T Luxury","2025","2025-06",4]]};
+// === Deliveries chart ===
+const allM = new Set();
+E.eta_rows.forEach(r=>allM.add(r[5]));
+const monthsAll = Array.from(allM).sort();
+const fmtM = ym => { const [y,m]=ym.split('-'); return new Date(y,m-1,1).toLocaleDateString('en-US',{month:'short', year:'2-digit'}); };
+const brands=['Nissan','Infiniti','GMC','HONGQI','Commercial'];
+const ds = brands.map(b=>({
+  label:b,
+  data: monthsAll.map(m=>{
+    return E.eta_rows.filter(r=>r[0]===b && r[5]===m).reduce((s,r)=>s+r[6],0);
+  }),
+  backgroundColor: BRAND_COLORS[b]||'#888'
+}));
+new Chart(document.getElementById('ch-deliveries'), {
+  type:'bar',
+  data:{ labels: monthsAll.map(fmtM), datasets: ds },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom', labels:{font:{size:11}, boxWidth:12}}},
+    scales:{x:{stacked:true, grid:{display:false}, ticks:{font:{size:10}}},
+            y:{stacked:true, beginAtZero:true, title:{display:true, text:'Units inbound'}}}}
+});
 
-const TODAY_YM = '2026-05'; // current month for highlighting
-
-function classFor(month) {
-  if (month < TODAY_YM) return 'past';
-  if (month === TODAY_YM) return 'current';
-  return 'future';
-}
-function fmtMonth(ym) {
-  const [y, m] = ym.split('-');
-  return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
-}
-
-function renderEtaPivot(brand) {
-  const rows = ETA.eta_rows.filter(r => r[0] === brand);
-  const months = Array.from(new Set(rows.map(r => r[4]))).sort();
-  // group rows by variant+MY
+// === ETA pivot by brand ===
+function classFor(m){ return m<TODAY_YM?'past':(m===TODAY_YM?'current':'future'); }
+function renderEtaPivot(brand){
+  const rows = E.eta_rows.filter(r=>r[0]===brand);
+  const months = Array.from(new Set(rows.map(r=>r[5]))).sort();
   const variants = {};
-  rows.forEach(r => {
-    const k = `${r[2]}|${r[3]}|${r[1]}`;
-    variants[k] = variants[k] || { variant: r[2], my: r[3], group: r[1], months: {} };
-    variants[k].months[r[4]] = (variants[k].months[r[4]] || 0) + r[5];
+  rows.forEach(r=>{
+    const k=`${r[3]}|${r[4]}|${r[1]}|${r[2]}`;
+    variants[k] = variants[k] || { variant:r[3], my:r[4], market:r[1], group:r[2], months:{} };
+    variants[k].months[r[5]] = (variants[k].months[r[5]]||0) + r[6];
   });
-  const variantList = Object.values(variants);
-
-  let html = '<table class="eta-pivot"><thead><tr><th class="row-h">Variant</th>';
-  months.forEach(m => html += `<th class="${classFor(m)}">${fmtMonth(m)}</th>`);
+  const list = Object.values(variants);
+  let html = '<table class="eta-pivot"><thead><tr><th class="row-h">Variant</th><th>Market</th>';
+  months.forEach(m => html += `<th class="${classFor(m)}">${fmtM(m)}</th>`);
   html += '<th>Total</th></tr></thead><tbody>';
-
-  variantList.forEach(v => {
-    let total = 0;
+  list.forEach(v=>{
+    let tot=0;
     html += `<tr><td class="row-l">${v.variant}<span class="grp">${v.group} · MY${v.my}</span></td>`;
-    months.forEach(m => {
-      const u = v.months[m] || 0;
-      total += u;
-      if (u > 0) html += `<td class="cell ${classFor(m)}">${u}</td>`;
-      else html += `<td class="empty">·</td>`;
+    html += `<td>${v.market}</td>`;
+    months.forEach(m=>{
+      const u = v.months[m]||0; tot += u;
+      html += u>0 ? `<td class="cell ${classFor(m)}">${u}</td>` : `<td class="empty">·</td>`;
     });
-    html += `<td class="cell" style="background:#eef2ff;color:#3730a3;">${total}</td></tr>`;
+    html += `<td class="cell" style="background:#eef2ff;color:#3730a3;">${tot}</td></tr>`;
   });
-
-  // Footer totals
-  html += '<tr style="background:#f3f4f6;"><td class="row-l">Monthly total</td>';
-  let grand = 0;
-  months.forEach(m => {
-    const sum = variantList.reduce((s, v) => s + (v.months[m] || 0), 0);
+  html += '<tr style="background:#f3f4f6;"><td class="row-l">Monthly total</td><td></td>';
+  let grand=0;
+  months.forEach(m=>{
+    const sum = list.reduce((s,v)=>s+(v.months[m]||0), 0);
     grand += sum;
     html += `<td class="cell">${sum}</td>`;
   });
@@ -845,100 +591,74 @@ function renderEtaPivot(brand) {
   html += '</tbody></table>';
   document.getElementById('eta-pivot-host').innerHTML = html;
 }
-
-// Brand tab handlers
-document.querySelectorAll('#brand-tabs .bt').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#brand-tabs .bt').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('#brand-tabs .bt').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#brand-tabs .bt').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     renderEtaPivot(btn.dataset.brand);
   });
 });
 renderEtaPivot('Nissan');
 
-// ====================================================
-// Inbound monthly composition chart (stacked by brand)
-// ====================================================
-const allEtaMonths = Array.from(new Set(ETA.eta_rows.map(r => r[4]))).sort();
-const etaByBrand = {};
-ETA.eta_rows.forEach(r => {
-  etaByBrand[r[0]] = etaByBrand[r[0]] || {};
-  etaByBrand[r[0]][r[4]] = (etaByBrand[r[0]][r[4]] || 0) + r[5];
+// === Risks ===
+const RISKS = [
+  ['Magnite UPPER','Nissan',12,63,'high','Demand &gt; supply'],
+  ['Urvan family','Commercial',11,69,'high','Commercial cover ≈ 1 mo'],
+  ['X-TRAIL 4WD S 7 SEATS','Nissan',110,195,'med','Pipeline ≈ 6 mo'],
+  ['Patrol XE','Nissan',0,67,'med','Domestic — soft sell-through'],
+  ['Patrol Y63 (Export)','Nissan',29,141,'med','141 export pipeline · confirm contracts'],
+  ['QX60 Pure','Infiniti',3,13,'low','13 inbound · run HNW campaign'],
+  ['OUSADO 2.0T','HONGQI',0,12,'low','Awareness ramp needed']
+];
+const rb = document.getElementById('risk-tbody');
+RISKS.forEach(r=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td>${r[0]}</td>
+    <td><span class="pill ${r[1].toLowerCase()==='commercial'?'com':r[1].toLowerCase()}">${r[1]}</span></td>
+    <td class="num">${r[2]}</td><td class="num">${r[3]}</td>
+    <td><span class="risk-pill ${r[4]}">${r[5]}</span></td>`;
+  rb.appendChild(tr);
 });
 
-new Chart(document.getElementById('chart-eta-monthly'), {
+// === Sold detail grid ===
+const soldRows = [];
+Object.entries(E.top_variants_by_segment).forEach(([seg, list])=>{
+  list.forEach(v=>{
+    soldRows.push([v.BrandKey, v.Variantname, seg, v.cnt]);
+  });
+});
+new gridjs.Grid({
+  columns:['Brand','Variant','Segment',{name:'Units', formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)}],
+  data: soldRows, search:true, sort:true, pagination:{limit:12}
+}).render(document.getElementById('grid-sold'));
+
+new gridjs.Grid({
+  columns:['Brand','Market','Group','Variant','MY',
+    {name:'Inv',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
+    {name:'Reserved',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
+    {name:'Avail',formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)},
+    {name:'On Order',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
+    {name:'Pipeline',formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)}],
+  data: E.inv_grid_rows, search:true, sort:true, pagination:{limit:12}
+}).render(document.getElementById('grid-inv'));
+
+
+
+// === EXPORTS by country chart ===
+const expCountryEntries = Object.entries(E.exports_by_country).sort((a,b)=>b[1]-a[1]);
+new Chart(document.getElementById('ch-exp-country'), {
   type: 'bar',
   data: {
-    labels: allEtaMonths.map(fmtMonth),
-    datasets: ['Nissan','Infiniti','GMC','HONGQI'].map(b => ({
-      label: b,
-      data: allEtaMonths.map(m => (etaByBrand[b] && etaByBrand[b][m]) || 0),
-      backgroundColor: BRAND_COLORS[b]
-    }))
+    labels: expCountryEntries.map(e=>e[0]),
+    datasets: [{ label:'Units exported', data: expCountryEntries.map(e=>e[1]),
+      backgroundColor: ['#059669','#10b981','#34d399'].slice(0, expCountryEntries.length), borderRadius:4 }]
   },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } },
-    scales: {
-      x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
-      y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Units inbound' } }
-    }
+  options: { responsive:true, maintainAspectRatio:false, indexAxis:'y',
+    plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.parsed.x+' units ('+((c.parsed.x/E.sold_by_segment.Exports)*100).toFixed(1)+'%)'}} },
+    scales:{ x:{beginAtZero:true, grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}} }
   }
 });
 
-// ====================================================
-// Inbound composition summary by brand
-// ====================================================
-const summaryHost = document.getElementById('eta-summary-host');
-const groupSummary = {}; // {brand: {group: total}}
-ETA.eta_rows.forEach(r => {
-  if (r[4] < TODAY_YM) return;  // forward only
-  groupSummary[r[0]] = groupSummary[r[0]] || {};
-  groupSummary[r[0]][r[1]] = (groupSummary[r[0]][r[1]] || 0) + r[5];
-});
-let summaryHtml = '';
-['Nissan','Infiniti','GMC','HONGQI'].forEach(b => {
-  const groups = groupSummary[b] || {};
-  const total = Object.values(groups).reduce((s, v) => s + v, 0);
-  if (total === 0) {
-    summaryHtml += `<div style="margin-bottom:8px;"><span class="pill ${b.toLowerCase()}">${b}</span> <span style="color:var(--c-muted);">no forward arrivals scheduled</span></div>`;
-    return;
-  }
-  const items = Object.entries(groups).sort((a, b) => b[1] - a[1]);
-  summaryHtml += `<div style="margin-bottom:10px;"><span class="pill ${b.toLowerCase()}">${b}</span> <strong>${total} units</strong> incoming · `;
-  summaryHtml += items.map(([g, n]) => `${g} (${n})`).join(' · ');
-  summaryHtml += '</div>';
-});
-summaryHost.innerHTML = summaryHtml;
-
-// ====================================================
-// Searchable ETA Grid
-// ====================================================
-new gridjs.Grid({
-  columns: [
-    'Brand', 'Group', 'Variant', 'MY',
-    { name: 'Delivery Month', formatter: c => gridjs.html(`<div>${fmtMonth(c)}</div>`) },
-    { name: 'Units', formatter: c => gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`) }
-  ],
-  data: ETA.eta_rows.map(r => [r[0], r[1], r[2], r[3], r[4], r[5]]),
-  search: true, sort: true, pagination: { limit: 12 }
-}).render(document.getElementById('grid-eta'));
-
-// ====================================================
-// Inventory full table
-// ====================================================
-new gridjs.Grid({
-  columns: [
-    'Brand','Group','Variant','MY',
-    { name: 'Inv', formatter: c => gridjs.html(`<div style="text-align:right">${c}</div>`) },
-    { name: 'Reserved', formatter: c => gridjs.html(`<div style="text-align:right">${c}</div>`) },
-    { name: 'Avail', formatter: c => gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`) },
-    { name: 'On Order', formatter: c => gridjs.html(`<div style="text-align:right">${c}</div>`) },
-    { name: 'Total Pipeline', formatter: c => gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`) }
-  ],
-  data: DATA.inventory_full,
-  search: true, sort: true, pagination: { limit: 12 }
-}).render(document.getElementById('grid-inv'));
 </script>
 </body>
 </html>
