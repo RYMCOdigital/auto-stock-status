@@ -471,10 +471,10 @@ const domTop = E.top_variants_by_segment.Domestic.slice(0,10);
 new Chart(document.getElementById('ch-dom-top'), {
   type:'bar', data:{
     labels: domTop.map(v=>v.Variantname.length>26?v.Variantname.slice(0,26)+'…':v.Variantname),
-    datasets:[{ data: domTop.map(v=>v.cnt), backgroundColor: domTop.map(v=>BRAND_COLORS[v.BrandKey]||'#888'), borderRadius:3 }]
+    datasets:[{ data: domTop.map(v=>v.cnt), backgroundColor: domTop.map(v=>BRAND_COLORS[(v.Franchisename||'').trim()]||'#888'), borderRadius:3 }]
   },
   options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{title:c=>domTop[c[0].dataIndex].Variantname, label:c=>domTop[c.dataIndex].BrandKey+' · '+c.parsed.x+' units'}}},
+    plugins:{legend:{display:false}, tooltip:{callbacks:{title:c=>domTop[c[0].dataIndex].Variantname, label:c=>(domTop[c.dataIndex].Franchisename||'').trim()+' · '+c.parsed.x+' units'}}},
     scales:{x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}}} }
 });
 
@@ -496,10 +496,10 @@ const comTop = E.top_variants_by_segment.Commercial.slice(0,10);
 new Chart(document.getElementById('ch-com-top'), {
   type:'bar', data:{
     labels: comTop.map(v=>v.Variantname.length>26?v.Variantname.slice(0,26)+'…':v.Variantname),
-    datasets:[{ data: comTop.map(v=>v.cnt), backgroundColor: comTop.map(v=>BRAND_COLORS[v.BrandKey]||'#888'), borderRadius:3 }]
+    datasets:[{ data: comTop.map(v=>v.cnt), backgroundColor: comTop.map(v=>BRAND_COLORS[(v.Franchisename||'').trim()]||'#888'), borderRadius:3 }]
   },
   options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}, tooltip:{callbacks:{title:c=>comTop[c[0].dataIndex].Variantname, label:c=>comTop[c.dataIndex].BrandKey+' · '+c.parsed.x+' units'}}},
+    plugins:{legend:{display:false}, tooltip:{callbacks:{title:c=>comTop[c[0].dataIndex].Variantname, label:c=>(comTop[c.dataIndex].Franchisename||'').trim()+' · '+c.parsed.x+' units'}}},
     scales:{x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}}} }
 });
 
@@ -509,16 +509,40 @@ newDoughnut('ch-com-mix', ['Corporate','Government'], [131, 51], ['#7c3aed','#a7
 // Build a simple commercial-bias city distribution by approximating
 newBar('ch-com-city', lebCities, lebCities.map(c => Math.round((E.mix_by_city[c]||0) * 0.32)), ['#7c3aed','#a78bfa','#c4b5fd','#ddd6fe','#ede9fe'], {indexAxis:'y', horizontal:true});
 
-// === EXPORTS detail table ===
-const expBody = document.getElementById('exp-detail-body');
-E.export_detail.forEach(r=>{
-  const tr = document.createElement('tr');
-  tr.innerHTML = `<td><span class="pill ${r.brand.toLowerCase().includes('infiniti')?'infiniti':r.brand.toLowerCase().includes('gmc')?'gmc':'nissan'}">${r.brand}</span></td>
-                  <td>${r.variant}</td>
-                  <td>${r.city==='DAMASCUS'?'<strong style="color:#059669">'+r.city+' (Syria)</strong>':r.city}</td>
-                  <td>${r.my}</td>`;
-  expBody.appendChild(tr);
-});
+// === EXPORTS by destination country chart ===
+(function(){
+  const canvas = document.getElementById('ch-exp-country');
+  if (!canvas) return;
+  const entries = Object.entries(E.exports_by_country || {})
+    .filter(([k,v]) => v > 0)
+    .sort((a,b) => b[1] - a[1]);
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels: entries.map(e => e[0]),
+      datasets: [{
+        label: 'Units exported',
+        data: entries.map(e => e[1]),
+        backgroundColor: entries.map(e => {
+          const k = String(e[0]).toUpperCase();
+          if (k === 'DUBAI') return '#059669';
+          if (k === 'IRBIL') return '#10b981';
+          if (k === 'TALATONA') return '#34d399';
+          if (k === 'DAMASCUS') return '#84cc16';
+          return '#9ca3af';
+        }),
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false, indexAxis:'y',
+      plugins:{ legend:{display:false},
+        tooltip:{callbacks:{label:c=>c.parsed.x+' units ('+((c.parsed.x/E.sold_by_segment.Exports)*100).toFixed(1)+'%)'}} },
+      scales:{ x:{beginAtZero:true, grid:{display:false}},
+        y:{grid:{display:false}, ticks:{font:{size:11}}} }
+    }
+  });
+})();
 
 // === Domestic Inventory by Brand ===
 const domInvBody = document.getElementById('dom-inv-body');
@@ -624,7 +648,7 @@ RISKS.forEach(r=>{
 const soldRows = [];
 Object.entries(E.top_variants_by_segment).forEach(([seg, list])=>{
   list.forEach(v=>{
-    soldRows.push([v.BrandKey, v.Variantname, seg, v.cnt]);
+    soldRows.push([(v.Franchisename||'').trim(), v.Variantname, seg, v.cnt]);
   });
 });
 new gridjs.Grid({
@@ -642,22 +666,6 @@ new gridjs.Grid({
   data: E.inv_grid_rows, search:true, sort:true, pagination:{limit:12}
 }).render(document.getElementById('grid-inv'));
 
-
-
-// === EXPORTS by country chart ===
-const expCountryEntries = Object.entries(E.exports_by_country).sort((a,b)=>b[1]-a[1]);
-new Chart(document.getElementById('ch-exp-country'), {
-  type: 'bar',
-  data: {
-    labels: expCountryEntries.map(e=>e[0]),
-    datasets: [{ label:'Units exported', data: expCountryEntries.map(e=>e[1]),
-      backgroundColor: ['#059669','#10b981','#34d399'].slice(0, expCountryEntries.length), borderRadius:4 }]
-  },
-  options: { responsive:true, maintainAspectRatio:false, indexAxis:'y',
-    plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.parsed.x+' units ('+((c.parsed.x/E.sold_by_segment.Exports)*100).toFixed(1)+'%)'}} },
-    scales:{ x:{beginAtZero:true, grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}} }
-  }
-});
 
 </script>
 </body>
