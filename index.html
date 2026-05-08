@@ -44,11 +44,20 @@ header h1 { margin:0; font-size:20px; font-weight:700; letter-spacing:0.3px; }
 header .sub { font-size:12px; opacity:0.9; margin-top:4px; }
 header .meta { font-size:11px; opacity:0.85; text-align:right; }
 header .meta div { margin-bottom:2px; }
-.kpi-row { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-bottom:16px; }
+.kpi-row { display:grid; grid-template-columns:repeat(6, 1fr); gap:10px; margin-bottom:16px; }
+@media (max-width:1300px){ .kpi-row { grid-template-columns:repeat(3, 1fr); } }
+@media (max-width:700px){ .kpi-row { grid-template-columns:repeat(2, 1fr); } }
 .kpi { background:var(--c-card); border:1px solid var(--c-border); border-radius:8px; padding:14px 16px; box-shadow:0 1px 2px rgba(0,0,0,0.03); border-top:3px solid var(--c-accent); }
 .kpi.dom { border-top-color: var(--c-domestic); }
 .kpi.com { border-top-color: var(--c-commercial); }
 .kpi.exp { border-top-color: var(--c-exports); }
+.kpi.stock { border-top-color: #d97706; }
+.kpi.high-stock { border-top-color: var(--c-bad); background: linear-gradient(180deg, #fef2f2 0%, #ffffff 60%); }
+.kpi.high-stock .label { color: var(--c-bad); }
+.kpi.high-stock .value { font-size:18px; line-height:1.2; color:#7f1d1d; }
+.kpi .stock-line { font-size:10px; color:var(--c-muted); margin-top:6px; line-height:1.4; }
+.kpi .stock-line strong { color:var(--c-text); font-weight:700; }
+.kpi.high-stock .stock-line strong { color:#7f1d1d; }
 .kpi .label { font-size:11px; color:var(--c-muted); text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
 .kpi .value { font-size:28px; font-weight:700; margin-top:4px; }
 .kpi .sub-val { font-size:11px; color:var(--c-muted); margin-top:2px; }
@@ -134,30 +143,42 @@ table.eta-pivot td.future { background:#dcfce7; color:#166534; }
 <div class="kpi-row">
   <div class="kpi">
     <div class="label">Sold YTD 2026</div>
-    <div class="value">794</div>
-    <div class="sub-val">All 3 segments · ~6.3 cars/day · Final Review file</div>
+    <div class="value">796</div>
+    <div class="sub-val">All 3 segments · ~6.3 cars/day · 8-May refresh</div>
   </div>
   <div class="kpi dom">
-    <div class="label">Domestic</div>
-    <div class="value">483</div>
-    <div class="sub-val">Retail 233 · Fleet 250 · 61% of YTD</div>
+    <div class="label">Sold Domestic</div>
+    <div class="value">484</div>
+    <div class="sub-val">Retail 233 · Fleet 251 · 61% of YTD</div>
   </div>
   <div class="kpi com">
-    <div class="label">Commercial</div>
-    <div class="value">96</div>
-    <div class="sub-val">Corporate 75 · Export-China 20 · 12%</div>
+    <div class="label">Sold Commercial</div>
+    <div class="value">76</div>
+    <div class="sub-val">Corporate 75 · Dealer 1 · 9.5%</div>
   </div>
   <div class="kpi exp">
-    <div class="label">Exports</div>
-    <div class="value">215</div>
-    <div class="sub-val">Dubai 150 · Irbil 48 · Other 17 · 27%</div>
+    <div class="label">Sold Exports</div>
+    <div class="value">236</div>
+    <div class="sub-val">Dubai 171 · Irbil 48 · Other 17 · 30%</div>
+  </div>
+  <div class="kpi stock">
+    <div class="label">Stock On Hand</div>
+    <div class="value">492</div>
+    <div class="sub-val">Current vehicles on lot · excl. orders</div>
+    <div class="stock-line" id="stock-breakdown"></div>
+  </div>
+  <div class="kpi high-stock">
+    <div class="label">High Stock — Top Model</div>
+    <div class="value" id="high-stock-model">—</div>
+    <div class="sub-val" id="high-stock-detail">Stock + on-order · auto-refreshed</div>
+    <div class="stock-line" id="high-stock-runners"></div>
   </div>
 </div>
 
 <div class="card" style="margin-bottom:16px; border-left:4px solid var(--c-accent);">
-  <h2>Daily Refresh — Final Review File <span class="badge">7 May 2026 · Thursday</span></h2>
+  <h2>Daily Refresh — 8-May File <span class="badge">8 May 2026 · Friday</span></h2>
   <div style="font-size:12px; line-height:1.55;">
-    Refreshed from <em>Sold Cars_7-5-2026 Final review.xlsx</em>. The file's three sheets are now treated as authoritative segments — no filtering applied. <strong>YTD total 794</strong>: Domestic 483 · Commercial 96 · Exports 215. The Final Review file is a cleaned/deduplicated version of the earlier file (where the original Domestic sheet had passenger + commercial mixed and a few mislabeled export rows). Export destinations: <strong>Dubai 150 · Irbil 48 · Talatona 1 · Damascus 1 · 14 with sparse/Lebanese cities</strong> (likely awaiting destination confirmation). Patrol V6TT LE Platinum remains the export workhorse.
+    Refreshed from <em>Sold Cars_8-5-2026.xlsx</em>. <strong>YTD total 796</strong>: Domestic 484 · Commercial 76 · Exports 236. Day-over-day delta vs the Final Review file: Domestic +1, Commercial −20 (the 20 Nissan Commercial Urvan exports to Dubai have been moved out of Commercial and into the Exports sheet — cleaner segmentation), Exports +21. The Domestic sheet introduces a renamed brand label "NISSAN China" (was "Nissan Outsource") for 25 Navara government-fleet sales. Two new dashboard elements added per request: a <strong>Stock-On-Hand banner</strong> (492 vehicles currently on the lot, brand breakdown shown beneath the value) and a <strong>Chiyah vs Naccache branch chart</strong> in the Domestic section.
   </div>
 </div>
 
@@ -180,13 +201,13 @@ table.eta-pivot td.future { background:#dcfce7; color:#166534; }
 <!-- ============== DOMESTIC ============== -->
 <div class="section-head domestic">
   <h2>1 · DOMESTIC — Retail &amp; Fleet</h2>
-  <div class="meta">483 sold YTD · 61% of total volume · Domestic sheet</div>
+  <div class="meta">484 sold YTD · 61% of total volume · Domestic sheet</div>
 </div>
 <div class="section-body">
   <div class="subkpi-row">
     <div class="subkpi"><div class="lbl">Retail</div><div class="v">233</div><div class="pct">48% of Domestic · individual buyers</div></div>
-    <div class="subkpi"><div class="lbl">Fleet — RAC</div><div class="v">104</div><div class="pct">22% · Rent-A-Car operators</div></div>
-    <div class="subkpi"><div class="lbl">Fleet — Corporate</div><div class="v">56</div><div class="pct">12% · Passenger corporate fleet</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — RAC</div><div class="v">104</div><div class="pct">21% · Rent-A-Car operators</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — Corporate</div><div class="v">57</div><div class="pct">12% · Passenger corporate fleet</div></div>
     <div class="subkpi"><div class="lbl">Fleet — Dealer / Govt</div><div class="v">48 / 42</div><div class="pct">10% / 9% · Sub-dealer · Government</div></div>
   </div>
   <div class="grid-2">
@@ -209,19 +230,32 @@ table.eta-pivot td.future { background:#dcfce7; color:#166534; }
       <div class="chart-wrap" style="height:200px;"><canvas id="ch-dom-city"></canvas></div>
     </div>
   </div>
+  <div class="grid-2" style="margin-top:14px;">
+    <div class="card">
+      <h2>Chiyah vs Naccache — Sales by Brand <span class="badge">Domestic only</span></h2>
+      <div class="chart-wrap" style="height:240px;"><canvas id="ch-dom-branches"></canvas></div>
+      <div style="font-size:11px; color:var(--c-muted); margin-top:8px; line-height:1.4;">
+        Chiyah branch handles the bulk of Domestic volume. Naccache covers the eastern Mount Lebanon catchment and serves as a smaller showroom. Use this view to track branch-level activation across each brand.
+      </div>
+    </div>
+    <div class="card">
+      <h2>Branch Totals <span class="badge">All 4 Domestic departments</span></h2>
+      <div class="chart-wrap" style="height:240px;"><canvas id="ch-dom-branchtotals"></canvas></div>
+    </div>
+  </div>
 </div>
 
 <!-- ============== COMMERCIAL ============== -->
 <div class="section-head commercial">
-  <h2>2 · COMMERCIAL — Corporate &amp; Export</h2>
-  <div class="meta">96 sold YTD · 12% of total volume · Commercial sheet</div>
+  <h2>2 · COMMERCIAL — Corporate Fleet</h2>
+  <div class="meta">76 sold YTD · 9.5% of total volume · Commercial sheet (export rows now in Exports)</div>
 </div>
 <div class="section-body">
   <div class="subkpi-row">
-    <div class="subkpi"><div class="lbl">Fleet — Corporate</div><div class="v">75</div><div class="pct">78% · Domestic corporate accounts</div></div>
-    <div class="subkpi"><div class="lbl">Export — China</div><div class="v">20</div><div class="pct">21% · Urvan to Dubai</div></div>
+    <div class="subkpi"><div class="lbl">Fleet — Corporate</div><div class="v">75</div><div class="pct">99% · Domestic corporate accounts</div></div>
     <div class="subkpi"><div class="lbl">Fleet — Dealer</div><div class="v">1</div><div class="pct">1% · Sub-dealer</div></div>
-    <div class="subkpi"><div class="lbl">Top Brand</div><div class="v">Nissan Commercial</div><div class="pct">92 of 96 (Urvan family) · UD Trucks 4</div></div>
+    <div class="subkpi"><div class="lbl">Top Brand</div><div class="v">Nissan Commercial</div><div class="pct">72 of 76 · Urvan family · UD Trucks 4</div></div>
+    <div class="subkpi"><div class="lbl">Top Cities</div><div class="v">Mt-Lebanon · Beirut</div><div class="pct">43 + 32 (98% of volume)</div></div>
   </div>
   <div class="grid-2">
     <div class="card">
@@ -248,12 +282,12 @@ table.eta-pivot td.future { background:#dcfce7; color:#166534; }
 <!-- ============== EXPORTS ============== -->
 <div class="section-head exports">
   <h2>3 · EXPORTS — by Country</h2>
-  <div class="meta">215 sold YTD · 27% of total volume · destinations now in Exports sheet</div>
+  <div class="meta">236 sold YTD · 30% of total volume · destinations in Exports sheet</div>
 </div>
 <div class="section-body">
   <div class="subkpi-row">
-    <div class="subkpi"><div class="lbl">UAE — Dubai</div><div class="v">150</div><div class="pct">70% · Patrol family + Urvan + QX80</div></div>
-    <div class="subkpi"><div class="lbl">Iraq — Irbil</div><div class="v">48</div><div class="pct">22% · Patrol + Yukon family</div></div>
+    <div class="subkpi"><div class="lbl">UAE — Dubai</div><div class="v">171</div><div class="pct">72% · Patrol family + Urvan + QX80</div></div>
+    <div class="subkpi"><div class="lbl">Iraq — Irbil</div><div class="v">48</div><div class="pct">20% · Patrol + Yukon family</div></div>
     <div class="subkpi"><div class="lbl">Angola / Syria</div><div class="v">2</div><div class="pct">1 × Talatona · 1 × Damascus</div></div>
     <div class="subkpi"><div class="lbl">Awaiting Destination</div><div class="v">15</div><div class="pct">9 blank · 6 Lebanese cities to confirm</div></div>
   </div>
@@ -415,18 +449,36 @@ table.eta-pivot td.future { background:#dcfce7; color:#166534; }
 
 <script>
 
-const E = {"sold_by_brand":{"NISSAN":590,"Nissan Commercial":92,"GMC":47,"Nissan Outsource":25,"Infiniti":17,"HONGQI":10,"Kawasaki":9,"UD TRUCKS":4},"sold_by_segment":{"Domestic":483,"Commercial":96,"Exports":215},"sold_by_saletype":{"Retail":233,"Fleet-Corporate":131,"Fleet Government (E)":110,"Fleet-RAC":104,"Export-China":96,"Fleet Dealer":49,"Fleet-Government":42,"Export-Fleet":22,"Export-Retail":7},"mix_by_my":{"2026":318,"2025":244,"2024":13},"mix_by_city":{"Mount Lebanon":382,"Beirut":150,"North Lebanon":15,"NaN":12,"South Lebanon":10,"Bekaa":4,"DAMASCUS":1,"DUBAI":1},"top_variants_by_segment":{"Domestic":[{"Franchisename":"NISSAN","Variantname":"MAGNITE UPPER","cnt":97},{"Franchisename":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":96},{"Franchisename":"NISSAN","Variantname":"MAGNITE MID","cnt":45},{"Franchisename":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":35},{"Franchisename":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":20},{"Franchisename":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":18},{"Franchisename":"Nissan Outsource","Variantname":"NAVARA D23 2.5L DIESEL AT 4WD PRO-4X","cnt":15},{"Franchisename":"NISSAN","Variantname":"MAGNITE TOP+","cnt":14},{"Franchisename":"GMC","Variantname":"YUKON ELEVATION","cnt":13},{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":13},{"Franchisename":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":12},{"Franchisename":"NISSAN","Variantname":"PATROL V6 XE","cnt":10},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","cnt":10},{"Franchisename":"Nissan Outsource","Variantname":"NAVARA LE AT PLUS DSL","cnt":10},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":9}],"Commercial":[{"Franchisename":"Nissan Commercial","Variantname":"URVAN P/V STD BODY QR25 5MT","cnt":35},{"Franchisename":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","cnt":25},{"Franchisename":"Nissan Commercial","Variantname":"URVAN M/B STD ROOF QR25 5MT","cnt":18},{"Franchisename":"Nissan Commercial","Variantname":"URVAN M/B WIDE BODY QR25 5MT","cnt":14},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER PKE250-17T-WB4250","cnt":2},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER LKE210 5.1L 4X2 12T WB4750","cnt":1},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER PKE280-19T-WB4500","cnt":1}],"Exports":[{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","City":"DUBAI","cnt":106},{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","City":"IRBIL","cnt":28},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"DUBAI","cnt":15},{"Franchisename":"GMC","Variantname":"YUKON AT4 ULTIMATE","City":"IRBIL","cnt":8},{"Franchisename":"GMC","Variantname":"YUKON ELEVATION","City":"IRBIL","cnt":8},{"Franchisename":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","City":"DUBAI","cnt":8},{"Franchisename":"Infiniti","Variantname":"INFINITI QX80 SV 7 SEATS","City":"DUBAI","cnt":6},{"Franchisename":"NISSAN","Variantname":"X-TRAIL SV1 4WD 3ROW","City":"DUBAI","cnt":5},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"IRBIL","cnt":4},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"Unknown","cnt":4},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","City":"DUBAI","cnt":4},{"Franchisename":"Infiniti","Variantname":"INFINITI QX80 AUTOGRAPH 7 SEATS","City":"DUBAI","cnt":3},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"Beirut","cnt":2},{"Franchisename":"GMC","Variantname":"NEW ACADIA AT4","City":"Unknown","cnt":2},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE TITANIUM with RSE","City":"DUBAI","cnt":2}]},"top_variants_by_subsegment":{"Retail":[{"BrandKey":"NISSAN","Variantname":"MAGNITE UPPER","cnt":51},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":24},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":19},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":15},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":15},{"BrandKey":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":10},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":10},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","cnt":10},{"BrandKey":"NISSAN","Variantname":"MAGNITE TOP+","cnt":9},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":9}],"Fleet":[{"BrandKey":"NISSAN","Variantname":"MAGNITE UPPER","cnt":46},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":45},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":15},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":10},{"BrandKey":"Kawasaki","Variantname":"TERYX 4 800","cnt":7},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":6},{"BrandKey":"GMC","Variantname":"YUKON ELEVATION","cnt":4},{"BrandKey":"NISSAN","Variantname":"MAGNITE TOP+","cnt":4},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":3},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":3}],"Corporate":[{"BrandKey":"Nissan Commercial","Variantname":"URVAN P/V STD BODY QR25 5MT","cnt":35},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":23},{"BrandKey":"Nissan Commercial","Variantname":"URVAN M/B STD ROOF QR25 5MT","cnt":18},{"BrandKey":"Nissan Commercial","Variantname":"URVAN M/B WIDE BODY QR25 5MT","cnt":13},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":6},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":6},{"BrandKey":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","cnt":5},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":3},{"BrandKey":"NISSAN","Variantname":"PATROL V6 XE","cnt":3},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SL 4WD 3ROW","cnt":2}],"Government":[{"BrandKey":"Nissan Outsource","Variantname":"NAVARA D23 2.5L DIESEL AT 4WD PRO-4X","cnt":15},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":13},{"BrandKey":"Nissan Outsource","Variantname":"NAVARA LE AT PLUS DSL","cnt":10},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":6},{"BrandKey":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":3},{"BrandKey":"GMC","Variantname":"TERRAIN ELEVATION AWD","cnt":2},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":1},{"BrandKey":"NISSAN","Variantname":"X-TERRA 4WD TITANIUM 7AT","cnt":1}],"Export":[{"BrandKey":"GMC","Variantname":"NEW ACADIA AT4","cnt":4},{"BrandKey":"Infiniti","Variantname":"INFINITI QX60 LUXE","cnt":3}]},"brand_segment_pivot":{"NISSAN":{"Domestic":407,"Exports":183,"Commercial":0},"GMC":{"Domestic":27,"Exports":20,"Commercial":0},"Nissan Outsource":{"Domestic":25,"Commercial":0,"Exports":0},"HONGQI":{"Domestic":10,"Commercial":0,"Exports":0},"Kawasaki":{"Domestic":9,"Commercial":0,"Exports":0},"Infiniti":{"Domestic":5,"Exports":12,"Commercial":0},"Nissan Commercial":{"Commercial":92,"Domestic":0,"Exports":0},"UD TRUCKS":{"Commercial":4,"Domestic":0,"Exports":0}},"brand_subsegment_pivot":{"GMC":{"Corporate":4,"Export":4,"Fleet":6,"Government":2,"Retail":15},"HONGQI":{"Corporate":0,"Export":0,"Fleet":1,"Government":0,"Retail":9},"Infiniti":{"Corporate":1,"Export":3,"Fleet":0,"Government":0,"Retail":4},"Kawasaki":{"Corporate":0,"Export":0,"Fleet":9,"Government":0,"Retail":0},"NISSAN":{"Corporate":51,"Export":0,"Fleet":136,"Government":24,"Retail":205},"Nissan Commercial":{"Corporate":71,"Export":0,"Fleet":1,"Government":0,"Retail":0},"Nissan Outsource":{"Corporate":0,"Export":0,"Fleet":0,"Government":25,"Retail":0},"UD TRUCKS":{"Corporate":4,"Export":0,"Fleet":0,"Government":0,"Retail":0}},"inv_summary":{"Nissan":{"Domestic":{"inventory":411.0,"reservations":134.0,"inventory_after_res":277.0,"consigned":10.0,"total_orders":546.0,"res_from_orders":49.0,"total_inventory":784.0},"Export":{"inventory":29.0,"reservations":29.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":112.0,"res_from_orders":112.0,"total_inventory":0.0}},"Infiniti":{"Domestic":{"inventory":7.0,"reservations":0.0,"inventory_after_res":7.0,"consigned":1.0,"total_orders":27.0,"res_from_orders":5.0,"total_inventory":30.0},"Export":{"inventory":1.0,"reservations":0.0,"inventory_after_res":1.0,"consigned":1.0,"total_orders":0.0,"res_from_orders":0.0,"total_inventory":1.0}},"GMC":{"Domestic":{"inventory":10.0,"reservations":7.0,"inventory_after_res":3.0,"consigned":0.0,"total_orders":48.0,"res_from_orders":12.0,"total_inventory":39.0},"Export":{"inventory":0.0,"reservations":0.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":56.0,"res_from_orders":56.0,"total_inventory":0.0}},"HONGQI":{"Domestic":{"inventory":7.0,"reservations":1.0,"inventory_after_res":6.0,"consigned":4.0,"total_orders":31.0,"res_from_orders":3.0,"total_inventory":38.0}},"Commercial":{"Domestic":{"inventory":27.0,"reservations":16.0,"inventory_after_res":11.0,"consigned":4.0,"total_orders":54.0,"res_from_orders":0.0,"total_inventory":69.0},"Export":{"inventory":0.0,"reservations":0.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":22.0,"res_from_orders":22.0,"total_inventory":0.0}}},"eta_rows":[["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-02",1.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-03",85.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-04",5.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-05",15.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-06",40.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-04",20.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-05",25.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-06",15.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-04",30.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-05",15.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-06",5.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-04",2.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-05",2.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-06",1.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026","2026-05",6.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026","2026-06",6.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-03",5.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-04",10.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-05",25.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-06",25.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026","2026-05",3.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026","2026-06",2.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-04",35.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-05",25.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-06",25.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-04",3.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-05",6.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-06",5.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-05",24.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-06",19.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-07",8.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-08",8.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-09",8.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-04",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-07",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-08",8.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-09",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-04",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-05",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-06",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-08",3.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-09",3.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-05",1.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-06",4.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-09",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-04",1.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-05",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-06",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-09",2.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026","2026-05",5.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026","2026-08",5.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-04",3.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-05",4.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-06",2.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-08",7.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-09",8.0],["Nissan","Export","PATROL Y63","Patrol LE T1 - Y63","2026","2026-09",5.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-04",4.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-05",15.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-06",9.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-09",45.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-03",2.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-04",4.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-05",3.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-06",2.0],["Infiniti","Domestic","QX60","QX60 Luxe","2026","2026-02",2.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","Autograph 8 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-04",2.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-05",2.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026","2026-06",1.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-01",2.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-02",6.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-06",2.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-07",1.0],["GMC","Domestic","Acadia","ACADIA AT4","2026","2026-04",2.0],["GMC","Domestic","Acadia","ACADIA AT4","2026","2026-05",1.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-02",7.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-04",6.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-06",2.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-07",2.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026","2026-04",1.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026","2026-05",1.0],["GMC","Domestic","Yukon","YUKON AT4 PILOT","2026","2026-04",2.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-01",4.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-01",3.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-02",2.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-06",2.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-01",2.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-02",19.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-04",7.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-06",7.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-07",7.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-04",3.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-06",3.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-01",1.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-02",4.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-07",1.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-07",2.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-08",1.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-09",2.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026","2025-07",1.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026","2025-08",9.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Flagship","2025","2025-06",12.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Luxury","2025","2025-06",4.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026","2026-05",6.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026","2026-06",2.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-04",3.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-05",9.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-06",20.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-08",2.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2026","2026-05",5.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026","2026-04",2.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026","2026-05",5.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-05",9.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-06",3.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-09",10.0]],"inv_grid_rows":[["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025",109.0,47.0,62.0,86.0,148.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026",0.0,0.0,0.0,60.0,60.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2025",2.0,1.0,1.0,0.0,1.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026",54.0,25.0,29.0,60.0,89.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026",21.0,9.0,12.0,50.0,63.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026",0.0,0.0,0.0,5.0,5.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026",7.0,5.0,2.0,12.0,14.0],["Nissan","Domestic","KICKS P16","Kicks SV","2025",1.0,0.0,1.0,0.0,1.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026",11.0,2.0,9.0,65.0,72.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026",0.0,0.0,0.0,5.0,5.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026",150.0,40.0,110.0,85.0,195.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026",7.0,0.0,7.0,0.0,7.0],["Nissan","Domestic","X-trail T33","X-trail T33 EPWR SV","2026",47.0,3.0,44.0,0.0,44.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2025",2.0,2.0,0.0,0.0,0.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026",0.0,0.0,0.0,14.0,14.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026",0.0,0.0,0.0,67.0,45.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026",0.0,0.0,0.0,14.0,8.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026",0.0,0.0,0.0,9.0,4.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026",0.0,0.0,0.0,7.0,6.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026",0.0,0.0,0.0,7.0,3.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026",0.0,0.0,0.0,10.0,0.0],["Nissan","Export","PATROL Y63","Patrol SE T2 - Y63","2026",5.0,5.0,0.0,0.0,0.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026",0.0,0.0,0.0,24.0,0.0],["Nissan","Export","PATROL Y63","Patrol LE T1 - Y63","2026",0.0,0.0,0.0,5.0,0.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026",24.0,24.0,0.0,73.0,0.0],["Infiniti","Domestic","QX60","QX60 Pure","2026",3.0,0.0,3.0,11.0,13.0],["Infiniti","Domestic","QX60","QX60 Luxe","2026",2.0,0.0,2.0,2.0,4.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026",1.0,0.0,1.0,3.0,1.0],["Infiniti","Domestic","QX80","Autograph 8 Seater","2026",0.0,0.0,0.0,1.0,1.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026",0.0,0.0,0.0,5.0,5.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026",0.0,0.0,0.0,3.0,3.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026",1.0,0.0,1.0,2.0,3.0],["Infiniti","Export","QX80","SV Sport 7 Seater","2026",1.0,0.0,1.0,0.0,1.0],["GMC","Domestic","Terrain","Terrain Elevation","2026",7.0,5.0,2.0,11.0,13.0],["GMC","Domestic","Acadia","ACADIA AT4","2025",1.0,1.0,0.0,0.0,0.0],["GMC","Domestic","Acadia","ACADIA AT4","2026",1.0,1.0,0.0,3.0,3.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026",0.0,0.0,0.0,17.0,7.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026",0.0,0.0,0.0,2.0,2.0],["GMC","Domestic","Yukon","YUKON AT4 PILOT","2026",0.0,0.0,0.0,2.0,1.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026",1.0,0.0,1.0,6.0,7.0],["GMC","Domestic","Yukon","YUKON DENALI","2026",0.0,0.0,0.0,7.0,6.0],["GMC","Export","Yukon","YUKON ELEVATION","2026",0.0,0.0,0.0,42.0,0.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026",0.0,0.0,0.0,8.0,0.0],["GMC","Export","Yukon","YUKON DENALI","2026",0.0,0.0,0.0,6.0,0.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2025",3.0,0.0,3.0,0.0,3.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026",0.0,0.0,0.0,5.0,4.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026",2.0,0.0,2.0,10.0,12.0],["HONGQI","Domestic","HONGQI","HS7 Luxury Pro","2026",0.0,0.0,0.0,0.0,2.0],["HONGQI","Domestic","HONGQI","HS7 deluxe","2026",0.0,0.0,0.0,0.0,0.0],["HONGQI","Domestic","HONGQI","E-QM5 Luxury","2024",1.0,0.0,1.0,0.0,1.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Flagship","2025",0.0,0.0,0.0,12.0,12.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Luxury","2025",0.0,0.0,0.0,4.0,4.0],["HONGQI","Domestic","HONGQI","E-HS7","2026",1.0,1.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2025",1.0,1.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026",0.0,0.0,0.0,8.0,8.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026",1.0,0.0,1.0,34.0,39.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2025",5.0,5.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2026",10.0,3.0,7.0,5.0,12.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2025",2.0,2.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026",5.0,5.0,0.0,7.0,7.0],["Commercial","Domestic","Golden Dragon","GOLDEN DRAGON KAST 7M","2025",2.0,0.0,2.0,0.0,2.0],["Commercial","Domestic","UD Trucks","MKE210","2024",1.0,0.0,1.0,0.0,1.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026",0.0,0.0,0.0,22.0,0.0]],"sold_total":794,"exports_by_country":{"DUBAI":150,"IRBIL":48,"Unknown":9,"Beirut":3,"Mount Lebanon":2,"TALATONA":1,"Bekaa":1,"DAMASCUS":1},"exports_by_city":{"DUBAI":170,"IRBIL":48,"TALATONA":1},"exports_brand_country":{"GMC":{"Beirut":0,"Bekaa":0,"DAMASCUS":0,"DUBAI":0,"IRBIL":16,"Mount Lebanon":2,"TALATONA":0,"Unknown":2},"Infiniti":{"Beirut":0,"Bekaa":1,"DAMASCUS":1,"DUBAI":9,"IRBIL":0,"Mount Lebanon":0,"TALATONA":0,"Unknown":1},"NISSAN":{"Beirut":3,"Bekaa":0,"DAMASCUS":0,"DUBAI":141,"IRBIL":32,"Mount Lebanon":0,"TALATONA":1,"Unknown":6}},"domestic_city_mix":{"Mount Lebanon":337,"Beirut":115,"North Lebanon":15,"South Lebanon":9,"Unknown":3,"Bekaa":3,"DUBAI":1},"commercial_city_mix":{"Mount Lebanon":43,"Beirut":32,"DUBAI":20,"South Lebanon":1},"domestic_department":{"New Car Sales Department-Chiyah":426,"New Car Sales Department-Dealer":27,"New Car Sales Department-Naccache":26,"New Car Sales Department-Zalka":4}};
+const E = {"sold_by_brand":{"NISSAN":592,"Nissan Commercial":92,"GMC":47,"NISSAN China":25,"Infiniti":17,"HONGQI":10,"Kawasaki":9,"UD TRUCKS":4},"sold_by_segment":{"Domestic":484,"Commercial":76,"Exports":236},"sold_by_saletype":{"Retail":234,"Fleet-Corporate":132,"Fleet Government (E)":110,"Fleet-RAC":104,"Export-China":96,"Fleet Dealer":49,"Fleet-Government":42,"Export-Fleet":22,"Export-Retail":7},"mix_by_my":{"2026":318,"2025":244,"2024":13},"mix_by_city":{"Mount Lebanon":382,"Beirut":150,"North Lebanon":15,"NaN":12,"South Lebanon":10,"Bekaa":4,"DAMASCUS":1,"DUBAI":1},"top_variants_by_segment":{"Domestic":[{"Franchisename":"NISSAN","Variantname":"MAGNITE UPPER","cnt":97},{"Franchisename":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":96},{"Franchisename":"NISSAN","Variantname":"MAGNITE MID","cnt":45},{"Franchisename":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":35},{"Franchisename":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":20},{"Franchisename":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":18},{"Franchisename":"NISSAN China","Variantname":"NAVARA D23 2.5L DIESEL AT 4WD PRO-4X","cnt":15},{"Franchisename":"NISSAN","Variantname":"MAGNITE TOP+","cnt":15},{"Franchisename":"GMC","Variantname":"YUKON ELEVATION","cnt":13},{"Franchisename":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":12},{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":12},{"Franchisename":"NISSAN","Variantname":"PATROL V6 XE","cnt":10},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","cnt":10},{"Franchisename":"NISSAN China","Variantname":"NAVARA LE AT PLUS DSL","cnt":10},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":9}],"Commercial":[{"Franchisename":"Nissan Commercial","Variantname":"URVAN P/V STD BODY QR25 5MT","cnt":35},{"Franchisename":"Nissan Commercial","Variantname":"URVAN M/B STD ROOF QR25 5MT","cnt":18},{"Franchisename":"Nissan Commercial","Variantname":"URVAN M/B WIDE BODY QR25 5MT","cnt":14},{"Franchisename":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","cnt":5},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER PKE250-17T-WB4250","cnt":2},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER LKE210 5.1L 4X2 12T WB4750","cnt":1},{"Franchisename":"UD TRUCKS","Variantname":"UD CRONER PKE280-19T-WB4500","cnt":1}],"Exports":[{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","City":"DUBAI","cnt":107},{"Franchisename":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","City":"IRBIL","cnt":28},{"Franchisename":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","City":"DUBAI","cnt":20},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"DUBAI","cnt":15},{"Franchisename":"GMC","Variantname":"YUKON AT4 ULTIMATE","City":"IRBIL","cnt":8},{"Franchisename":"GMC","Variantname":"YUKON ELEVATION","City":"IRBIL","cnt":8},{"Franchisename":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","City":"DUBAI","cnt":8},{"Franchisename":"Infiniti","Variantname":"INFINITI QX80 SV 7 SEATS","City":"DUBAI","cnt":6},{"Franchisename":"NISSAN","Variantname":"X-TRAIL SV1 4WD 3ROW","City":"DUBAI","cnt":5},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","City":"DUBAI","cnt":4},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"Unknown","cnt":4},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"IRBIL","cnt":4},{"Franchisename":"Infiniti","Variantname":"INFINITI QX80 AUTOGRAPH 7 SEATS","City":"DUBAI","cnt":3},{"Franchisename":"GMC","Variantname":"NEW ACADIA AT4","City":"Unknown","cnt":2},{"Franchisename":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","City":"Beirut","cnt":2}]},"top_variants_by_subsegment":{"Retail":[{"BrandKey":"NISSAN","Variantname":"MAGNITE UPPER","cnt":51},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":24},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":19},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":15},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":15},{"BrandKey":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":10},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":10},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE T2 + SUNROOF","cnt":10},{"BrandKey":"NISSAN","Variantname":"MAGNITE TOP+","cnt":9},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":9}],"Fleet":[{"BrandKey":"NISSAN","Variantname":"MAGNITE UPPER","cnt":46},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":45},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":15},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":10},{"BrandKey":"Kawasaki","Variantname":"TERYX 4 800","cnt":7},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":6},{"BrandKey":"GMC","Variantname":"YUKON ELEVATION","cnt":4},{"BrandKey":"NISSAN","Variantname":"MAGNITE TOP+","cnt":4},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SV 4WD 3ROW","cnt":3},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":3}],"Corporate":[{"BrandKey":"Nissan Commercial","Variantname":"URVAN P/V STD BODY QR25 5MT","cnt":35},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":23},{"BrandKey":"Nissan Commercial","Variantname":"URVAN M/B STD ROOF QR25 5MT","cnt":18},{"BrandKey":"Nissan Commercial","Variantname":"URVAN M/B WIDE BODY QR25 5MT","cnt":13},{"BrandKey":"NISSAN","Variantname":"MAGNITE MID","cnt":6},{"BrandKey":"NISSAN","Variantname":"X-TRAIL S 4WD 3ROW","cnt":6},{"BrandKey":"Nissan Commercial","Variantname":"URVAN 4Door/3s High Roof P/V 2WD 5MT W/FR AC","cnt":5},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 SV CVT","cnt":3},{"BrandKey":"NISSAN","Variantname":"PATROL V6 XE","cnt":3},{"BrandKey":"NISSAN","Variantname":"X-TRAIL EPWR SL 4WD 3ROW","cnt":2}],"Government":[{"BrandKey":"Nissan Outsource","Variantname":"NAVARA D23 2.5L DIESEL AT 4WD PRO-4X","cnt":15},{"BrandKey":"NISSAN","Variantname":"SUNNY 1.5L SV + SPOILER","cnt":13},{"BrandKey":"Nissan Outsource","Variantname":"NAVARA LE AT PLUS DSL","cnt":10},{"BrandKey":"NISSAN","Variantname":"PATROL V6 SE PLATINUM CITY","cnt":6},{"BrandKey":"NISSAN","Variantname":"PATROL V6TT LE PLATINUM CITY ","cnt":3},{"BrandKey":"GMC","Variantname":"TERRAIN ELEVATION AWD","cnt":2},{"BrandKey":"NISSAN","Variantname":"KICKS 2.0 S CVT","cnt":1},{"BrandKey":"NISSAN","Variantname":"X-TERRA 4WD TITANIUM 7AT","cnt":1}],"Export":[{"BrandKey":"GMC","Variantname":"NEW ACADIA AT4","cnt":4},{"BrandKey":"Infiniti","Variantname":"INFINITI QX60 LUXE","cnt":3}]},"brand_segment_pivot":{"NISSAN":{"Domestic":408,"Exports":184,"Commercial":0},"GMC":{"Domestic":27,"Exports":20,"Commercial":0},"NISSAN China":{"Domestic":25,"Commercial":0,"Exports":0},"HONGQI":{"Domestic":10,"Commercial":0,"Exports":0},"Kawasaki":{"Domestic":9,"Commercial":0,"Exports":0},"Infiniti":{"Domestic":5,"Exports":12,"Commercial":0},"Nissan Commercial":{"Commercial":72,"Exports":20,"Domestic":0},"UD TRUCKS":{"Commercial":4,"Domestic":0,"Exports":0}},"brand_subsegment_pivot":{"GMC":{"Corporate":4,"Export":4,"Fleet":6,"Government":2,"Retail":15},"HONGQI":{"Corporate":0,"Export":0,"Fleet":1,"Government":0,"Retail":9},"Infiniti":{"Corporate":1,"Export":3,"Fleet":0,"Government":0,"Retail":4},"Kawasaki":{"Corporate":0,"Export":0,"Fleet":9,"Government":0,"Retail":0},"NISSAN":{"Corporate":51,"Export":0,"Fleet":136,"Government":24,"Retail":205},"Nissan Commercial":{"Corporate":71,"Export":0,"Fleet":1,"Government":0,"Retail":0},"Nissan Outsource":{"Corporate":0,"Export":0,"Fleet":0,"Government":25,"Retail":0},"UD TRUCKS":{"Corporate":4,"Export":0,"Fleet":0,"Government":0,"Retail":0}},"inv_summary":{"Nissan":{"Domestic":{"inventory":411.0,"reservations":134.0,"inventory_after_res":277.0,"consigned":10.0,"total_orders":546.0,"res_from_orders":49.0,"total_inventory":784.0},"Export":{"inventory":29.0,"reservations":29.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":112.0,"res_from_orders":112.0,"total_inventory":0.0}},"Infiniti":{"Domestic":{"inventory":7.0,"reservations":0.0,"inventory_after_res":7.0,"consigned":1.0,"total_orders":27.0,"res_from_orders":5.0,"total_inventory":30.0},"Export":{"inventory":1.0,"reservations":0.0,"inventory_after_res":1.0,"consigned":1.0,"total_orders":0.0,"res_from_orders":0.0,"total_inventory":1.0}},"GMC":{"Domestic":{"inventory":10.0,"reservations":7.0,"inventory_after_res":3.0,"consigned":0.0,"total_orders":48.0,"res_from_orders":12.0,"total_inventory":39.0},"Export":{"inventory":0.0,"reservations":0.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":56.0,"res_from_orders":56.0,"total_inventory":0.0}},"HONGQI":{"Domestic":{"inventory":7.0,"reservations":1.0,"inventory_after_res":6.0,"consigned":4.0,"total_orders":31.0,"res_from_orders":3.0,"total_inventory":38.0}},"Commercial":{"Domestic":{"inventory":27.0,"reservations":16.0,"inventory_after_res":11.0,"consigned":4.0,"total_orders":54.0,"res_from_orders":0.0,"total_inventory":69.0},"Export":{"inventory":0.0,"reservations":0.0,"inventory_after_res":0.0,"consigned":0.0,"total_orders":22.0,"res_from_orders":22.0,"total_inventory":0.0}}},"eta_rows":[["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-02",1.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025","2026-03",85.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-04",5.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-05",15.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026","2026-06",40.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-04",20.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-05",25.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026","2026-06",15.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-04",30.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-05",15.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026","2026-06",5.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-04",2.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-05",2.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026","2026-06",1.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026","2026-05",6.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026","2026-06",6.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-03",5.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-04",10.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-05",25.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026","2026-06",25.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026","2026-05",3.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026","2026-06",2.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-04",35.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-05",25.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026","2026-06",25.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-04",3.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-05",6.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026","2026-06",5.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-05",24.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-06",19.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-07",8.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-08",8.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026","2026-09",8.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-04",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-07",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-08",8.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026","2026-09",2.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-04",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-05",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-06",1.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-08",3.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026","2026-09",3.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-05",1.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-06",4.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026","2026-09",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-04",1.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-05",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-06",2.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026","2026-09",2.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026","2026-05",5.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026","2026-08",5.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-04",3.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-05",4.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-06",2.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-08",7.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026","2026-09",8.0],["Nissan","Export","PATROL Y63","Patrol LE T1 - Y63","2026","2026-09",5.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-04",4.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-05",15.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-06",9.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026","2026-09",45.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-03",2.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-04",4.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-05",3.0],["Infiniti","Domestic","QX60","QX60 Pure","2026","2026-06",2.0],["Infiniti","Domestic","QX60","QX60 Luxe","2026","2026-02",2.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","Autograph 8 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-04",2.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-05",2.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-04",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026","2026-06",1.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026","2026-05",1.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026","2026-06",1.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-01",2.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-02",6.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-06",2.0],["GMC","Domestic","Terrain","Terrain Elevation","2026","2026-07",1.0],["GMC","Domestic","Acadia","ACADIA AT4","2026","2026-04",2.0],["GMC","Domestic","Acadia","ACADIA AT4","2026","2026-05",1.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-02",7.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-04",6.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-06",2.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026","2026-07",2.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026","2026-04",1.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026","2026-05",1.0],["GMC","Domestic","Yukon","YUKON AT4 PILOT","2026","2026-04",2.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-01",4.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-01",3.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-02",2.0],["GMC","Domestic","Yukon","YUKON DENALI","2026","2026-06",2.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-01",2.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-02",19.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-04",7.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-06",7.0],["GMC","Export","Yukon","YUKON ELEVATION","2026","2026-07",7.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-04",3.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-06",3.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026","2026-07",2.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-01",1.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-02",4.0],["GMC","Export","Yukon","YUKON DENALI","2026","2026-07",1.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-07",2.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-08",1.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026","2025-09",2.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026","2025-07",1.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026","2025-08",9.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Flagship","2025","2025-06",12.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Luxury","2025","2025-06",4.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026","2026-05",6.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026","2026-06",2.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-04",3.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-05",9.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-06",20.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026","2026-08",2.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2026","2026-05",5.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026","2026-04",2.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026","2026-05",5.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-05",9.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-06",3.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026","2026-09",10.0]],"inv_grid_rows":[["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2025",109.0,47.0,62.0,86.0,148.0],["Nissan","Domestic","SUNNY N17","SUNNY 1.5 SV + Spoiler","2026",0.0,0.0,0.0,60.0,60.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2025",2.0,1.0,1.0,0.0,1.0],["Nissan","Domestic","Magnite EM2","Magnite MID","2026",54.0,25.0,29.0,60.0,89.0],["Nissan","Domestic","Magnite EM2","Magnite UPPER","2026",21.0,9.0,12.0,50.0,63.0],["Nissan","Domestic","Magnite EM2","Magnite TOP+","2026",0.0,0.0,0.0,5.0,5.0],["Nissan","Domestic","Qashqai J12 ","Qashqai SV EPWR","2026",7.0,5.0,2.0,12.0,14.0],["Nissan","Domestic","KICKS P16","Kicks SV","2025",1.0,0.0,1.0,0.0,1.0],["Nissan","Domestic","KICKS P16","Kicks SV","2026",11.0,2.0,9.0,65.0,72.0],["Nissan","Domestic","KICKS P16","Kicks SL","2026",0.0,0.0,0.0,5.0,5.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD S 7 SEATS","2026",150.0,40.0,110.0,85.0,195.0],["Nissan","Domestic","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026",7.0,0.0,7.0,0.0,7.0],["Nissan","Domestic","X-trail T33","X-trail T33 EPWR SV","2026",47.0,3.0,44.0,0.0,44.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2025",2.0,2.0,0.0,0.0,0.0],["Nissan","Domestic","X-Terra WD23","X-TERRA 4WD TITANIUM 7AT","2026",0.0,0.0,0.0,14.0,14.0],["Nissan","Domestic","PATROL Y63","PATROL XE","2026",0.0,0.0,0.0,67.0,45.0],["Nissan","Domestic","PATROL Y63","Patrol SE T2","2026",0.0,0.0,0.0,14.0,8.0],["Nissan","Domestic","PATROL Y63","Patrol SE Platinum","2026",0.0,0.0,0.0,9.0,4.0],["Nissan","Domestic","PATROL Y63","Patrol LE T2","2026",0.0,0.0,0.0,7.0,6.0],["Nissan","Domestic","PATROL Y63","Patrol LE Platinum","2026",0.0,0.0,0.0,7.0,3.0],["Nissan","Export","X-trail T33","X-TRAIL 4WD SV1 7 SEATS","2026",0.0,0.0,0.0,10.0,0.0],["Nissan","Export","PATROL Y63","Patrol SE T2 - Y63","2026",5.0,5.0,0.0,0.0,0.0],["Nissan","Export","PATROL Y63","Patrol SE Platinum - Y63","2026",0.0,0.0,0.0,24.0,0.0],["Nissan","Export","PATROL Y63","Patrol LE T1 - Y63","2026",0.0,0.0,0.0,5.0,0.0],["Nissan","Export","PATROL Y63","Patrol LE Platinum - Y63","2026",24.0,24.0,0.0,73.0,0.0],["Infiniti","Domestic","QX60","QX60 Pure","2026",3.0,0.0,3.0,11.0,13.0],["Infiniti","Domestic","QX60","QX60 Luxe","2026",2.0,0.0,2.0,2.0,4.0],["Infiniti","Domestic","QX80","Autograph 7 Seater","2026",1.0,0.0,1.0,3.0,1.0],["Infiniti","Domestic","QX80","Autograph 8 Seater","2026",0.0,0.0,0.0,1.0,1.0],["Infiniti","Domestic","QX80","Sensory 7 Seater","2026",0.0,0.0,0.0,5.0,5.0],["Infiniti","Domestic","QX80","Sensory 8 Seater","2026",0.0,0.0,0.0,3.0,3.0],["Infiniti","Domestic","QX80","SV Sport 7 Seater","2026",1.0,0.0,1.0,2.0,3.0],["Infiniti","Export","QX80","SV Sport 7 Seater","2026",1.0,0.0,1.0,0.0,1.0],["GMC","Domestic","Terrain","Terrain Elevation","2026",7.0,5.0,2.0,11.0,13.0],["GMC","Domestic","Acadia","ACADIA AT4","2025",1.0,1.0,0.0,0.0,0.0],["GMC","Domestic","Acadia","ACADIA AT4","2026",1.0,1.0,0.0,3.0,3.0],["GMC","Domestic","Yukon","YUKON ELEVATION","2026",0.0,0.0,0.0,17.0,7.0],["GMC","Domestic","Yukon","YUKON AT4 BENCH","2026",0.0,0.0,0.0,2.0,2.0],["GMC","Domestic","Yukon","YUKON AT4 PILOT","2026",0.0,0.0,0.0,2.0,1.0],["GMC","Domestic","Yukon","Yukon AT4 Ultimate 6.2","2026",1.0,0.0,1.0,6.0,7.0],["GMC","Domestic","Yukon","YUKON DENALI","2026",0.0,0.0,0.0,7.0,6.0],["GMC","Export","Yukon","YUKON ELEVATION","2026",0.0,0.0,0.0,42.0,0.0],["GMC","Export","Yukon","Yukon AT4 Ultimate 6.2","2026",0.0,0.0,0.0,8.0,0.0],["GMC","Export","Yukon","YUKON DENALI","2026",0.0,0.0,0.0,6.0,0.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2025",3.0,0.0,3.0,0.0,3.0],["HONGQI","Domestic","HONGQI","HS3 2.0","2026",0.0,0.0,0.0,5.0,4.0],["HONGQI","Domestic","HONGQI","HS3 1.5","2026",2.0,0.0,2.0,10.0,12.0],["HONGQI","Domestic","HONGQI","HS7 Luxury Pro","2026",0.0,0.0,0.0,0.0,2.0],["HONGQI","Domestic","HONGQI","HS7 deluxe","2026",0.0,0.0,0.0,0.0,0.0],["HONGQI","Domestic","HONGQI","E-QM5 Luxury","2024",1.0,0.0,1.0,0.0,1.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Flagship","2025",0.0,0.0,0.0,12.0,12.0],["HONGQI","Domestic","HONGQI","OUSADO 2.0T Luxury","2025",0.0,0.0,0.0,4.0,4.0],["HONGQI","Domestic","HONGQI","E-HS7","2026",1.0,1.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2025",1.0,1.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN M/B STD ROOF QR25 5MT","2026",0.0,0.0,0.0,8.0,8.0],["Commercial","Domestic","Urvan E26","URVAN M/B WIDE BODY QR25 5MT","2026",1.0,0.0,1.0,34.0,39.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2025",5.0,5.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN 4Door/3s Window VAN","2026",10.0,3.0,7.0,5.0,12.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2025",2.0,2.0,0.0,0.0,0.0],["Commercial","Domestic","Urvan E26","URVAN P/V STD BODY QR25 5MT","2026",5.0,5.0,0.0,7.0,7.0],["Commercial","Domestic","Golden Dragon","GOLDEN DRAGON KAST 7M","2025",2.0,0.0,2.0,0.0,2.0],["Commercial","Domestic","UD Trucks","MKE210","2024",1.0,0.0,1.0,0.0,1.0],["Commercial","Export","Urvan E26","Nissan URVAN 4Door/3s Narrow body Window VAN","2026",0.0,0.0,0.0,22.0,0.0]],"sold_total":796,"exports_by_country":{"DUBAI":171,"IRBIL":48,"Unknown":9,"Beirut":3,"Mount Lebanon":2,"TALATONA":1,"Bekaa":1,"DAMASCUS":1},"exports_by_city":{"DUBAI":170,"IRBIL":48,"TALATONA":1},"exports_brand_country":{"GMC":{"Beirut":0,"Bekaa":0,"DAMASCUS":0,"DUBAI":0,"IRBIL":16,"Mount Lebanon":2,"TALATONA":0,"Unknown":2},"Infiniti":{"Beirut":0,"Bekaa":1,"DAMASCUS":1,"DUBAI":9,"IRBIL":0,"Mount Lebanon":0,"TALATONA":0,"Unknown":1},"NISSAN":{"Beirut":3,"Bekaa":0,"DAMASCUS":0,"DUBAI":142,"IRBIL":32,"Mount Lebanon":0,"TALATONA":1,"Unknown":6},"Nissan Commercial":{"Beirut":0,"Bekaa":0,"DAMASCUS":0,"DUBAI":20,"IRBIL":0,"Mount Lebanon":0,"TALATONA":0,"Unknown":0}},"domestic_city_mix":{"Mount Lebanon":338,"Beirut":116,"North Lebanon":15,"South Lebanon":9,"Unknown":3,"Bekaa":3},"commercial_city_mix":{"Mount Lebanon":43,"Beirut":32,"South Lebanon":1},"domestic_department":{"New Car Sales Department-Chiyah":426,"New Car Sales Department-Naccache":27,"New Car Sales Department-Dealer":27,"New Car Sales Department-Zalka":4},"domestic_branch_by_brand":{"GMC":{"Chiyah":25,"Dealer":0,"Naccache":2,"Zalka":0},"HONGQI":{"Chiyah":5,"Dealer":0,"Naccache":1,"Zalka":4},"Infiniti":{"Chiyah":4,"Dealer":0,"Naccache":1,"Zalka":0},"Kawasaki":{"Chiyah":9,"Dealer":0,"Naccache":0,"Zalka":0},"NISSAN":{"Chiyah":358,"Dealer":27,"Naccache":23,"Zalka":0},"NISSAN China":{"Chiyah":25,"Dealer":0,"Naccache":0,"Zalka":0}},"domestic_branch_totals":{"Chiyah":426,"Naccache":27,"Dealer":27,"Zalka":4},"stock_by_brand":{"Nissan":440,"Infiniti":8,"GMC":10,"HONGQI":7,"Commercial":27}};
 const TODAY_YM = '2026-05';
-const SOLD_TOTAL = 794;
+const SOLD_TOTAL = 796;
 const BRAND_COLORS = {
-  'NISSAN':'#c3002f','Nissan':'#c3002f','Nissan Commercial':'#7f1d1d','Nissan Outsource':'#991b1b',
+  'NISSAN':'#c3002f','Nissan':'#c3002f',
+  'Nissan Commercial':'#7f1d1d','Nissan Outsource':'#991b1b','NISSAN China':'#a8312f',
   'INFINITI':'#1d3557','Infiniti':'#1d3557',
-  'GMC':'#ff6b00','HONGQI':'#8b0000','Kawasaki':'#37b34a','UD TRUCKS':'#0891b2','Commercial':'#7c3aed'
+  'GMC':'#ff6b00','HONGQI':'#8b0000','Kawasaki':'#37b34a',
+  'UD TRUCKS':'#0891b2','Commercial':'#7c3aed'
 };
 const SEG_COLORS = { 'Domestic':'#0f4c81','Commercial':'#7c3aed','Exports':'#059669' };
 
+// Helper: safely destroy any pre-existing Chart on a canvas before re-rendering
+function safeChart(canvasId, cfg) {
+  try {
+    const el = document.getElementById(canvasId);
+    if (!el) { console.warn('Canvas not found:', canvasId); return null; }
+    // If a Chart is already attached, destroy it first
+    if (typeof Chart !== 'undefined' && Chart.getChart) {
+      const existing = Chart.getChart(el);
+      if (existing) existing.destroy();
+    }
+    return new Chart(el, cfg);
+  } catch(e) {
+    console.error('Chart render failed for', canvasId, ':', e.message);
+    return null;
+  }
+}
 function newBar(id, labels, data, colors, opts={}) {
-  return new Chart(document.getElementById(id), {
+  return safeChart(id, {
     type: 'bar',
     data: { labels, datasets: [{ label: opts.lbl||'Units', data, backgroundColor: colors||'#0f4c81', borderRadius:3 }] },
     options: Object.assign({
@@ -439,13 +491,24 @@ function newBar(id, labels, data, colors, opts={}) {
   });
 }
 function newDoughnut(id, labels, data, colors) {
-  return new Chart(document.getElementById(id), {
+  return safeChart(id, {
     type:'doughnut', data:{labels, datasets:[{data, backgroundColor:colors}]},
     options:{ responsive:true, maintainAspectRatio:false,
       plugins:{ legend:{position:'right', labels:{font:{size:11}, boxWidth:10}},
         tooltip:{callbacks:{label:c=>c.label+': '+c.parsed+' ('+((c.parsed/data.reduce((a,b)=>a+b,0))*100).toFixed(1)+'%)'}} }
     }
   });
+}
+// Wrapper for direct new Chart() calls — same protection
+function safeChartByEl(el, cfg) {
+  try {
+    if (!el) return null;
+    if (typeof Chart !== 'undefined' && Chart.getChart) {
+      const existing = Chart.getChart(el);
+      if (existing) existing.destroy();
+    }
+    return new Chart(el, cfg);
+  } catch(e) { console.error('Chart render failed:', e.message); return null; }
 }
 
 // === Top: Segment, Brand, Channel ===
@@ -468,7 +531,7 @@ newBar('ch-dom-brand', domBrandSorted.map(b=>b[0]), domBrandSorted.map(b=>b[1]),
   domBrandSorted.map(b=>BRAND_COLORS[b[0]]||'#888'), {indexAxis:'y', horizontal:true});
 
 const domTop = E.top_variants_by_segment.Domestic.slice(0,10);
-new Chart(document.getElementById('ch-dom-top'), {
+safeChartByEl(document.getElementById('ch-dom-top'), {
   type:'bar', data:{
     labels: domTop.map(v=>v.Variantname.length>26?v.Variantname.slice(0,26)+'…':v.Variantname),
     datasets:[{ data: domTop.map(v=>v.cnt), backgroundColor: domTop.map(v=>BRAND_COLORS[(v.Franchisename||'').trim()]||'#888'), borderRadius:3 }]
@@ -478,12 +541,100 @@ new Chart(document.getElementById('ch-dom-top'), {
     scales:{x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}}} }
 });
 
-newDoughnut('ch-dom-mix', ['Retail','Fleet'], [233, 153], ['#0f4c81','#1a6bbf']);
-
-// Domestic city mix - aggregate from mix_by_city (filtering to Lebanon cities only)
+// Domestic city mix - from sheet
 const lebCities = ['Mount Lebanon','Beirut','North Lebanon','South Lebanon','Bekaa'];
-const cityVals = lebCities.map(c => E.mix_by_city[c] || 0);
-newBar('ch-dom-city', lebCities, cityVals, ['#0f4c81','#3b82f6','#60a5fa','#93c5fd','#bfdbfe'], {indexAxis:'y', horizontal:true});
+const cityVals = lebCities.map(c => (E.domestic_city_mix||{})[c] || 0);
+try { newBar('ch-dom-city', lebCities, cityVals, ['#0f4c81','#3b82f6','#60a5fa','#93c5fd','#bfdbfe'], {indexAxis:'y', horizontal:true}); }
+catch(e){ console.error('ch-dom-city failed:', e); }
+
+// Retail vs Fleet split (Domestic) - real values
+try {
+  const retail = (E.sold_by_saletype||{}).Retail || 0;
+  const fleet = E.sold_by_segment.Domestic - retail;
+  newDoughnut('ch-dom-mix', ['Retail','Fleet (RAC + Dealer + Corp + Govt)'], [retail, fleet], ['#0f4c81','#1a6bbf']);
+} catch(e){ console.error('ch-dom-mix failed:', e); }
+
+// === NEW: Chiyah vs Naccache per brand (Domestic only) ===
+(function(){
+  const ctx = document.getElementById('ch-dom-branches');
+  if (!ctx) return;
+  const data = E.domestic_branch_by_brand || {};
+  const brands = Object.keys(data).sort((a,b)=>(data[b].Chiyah||0)+(data[b].Naccache||0)-((data[a].Chiyah||0)+(data[a].Naccache||0)));
+  safeChartByEl(ctx, {
+    type:'bar',
+    data:{
+      labels: brands,
+      datasets:[
+        { label:'Chiyah',   data: brands.map(b=>data[b].Chiyah||0),   backgroundColor:'#0f4c81', borderRadius:3 },
+        { label:'Naccache', data: brands.map(b=>data[b].Naccache||0), backgroundColor:'#f59e0b', borderRadius:3 }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false, indexAxis:'y',
+      plugins:{ legend:{position:'bottom', labels:{font:{size:11}, boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.x+' units'}} },
+      scales:{ x:{beginAtZero:true, grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}} }
+    }
+  });
+})();
+
+// === NEW: Branch totals chart (Domestic only) ===
+(function(){
+  const ctx = document.getElementById('ch-dom-branchtotals');
+  if (!ctx) return;
+  const totals = E.domestic_branch_totals || {};
+  const order = ['Chiyah','Naccache','Dealer','Zalka'];
+  const labels = order.filter(b=>totals[b]!==undefined);
+  const vals = labels.map(b=>+totals[b]||0);
+  newBar('ch-dom-branchtotals', labels, vals,
+    ['#0f4c81','#f59e0b','#16a34a','#9333ea'].slice(0,labels.length), {indexAxis:'y', horizontal:true});
+})();
+
+// === NEW: Stock-on-hand breakdown line under the KPI tile ===
+(function(){
+  const host = document.getElementById('stock-breakdown');
+  if (!host || !E.stock_by_brand) return;
+  const order = ['Nissan','Commercial','GMC','Infiniti','HONGQI'];
+  const parts = order
+    .filter(b=>E.stock_by_brand[b]!==undefined)
+    .map(b=>`<strong>${b}</strong> ${E.stock_by_brand[b]}`);
+  host.innerHTML = parts.join(' · ');
+})();
+
+// === NEW: HIGH-STOCK banner — top model by (current stock + orders) ===
+(function(){
+  const host = document.getElementById('high-stock-model');
+  const detail = document.getElementById('high-stock-detail');
+  const runners = document.getElementById('high-stock-runners');
+  if (!host || !E.inv_grid_rows) return;
+  // inv_grid_rows columns: [Brand, Market, Group, Variant, MY, Inv, Reserved, Available, OnOrder, Pipeline]
+  const agg = {};
+  E.inv_grid_rows.forEach(r => {
+    const brand = r[0], group = r[2], variant = r[3];
+    const inv = +r[5] || 0;
+    const orders = +r[8] || 0;
+    const key = brand + '|' + group + '|' + variant;
+    if (!agg[key]) agg[key] = { brand, group, variant, inv:0, orders:0 };
+    agg[key].inv    += inv;
+    agg[key].orders += orders;
+  });
+  const list = Object.values(agg)
+    .map(o => Object.assign(o, { total: o.inv + o.orders }))
+    .filter(o => o.total > 0)
+    .sort((a,b) => b.total - a.total);
+  if (!list.length) return;
+  const top = list[0];
+  // Truncate variant for the tile title
+  const shortV = top.variant.length > 28 ? top.variant.slice(0, 28) + '…' : top.variant;
+  host.textContent = shortV;
+  host.title = top.brand + ' · ' + top.variant;
+  detail.innerHTML = `<strong>${top.total}</strong> total · ${top.inv} on lot + ${top.orders} on order · <em>${top.brand}</em>`;
+  // Top 3 runners-up
+  const runnersHtml = list.slice(1, 4)
+    .map(r => `<strong>${r.variant.length > 22 ? r.variant.slice(0, 22) + '…' : r.variant}</strong> ${r.total}`)
+    .join(' · ');
+  runners.innerHTML = runnersHtml;
+})();
 
 // === COMMERCIAL ===
 const comBrand = {};
@@ -492,8 +643,8 @@ const comBrandSorted = Object.entries(comBrand).sort((a,b)=>b[1]-a[1]);
 newBar('ch-com-brand', comBrandSorted.map(b=>b[0]), comBrandSorted.map(b=>b[1]),
   comBrandSorted.map(b=>BRAND_COLORS[b[0]]||'#888'), {indexAxis:'y', horizontal:true});
 
-const comTop = E.top_variants_by_segment.Commercial.slice(0,10);
-new Chart(document.getElementById('ch-com-top'), {
+const comTop = (E.top_variants_by_segment.Commercial || []).slice(0,10);
+safeChartByEl(document.getElementById('ch-com-top'), {
   type:'bar', data:{
     labels: comTop.map(v=>v.Variantname.length>26?v.Variantname.slice(0,26)+'…':v.Variantname),
     datasets:[{ data: comTop.map(v=>v.cnt), backgroundColor: comTop.map(v=>BRAND_COLORS[(v.Franchisename||'').trim()]||'#888'), borderRadius:3 }]
@@ -503,11 +654,24 @@ new Chart(document.getElementById('ch-com-top'), {
     scales:{x:{beginAtZero:true,grid:{display:false}}, y:{grid:{display:false}, ticks:{font:{size:11}}}} }
 });
 
-newDoughnut('ch-com-mix', ['Corporate','Government'], [131, 51], ['#7c3aed','#a78bfa']);
+// Commercial sub-segment doughnut (real numbers from sheet)
+(function(){
+  const st = E.sold_by_saletype || {};
+  // Commercial sheet specifically has Fleet-Corporate, Fleet Dealer; we approximate Corporate/Government from saletype share within commercial sheet brands
+  const corporate = 75; // Fleet-Corporate from Commercial sheet (8-May)
+  const dealer = 1;     // Fleet Dealer from Commercial sheet (8-May)
+  newDoughnut('ch-com-mix', ['Corporate','Dealer'], [corporate, dealer], ['#7c3aed','#a78bfa']);
+})();
 
-// Commercial-only city counts from brand_subsegment_pivot is not enough; we use mix_by_city as proxy (commercial likely concentrated in Mount Lebanon / Beirut)
-// Build a simple commercial-bias city distribution by approximating
-newBar('ch-com-city', lebCities, lebCities.map(c => Math.round((E.mix_by_city[c]||0) * 0.32)), ['#7c3aed','#a78bfa','#c4b5fd','#ddd6fe','#ede9fe'], {indexAxis:'y', horizontal:true});
+// Commercial city distribution from sheet
+(function(){
+  const cm = E.commercial_city_mix || {};
+  const labels = lebCities.filter(c => cm[c]);
+  const vals = labels.map(c => cm[c]);
+  // Add Dubai if present (commercial export)
+  if (cm['DUBAI']) { labels.push('Dubai (export)'); vals.push(cm['DUBAI']); }
+  newBar('ch-com-city', labels, vals, ['#7c3aed','#a78bfa','#c4b5fd','#ddd6fe','#ede9fe','#16a34a'], {indexAxis:'y', horizontal:true});
+})();
 
 // === EXPORTS by destination country chart ===
 (function(){
@@ -516,7 +680,7 @@ newBar('ch-com-city', lebCities, lebCities.map(c => Math.round((E.mix_by_city[c]
   const entries = Object.entries(E.exports_by_country || {})
     .filter(([k,v]) => v > 0)
     .sort((a,b) => b[1] - a[1]);
-  new Chart(canvas, {
+  safeChartByEl(canvas, {
     type: 'bar',
     data: {
       labels: entries.map(e => e[0]),
@@ -570,7 +734,7 @@ const ds = brands.map(b=>({
   }),
   backgroundColor: BRAND_COLORS[b]||'#888'
 }));
-new Chart(document.getElementById('ch-deliveries'), {
+safeChartByEl(document.getElementById('ch-deliveries'), {
   type:'bar',
   data:{ labels: monthsAll.map(fmtM), datasets: ds },
   options:{ responsive:true, maintainAspectRatio:false,
@@ -645,26 +809,30 @@ RISKS.forEach(r=>{
 });
 
 // === Sold detail grid ===
-const soldRows = [];
-Object.entries(E.top_variants_by_segment).forEach(([seg, list])=>{
-  list.forEach(v=>{
-    soldRows.push([(v.Franchisename||'').trim(), v.Variantname, seg, v.cnt]);
+try {
+  const soldRows = [];
+  Object.entries(E.top_variants_by_segment).forEach(([seg, list])=>{
+    list.forEach(v=>{
+      soldRows.push([(v.Franchisename||'').trim(), v.Variantname, seg, v.cnt]);
+    });
   });
-});
-new gridjs.Grid({
-  columns:['Brand','Variant','Segment',{name:'Units', formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)}],
-  data: soldRows, search:true, sort:true, pagination:{limit:12}
-}).render(document.getElementById('grid-sold'));
+  new gridjs.Grid({
+    columns:['Brand','Variant','Segment',{name:'Units', formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)}],
+    data: soldRows, search:true, sort:true, pagination:{limit:12}
+  }).render(document.getElementById('grid-sold'));
+} catch(e){ console.error('grid-sold failed:', e); }
 
-new gridjs.Grid({
-  columns:['Brand','Market','Group','Variant','MY',
-    {name:'Inv',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
-    {name:'Reserved',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
-    {name:'Avail',formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)},
-    {name:'On Order',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
-    {name:'Pipeline',formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)}],
-  data: E.inv_grid_rows, search:true, sort:true, pagination:{limit:12}
-}).render(document.getElementById('grid-inv'));
+try {
+  new gridjs.Grid({
+    columns:['Brand','Market','Group','Variant','MY',
+      {name:'Inv',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
+      {name:'Reserved',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
+      {name:'Avail',formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)},
+      {name:'On Order',formatter:c=>gridjs.html(`<div style="text-align:right">${c}</div>`)},
+      {name:'Pipeline',formatter:c=>gridjs.html(`<div style="text-align:right;font-weight:600">${c}</div>`)}],
+    data: E.inv_grid_rows, search:true, sort:true, pagination:{limit:12}
+  }).render(document.getElementById('grid-inv'));
+} catch(e){ console.error('grid-inv failed:', e); }
 
 
 </script>
